@@ -67,17 +67,17 @@ output("Hello, World!");
 O ambiente node não foi criado para aplicações CLI e normalmente é utilizado para processamento de requisições web. Caso queira utilizar um programa em Javascript para leitura do terminal utilize o seguinte exemplo:
 
 ```js
-const readline = require("node:readline");
+const readline = require('node:readline')
+const { stdin: input, stdout: output } = require('node:process');
 
-readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+const rl = readline.createInterface({ input, output });
 
-readline.question(`Qual o seu nome?`, (name) => {
-  console.log(`Hi ${name}!`);
-  readline.close();
-});
+rl.question('Digite um número ', (n) => {
+    console.log(n)
+    rl.close();
+  });
+
+
 ```
 
 ### Acessando Elementos HTML
