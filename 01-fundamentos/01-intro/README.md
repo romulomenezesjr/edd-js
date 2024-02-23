@@ -168,7 +168,17 @@ Normalmente não utilizandos a função **prompt()** do Javascript para leitura 
 Neste exemplo, o evento de envio do formulário (`submit`) é interceptado pelo JavaScript. Dentro do callback desse evento, os valores dos inputs são lidos usando `document.getElementById().value`. Esses valores são então exibidos no console, mas você pode fazer qualquer outra coisa com eles, como enviá-los para um servidor ou usá-los para atualizar a página. O `event.preventDefault()` é usado para impedir o envio padrão do formulário, que recarregaria a página.
 
 ## Exercício
+    1. Calculadora utilizando prompt e alert:
+        - Crie uma calculadora simples que solicite dois números através do prompt.
+        - Permita que o usuário escolha a operação a ser realizada (adição, subtração, multiplicação, divisão).
+        - Exiba o resultado da operação em um alert.
 
-1. Utilizando os exemplos mostrados anteriormente crie uma calculadora utilizando prompt e alert
-2. Utilizando os exemplos a seguir crie uma calculadora utilizando nodejs e o módulo readline
-3. Utilizando os exemplos mostrados anteriormente, crie uma calculadora utilizando manipulação de formulário.
+    2. Calculadora utilizando Node.js e o módulo readline:
+        - Crie uma calculadora que utilize o módulo readline do Node.js para ler entrada do usuário a partir do terminal.
+        - Permita que o usuário insira dois números e escolha a operação a ser realizada (adição, subtração, multiplicação, divisão).
+        - Exiba o resultado da operação no terminal.
+
+    3. Calculadora utilizando manipulação de formulário HTML:
+        - Crie um formulário HTML com campos para o usuário inserir dois números e selecionar a operação desejada.
+        - Utilize JavaScript para interceptar o envio do formulário e realizar a operação selecionada.
+        - Após a submissão do formulário, exiba o resultado da operação na própria página HTML.
