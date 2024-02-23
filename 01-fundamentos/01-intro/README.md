@@ -68,11 +68,13 @@ output("Hello, World!");
 O ambiente node não foi criado para aplicações CLI e normalmente é utilizado para processamento de requisições web. Caso queira utilizar um programa em Javascript para leitura do terminal utilize o seguinte exemplo:
 
 ```js
+// Importando módulos do node para leitura do terminal. Estas são funções que não existem no Javascript
 const readline = require('node:readline')
 const { stdin: input, stdout: output } = require('node:process');
 
 const rl = readline.createInterface({ input, output });
 
+// A função question imprime um texto no output e executa uma função (callback) quando o dado é lido
 rl.question('Digite um número ', (n) => {
     console.log(n)
     rl.close();
@@ -110,59 +112,58 @@ rl.question('Digite um número ', (n) => {
 
 Depois de acessar os elementos HTML usando uma dessas técnicas, você pode interagir com eles, como ler ou definir atributos, modificar o conteúdo, estílo, adicionar ou remover classes, ou lidar com eventos.
 
-### Manipulando Formulário
+### Leitura de Dados dos Elementos HTML 
 
-O exemplo a seguir mostra como ler os valores de entrada de um formulário HTML usando JavaScript:
+Normalmente não utilizandos a função **prompt()** do Javascript para leitura de dados. Fazemos isso acessando elementos input de um formulário HTML. O exemplo a seguir mostra como acessar os valores de entrada de um formulário HTML usando JavaScript.
 
-HTML:
+- HTML (index.html): O código HTML a seguir possui um formulário com input's e um botão submit.
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formulário com JavaScript</title>
-  </head>
-  <body>
-    <form id="meuFormulario">
-      <label for="nome">Nome:</label>
-      <input type="text" id="nome" name="nome" /><br /><br />
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Formulário com JavaScript</title>
+      </head>
+      <body>
+        <form id="meuFormulario">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" /><br /><br />
+    
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" /><br /><br />
+    
+          <label for="mensagem">Mensagem:</label><br />
+          <textarea id="mensagem" name="mensagem" rows="4" cols="50"></textarea
+          ><br /><br />
+    
+          <input type="submit" value="Enviar" />
+        </form>
+    
+        <script src="script.js"></script>
+      </body>
+    </html>
+    ```
+- JavaScript (`script.js`): O código JS a seguir acessa o documento, recupera o formulário e aguarda submit acontecer. Quando isso acontece, ele executa uma função.
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" /><br /><br />
-
-      <label for="mensagem">Mensagem:</label><br />
-      <textarea id="mensagem" name="mensagem" rows="4" cols="50"></textarea
-      ><br /><br />
-
-      <input type="submit" value="Enviar" />
-    </form>
-
-    <script src="script.js"></script>
-  </body>
-</html>
-```
-
-JavaScript (`script.js`):
-
-```javascript
-document
-  .getElementById("meuFormulario")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // Impede o envio do formulário (recarregamento da página)
-
-    // Obter os valores dos inputs
-    const nome = document.getElementById("nome").value;
-    const email = document.getElementById("email").value;
-    const mensagem = document.getElementById("mensagem").value;
-
-    // Exibir os valores no console (poderia ser utilizado para enviar para um servidor, por exemplo)
-    console.log("Nome:", nome);
-    console.log("Email:", email);
-    console.log("Mensagem:", mensagem);
-  });
-```
+    ```javascript
+    document
+      .getElementById("meuFormulario")
+      .addEventListener("submit", function (event) {
+        event.preventDefault(); // Impede o envio do formulário (recarregamento da página)
+    
+        // Obter os valores dos inputs
+        const nome = document.getElementById("nome").value;
+        const email = document.getElementById("email").value;
+        const mensagem = document.getElementById("mensagem").value;
+    
+        // Exibir os valores no console (poderia ser utilizado para enviar para um servidor, por exemplo)
+        console.log("Nome:", nome);
+        console.log("Email:", email);
+        console.log("Mensagem:", mensagem);
+      });
+    ```
 
 Neste exemplo, o evento de envio do formulário (`submit`) é interceptado pelo JavaScript. Dentro do callback desse evento, os valores dos inputs são lidos usando `document.getElementById().value`. Esses valores são então exibidos no console, mas você pode fazer qualquer outra coisa com eles, como enviá-los para um servidor ou usá-los para atualizar a página. O `event.preventDefault()` é usado para impedir o envio padrão do formulário, que recarregaria a página.
 
