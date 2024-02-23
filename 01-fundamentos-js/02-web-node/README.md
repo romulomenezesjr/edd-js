@@ -1,36 +1,26 @@
-## O que é Javascript
+## Javascript na Web vs Node
 
-JavaScript, frequentemente abreviado como JS, é a linguagem de programação das tecnologias que fazem a World Wide Web, juntamente com HTML e CSS. Ela nos permite adicionar interatividade às páginas, por exemplo, você pode ter visto sliders, alertas, interações de clique, pop-ups, etc., em diferentes sites - tudo isso é construído usando JavaScript.
+Existe uma diferença fundamental entre JavaScript que executamos em ambientes web (Navegador) e no Node.js: **Ambientes de Execução**
 
-Além de ser usado no navegador, também é utilizado em outros ambientes não relacionados ao navegador, como Node.js para escrever código do lado do servidor em JavaScript, Electron para escrever aplicativos de desktop, React Native para aplicativos móveis, e assim por diante.
+Quando executamos o JavaScript em diferentes ambientes temos acesso à recursos e APIs que não existem no outro ambiente. 
 
-## História
 
-JavaScript foi inicialmente criado por Brendan Eich da NetScape e foi anunciado pela primeira vez em um comunicado de imprensa pela Netscape em 1995. Ele tem uma história bizarra de nomes; inicialmente, foi chamado de Mocha pelo criador, que mais tarde foi renomeado para LiveScript. Em 1996, cerca de um ano após o lançamento, a NetScape decidiu renomeá-lo para JavaScript com a esperança de capitalizar a comunidade Java (embora JavaScript não tivesse nenhum relacionamento com Java) e lançou o Netscape 2.0 com suporte oficial ao JavaScript.
+1. **JavaScript na Web:**
+   - No contexto da web, JavaScript é executado nos navegadores.
+   - Ele interage com o DOM (Document Object Model) para manipular elementos HTML, CSS e responder a eventos do usuário.
+   - JavaScript na web tem acesso a APIs específicas do navegador, como a API de manipulação de DOM (`document`), API de manipulação de eventos (`addEventListener`, APIs de armazenamento local (`localStorage` e `sessionStorage`), entre outras.
+   - É comumente usado para criar aplicações web interativas, como páginas dinâmicas, jogos, aplicativos de single-page, entre outros.
 
-![historia](https://res.cloudinary.com/practicaldev/image/fetch/s--YztX6smy--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/k9it4nub7qe99wvfa8r6.jpg)
+2. **JavaScript no Node.js:**
+   - No Node.js, JavaScript é executado no servidor.
+   - Ele não tem acesso ao DOM ou a outras APIs do navegador, uma vez que não há um navegador presente.
+   - Em vez disso, o Node.js fornece APIs para interação com o sistema de arquivos (`fs`), manipulação de streams, criação de servidores HTTP, manipulação de processos, acesso a banco de dados, entre outras.
+   - Node.js permite criar aplicações de servidor, como APIs RESTful, servidores web, aplicativos em tempo real, scripts de automação, microserviços, entre outros.
+   - Pode ser usado para construir aplicações CLI (Command Line Interface), serviços de backend, ferramentas de linha de comando, entre outros.
 
-## Versões
+O JavaScript na web é voltado para interações no navegador e manipulação de elementos HTML, CSS e eventos do usuário. 
 
-JavaScript, alcançou o status de padrão ECMA em 1997 e adotou o nome oficial ECMAScript. Esta linguagem evoluiu através de várias versões, a saber, ES1, ES2, ES3, ES5 e a transformadora ES6. Essas atualizações desempenharam um papel crucial na melhoria e padronização do JavaScript, tornando-o amplamente utilizado e valioso no campo sempre em mudança do desenvolvimento web.
-
-![ES6](https://res.cloudinary.com/practicaldev/image/fetch/s--R8RN3V3c--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7ow4716n1yl2o73fdak3.jpg)
-
-## Executando
-
-JavaScript pode ser executado no navegador incluindo o arquivo de script externo usando a tag \<script\>, escrevendo-o dentro da página HTML novamente usando a tag \<script\>, executando-o no console do navegador ou também é possível usar o Node.
-
-### Console do Navegador
-
-![imagem](https://javascript.info/article/devtools/chrome.png)
-
-### Tag script
-
-![Script](https://res.cloudinary.com/practicaldev/image/fetch/s--SgMK7138--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/99rxu59p7rxos830qxlz.png)
-
-### Execução com o node
-
-![Node](https://res.cloudinary.com/practicaldev/image/fetch/s--cNfT4syU--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/l65m5h5x039we52cqhb4.png)
+O JavaScript no Node.js orientado para operações de I/O, manipulação de arquivos, criação de servidores e desenvolvimento de aplicações de backend.
 
 ### Input/Output na Web
 
@@ -168,17 +158,17 @@ Normalmente não utilizandos a função **prompt()** do Javascript para leitura 
 Neste exemplo, o evento de envio do formulário (`submit`) é interceptado pelo JavaScript. Dentro do callback desse evento, os valores dos inputs são lidos usando `document.getElementById().value`. Esses valores são então exibidos no console, mas você pode fazer qualquer outra coisa com eles, como enviá-los para um servidor ou usá-los para atualizar a página. O `event.preventDefault()` é usado para impedir o envio padrão do formulário, que recarregaria a página.
 
 ## Exercício
-    1. Calculadora utilizando prompt e alert:
-        - Crie uma calculadora simples que solicite dois números através do prompt.
-        - Permita que o usuário escolha a operação a ser realizada (adição, subtração, multiplicação, divisão).
-        - Exiba o resultado da operação em um alert.
+  1. Calculadora utilizando prompt e alert:
+      - Crie uma calculadora simples que solicite dois números através do prompt.
+      - Permita que o usuário escolha a operação a ser realizada (adição, subtração, multiplicação, divisão).
+      - Exiba o resultado da operação em um alert.
 
-    2. Calculadora utilizando Node.js e o módulo readline:
-        - Crie uma calculadora que utilize o módulo readline do Node.js para ler entrada do usuário a partir do terminal.
-        - Permita que o usuário insira dois números e escolha a operação a ser realizada (adição, subtração, multiplicação, divisão).
-        - Exiba o resultado da operação no terminal.
+  2. Calculadora utilizando Node.js e o módulo readline:
+      - Crie uma calculadora que utilize o módulo readline do Node.js para ler entrada do usuário a partir do terminal.
+      - Permita que o usuário insira dois números e escolha a operação a ser realizada (adição, subtração, multiplicação, divisão).
+      - Exiba o resultado da operação no terminal.
 
-    3. Calculadora utilizando manipulação de formulário HTML:
-        - Crie um formulário HTML com campos para o usuário inserir dois números e selecionar a operação desejada.
-        - Utilize JavaScript para interceptar o envio do formulário e realizar a operação selecionada.
-        - Após a submissão do formulário, exiba o resultado da operação na própria página HTML.
+  3. Calculadora utilizando manipulação de formulário HTML:
+      - Crie um formulário HTML com campos para o usuário inserir dois números e selecionar a operação desejada.
+      - Utilize JavaScript para interceptar o envio do formulário e realizar a operação selecionada.
+      - Após a submissão do formulário, exiba o resultado da operação na própria página HTML.

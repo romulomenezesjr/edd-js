@@ -52,29 +52,16 @@ y = 25; // Isso resultará em um erro, pois y é uma constante e seu valor não 
 
 É importante entender que variáveis em JavaScript são case-sensitive, ou seja, diferenciam maiúsculas de minúsculas. Por exemplo, `nome` e `Nome` são tratadas como duas variáveis diferentes.
 
-```js
-var num = 1; // {1}
-num = 3; // {2}
 
-var price = 1.5; // {3}
-var myName = "Packt"; // {4}
-var trueValue = true; // {5}
-var nullVar = null; // {6}
-var und; // {7}
 
-console.log("num: " + num);
-console.log("myName: " + myName);
-console.log("trueValue: " + trueValue);
-console.log("price: " + price);
-console.log("nullVar: " + nullVar);
-console.log("und: " + und);
-```
+### Escopo das variáveis
 
 A declaração **let** declara uma variável local com escopo de bloco, opcionalmente inicializando-a com um valor.
 
-Constantes têm escopo de bloco, assim como variáveis declaradas usando a palavra-chave let. O valor de uma constante não pode ser alterado por meio de reatribuição (ou seja, usando o operador de atribuição), e ela não pode ser redeclarada (ou seja, por meio de uma declaração de variável). No entanto, se uma constante for um objeto ou array, suas propriedades ou itens podem ser atualizados ou removidos.
+Constantes têm escopo de bloco, assim como variáveis declaradas usando a palavra-chave let. O valor de uma constante não pode ser alterado por meio de reatribuição (ou seja, usando o operador de atribuição), e ela não pode ser redeclarada (ou seja, por meio de uma declaração de variável). 
 
-### Escopo das variáveis
+    No entanto, se uma constante for um objeto ou array, suas propriedades ou itens podem ser atualizados ou removidos.
+
 
 Vamos exemplificar com alguns exemplos as diferenças entre `var` e `let` em JavaScript.
 
@@ -151,9 +138,7 @@ Vamos exemplificar com alguns exemplos as diferenças entre `var` e `let` em Jav
    exemploLet();
    ```
 
-   Com `var`, a redeclaração dentro do bloco condicional afeta o escopo da função inteira. Com `let`, a variável é limitada ao escopo do bloco, portanto, não afeta o valor da variável fora dele.
-
-Esses exemplos demonstram algumas das diferenças práticas entre `var` e `let` em JavaScript, destacando a importância de usar `let` para declarações de variáveis mais seguras e previsíveis.
+Com `var`, a redeclaração dentro do bloco condicional afeta o escopo da função inteira. Com `let`, a variável é limitada ao escopo do bloco, portanto, não afeta o valor da variável fora dele.
 
 Vamos ver alguns exemplos que ilustram as diferenças entre `let` e `const` em JavaScript.
 
