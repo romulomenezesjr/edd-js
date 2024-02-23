@@ -32,7 +32,7 @@ JavaScript pode ser executado no navegador incluindo o arquivo de script externo
 
 ![Node](https://res.cloudinary.com/practicaldev/image/fetch/s--cNfT4syU--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/l65m5h5x039we52cqhb4.png)
 
-### Olá Mundo
+### Input/Output na Web
 
 Em um navegador executando um documento HTML com Javascript embutido (uma página web), é possível escrever no documento acessando o objeto **document**, escrever em uma janela pop-up (geradando um alerta no navegador) ou no console do navegador:
 
@@ -63,6 +63,7 @@ function output(t) {
 console.log("Hello, World!");
 output("Hello, World!");
 ```
+### Input/Output no Node
 
 O ambiente node não foi criado para aplicações CLI e normalmente é utilizado para processamento de requisições web. Caso queira utilizar um programa em Javascript para leitura do terminal utilize o seguinte exemplo:
 
