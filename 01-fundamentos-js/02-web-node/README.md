@@ -55,7 +55,7 @@ output("Hello, World!");
 ```
 ### Input/Output no Node
 
-O ambiente node não foi criado para aplicações CLI e normalmente é utilizado para processamento de requisições web. Caso queira utilizar um programa em Javascript para leitura do terminal utilize o seguinte exemplo:
+O ambiente node não foi criado para aplicações CLI e normalmente é utilizado para processamento de requisições web. Caso queira utilizar um programa em Javascript para leitura do terminal devemos importar módulos do Nodejs criados para isso.  Utilize o seguinte exemplo:
 
 ```js
 // Importando módulos do node para leitura do terminal. Estas são funções que não existem no Javascript
