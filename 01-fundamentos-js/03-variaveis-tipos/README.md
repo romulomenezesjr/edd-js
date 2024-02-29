@@ -52,16 +52,13 @@ y = 25; // Isso resultará em um erro, pois y é uma constante e seu valor não 
 
 É importante entender que variáveis em JavaScript são case-sensitive, ou seja, diferenciam maiúsculas de minúsculas. Por exemplo, `nome` e `Nome` são tratadas como duas variáveis diferentes.
 
-
-
 ### Escopo das variáveis
 
 A declaração **let** declara uma variável local com escopo de bloco, opcionalmente inicializando-a com um valor.
 
-Constantes têm escopo de bloco, assim como variáveis declaradas usando a palavra-chave let. O valor de uma constante não pode ser alterado por meio de reatribuição (ou seja, usando o operador de atribuição), e ela não pode ser redeclarada (ou seja, por meio de uma declaração de variável). 
+Constantes têm escopo de bloco, assim como variáveis declaradas usando a palavra-chave let. O valor de uma constante não pode ser alterado por meio de reatribuição (ou seja, usando o operador de atribuição), e ela não pode ser redeclarada (ou seja, por meio de uma declaração de variável).
 
     No entanto, se uma constante for um objeto ou array, suas propriedades ou itens podem ser atualizados ou removidos.
-
 
 Vamos exemplificar com alguns exemplos as diferenças entre `var` e `let` em JavaScript.
 
@@ -344,4 +341,90 @@ var person2 = { name: "John" };
 console.log(person1 === person2); // false, different objects
 ```
 
-### Condicionai
+## Conversões de tipos
+
+Em JavaScript, a conversão de tipos é um processo fundamental, já que JavaScript é uma linguagem fracamente tipada, o que significa que as variáveis podem conter diferentes tipos de dados e podem ser convertidas implicitamente ou explicitamente de um tipo para outro. Aqui estão os principais métodos de conversão de tipos em JavaScript:
+
+### Conversão Implícita:
+
+1. **Conversão Numérica Implícita:**
+
+   - Ocorre quando operações numéricas são realizadas entre diferentes tipos de dados. Por exemplo:
+
+   ```javascript
+   var x = 10;
+   var y = "5";
+   var resultado = x + y; // resultado será "105" (concatenação de strings)
+   ```
+
+2. **Conversão Booleana Implícita:**
+
+   - Acontece quando um valor é avaliado em um contexto booleano, como em uma estrutura de controle condicional (`if`, `while`, etc.). Qualquer valor pode ser convertido em booleano. Por exemplo:
+
+   ```javascript
+   var x = "Hello";
+   if (x) {
+     console.log("x é verdadeiro");
+   } else {
+     console.log("x é falso"); // Isso será impresso, porque uma string não vazia é avaliada como verdadeira
+   }
+   ```
+
+### Conversão Explícita:
+
+1. **Métodos de Conversão de Tipos:**
+
+   - JavaScript fornece métodos para converter explicitamente valores de um tipo para outro.
+   - `parseInt()` e `parseFloat()` convertem strings em números inteiros ou de ponto flutuante, respectivamente.
+   - `String()` converte outros tipos em strings.
+   - `Number()` converte valores em números.
+   - `Boolean()` converte valores em booleanos.
+
+   ```javascript
+   var x = "10";
+   var y = parseInt(x); // y será 10 (um número inteiro)
+   var z = String(y); // z será "10" (uma string)
+   ```
+
+2. **Operador de Coerção de Tipos:**
+
+   - O operador de coerção de tipos (`+`) pode ser usado para concatenar strings ou para converter valores em números.
+
+   ```javascript
+   var x = "10";
+   var y = 5;
+   var z = x + y; // z será "105" (concatenação de strings)
+   var w = +x + y; // w será 15 (adição numérica)
+   ```
+
+### Observações Importantes:
+
+- A conversão de tipos em JavaScript pode levar a resultados inesperados, então é importante entender como ela funciona para evitar comportamentos indesejados em seu código.
+- É sempre uma boa prática usar conversões explícitas quando a intenção é clara para tornar o código mais legível e menos propenso a erros.
+- Além desses métodos e operadores mencionados, há outras nuances de conversão de tipos em JavaScript, como a conversão automática de tipos em operações aritméticas, comparações e outras operações. É útil entender essas nuances para escrever código robusto e prever o comportamento de suas operações.
+
+## Exercícios
+
+1. Quais são os principais métodos para criar, editar e remover elementos HTML usando Javascript?
+
+2. Descreva a diferença entre o Javascript executado no navegador e o executado no Nodejs.
+
+3. Escreva um programa que solicite ao usuário o seu nome e a sua idade, armazenando esses valores em variáveis. Em seguida, remova o formulário e escreva uma mensagem de boas vindas, mostrando o nome e a idade do usuário.
+
+4. Escreva um programa que solicite ao usuário dois números inteiros e armazene-os em variáveis. Em seguida, calcule e imprima a soma, subtração, multiplicação e divisão desses números.
+
+5. Escreva um programa que solicite ao usuário o raio de um círculo e calcule a área e o perímetro desse círculo. Imprima os resultados formatados.
+
+6. Escreva um programa que solicite ao usuário uma temperatura em graus Celsius e converta-a para Fahrenheit. Imprima o resultado formatado.
+
+7. Escreva um programa que solicite ao usuário o seu salário mensal e o número de meses trabalhados no ano. Calcule e imprima o salário anual.
+
+8. Escreva um programa que solicite ao usuário um número e verifique se ele é par ou ímpar. Imprima uma mensagem informando o resultado.
+
+9. Escreva um programa que solicite ao usuário dois valores booleanos (True ou False) e armazene-os em variáveis. Em seguida, aplique os operadores lógicos "and", "or" e "not" entre essas variáveis e imprima os resultados.
+
+10. Escreva um programa que solicite ao usuário duas strings e verifique se elas são iguais. Imprima uma mensagem informando o resultado da comparação.
+
+11. Escreva um programa que solicite ao usuário dois números e verifique se o primeiro número é maior que o segundo. Imprima uma mensagem informando o resultado da comparação.
+
+12. Escreva um programa que solicite ao usuário a sua idade e verifique se ele é maior de idade (idade igual ou superior a 18 anos). Imprima uma mensagem informando o resultado.
