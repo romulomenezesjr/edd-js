@@ -1,4 +1,4 @@
-### Variáveis
+## Variáveis
 
 Em JavaScript, as variáveis são usadas para armazenar dados. Elas são espaços na memória que você pode usar para guardar valores, como números, strings, objetos, entre outros tipos de dados. Ao atribuir um valor a uma variável, você pode usá-la posteriormente no seu código, alterar seu valor conforme necessário e até mesmo combiná-la com outras variáveis.
 
@@ -201,9 +201,105 @@ Vamos ver alguns exemplos que ilustram as diferenças entre `let` e `const` em J
 
    Embora `const` impeça a reatribuição direta de um array ou objeto a uma nova referência, isso não impede a mutação de seus elementos. Você pode adicionar, remover ou modificar elementos de um array, bem como adicionar, remover ou modificar propriedades de um objeto.
 
-   Esses exemplos ilustram as diferenças fundamentais entre `let` e `const` em JavaScript, destacando a imutabilidade de `const` e a permissão de reatribuição de `let`. Essa distinção é útil para escrever código mais seguro e previsível.
 
-### Operadores
+## Operadores
+
+
+### Operadores Aritméticos 
+
+Os operadores aritméticos em JavaScript são utilizados para realizar operações matemáticas em valores numéricos. Abaixo estão os principais operadores aritméticos em JavaScript:
+
+1. **Adição (+):**
+   - Usado para adicionar valores.
+
+    Exemplo:
+    ```javascript
+    var soma = 5 + 3; // soma será 8
+    ```
+
+2. **Subtração (-):**
+   - Usado para subtrair valores.
+
+    Exemplo:
+    ```javascript
+    var diferenca = 10 - 4; // diferenca será 6
+    ```
+
+3. **Multiplicação (*):**
+   - Usado para multiplicar valores.
+
+    Exemplo:
+    ```javascript
+    var produto = 3 * 4; // produto será 12
+    ```
+
+4. **Divisão (/):**
+   - Usado para dividir valores.
+
+    Exemplo:
+    ```javascript
+    var quociente = 20 / 5; // quociente será 4
+    ```
+
+5. **Módulo (%):**
+   - Retorna o resto da divisão entre dois valores.
+
+    Exemplo:
+    ```javascript
+    var resto = 10 % 3; // resto será 1 (pois 10 dividido por 3 é 3 com 1 de resto)
+    ```
+
+6. **Incremento (++):**
+   - Adiciona 1 ao valor da variável.
+
+    Exemplo:
+    ```javascript
+    var x = 5;
+    x++; // Agora x será 6
+    ```
+
+7. **Decremento (--):**
+   - Subtrai 1 do valor da variável.
+
+    Exemplo:
+    ```javascript
+    var y = 10;
+    y--; // Agora y será 9
+    ```
+
+Os operadores aritméticos também podem ser combinados com a atribuição (`+=`, `-=`, `*=`, `/=`) para simplificar operações como incremento ou decremento.
+
+### Operador de Igualdade
+
+Em JavaScript, o operador de igualdade é utilizado para comparar valores e determinar se eles são iguais. Existem dois tipos de operadores de igualdade em JavaScript: o operador de igualdade estrita (===) e o operador de igualdade solta (ou abstrata) (==).
+
+#### Operador de Igualdade Estrita (===):
+
+- O operador de igualdade estrita verifica se dois valores são iguais em tipo e valor.
+- Se os tipos dos valores comparados forem diferentes, o operador de igualdade estrita retornará false.
+- Se os tipos dos valores comparados forem iguais, então ele verificará se os valores também são iguais.
+
+```js
+console.log(5 === 5); // true
+console.log("5" === 5); // false
+console.log(5 === "5"); // false
+```
+
+#### Operador de Igualdade Ampla (==):
+
+O operador de igualdade solta converte os valores antes de compará-los. Ele tenta fazer com que os dois valores tenham o mesmo tipo antes de verificar a igualdade.
+Se os tipos dos valores comparados forem diferentes, o JavaScript tentará converter um dos valores para o tipo do outro antes de fazer a comparação.
+Isso pode levar a resultados inesperados, especialmente quando se trata de tipos diferentes.
+
+```js
+console.log(5 == 5); // true
+console.log("5" == 5); // true, porque o JavaScript converte a string "5" para o número 5
+console.log(5 == "5"); // true, por razões semelhantes
+```
+
+Sempre use === a menos que você tenha um motivo específico para usar ==. O operador de igualdade estrita é mais seguro e evita muitos dos problemas potenciais de conversão de tipos que podem surgir com o operador de igualdade solta.
+Se você precisa comparar valores e garantir que eles sejam do mesmo tipo, use ===.
+Evite o uso de == quando não for estritamente necessário, pois isso pode levar a resultados inesperados devido à coerção de tipos.
 
 ```js
 // @ts-check
@@ -302,37 +398,7 @@ testTruthy(obj.name); // true
 testTruthy(obj.age); // age (property does not exist)
 ```
 
-### Operador de Igualdade
 
-Em JavaScript, o operador de igualdade é utilizado para comparar valores e determinar se eles são iguais. Existem dois tipos de operadores de igualdade em JavaScript: o operador de igualdade estrita (===) e o operador de igualdade solta (ou abstrata) (==).
-
-#### Operador de Igualdade Estrita (===):
-
-- O operador de igualdade estrita verifica se dois valores são iguais em tipo e valor.
-- Se os tipos dos valores comparados forem diferentes, o operador de igualdade estrita retornará false.
-- Se os tipos dos valores comparados forem iguais, então ele verificará se os valores também são iguais.
-
-```js
-console.log(5 === 5); // true
-console.log("5" === 5); // false
-console.log(5 === "5"); // false
-```
-
-#### Operador de Igualdade Solta (==):
-
-O operador de igualdade solta converte os valores antes de compará-los. Ele tenta fazer com que os dois valores tenham o mesmo tipo antes de verificar a igualdade.
-Se os tipos dos valores comparados forem diferentes, o JavaScript tentará converter um dos valores para o tipo do outro antes de fazer a comparação.
-Isso pode levar a resultados inesperados, especialmente quando se trata de tipos diferentes.
-
-```js
-console.log(5 == 5); // true
-console.log("5" == 5); // true, porque o JavaScript converte a string "5" para o número 5
-console.log(5 == "5"); // true, por razões semelhantes
-```
-
-Sempre use === a menos que você tenha um motivo específico para usar ==. O operador de igualdade estrita é mais seguro e evita muitos dos problemas potenciais de conversão de tipos que podem surgir com o operador de igualdade solta.
-Se você precisa comparar valores e garantir que eles sejam do mesmo tipo, use ===.
-Evite o uso de == quando não for estritamente necessário, pois isso pode levar a resultados inesperados devido à coerção de tipos.
 
 ## Conversões de tipos
 
@@ -363,44 +429,44 @@ Em JavaScript, a conversão de tipos é um processo fundamental, já que JavaScr
    }
    ```
 
-   Veja mais exemplos:
-
-   ```js
-   console.log("packt" ? true : false);
-   // outputs true
-
-   console.log("packt" == true);
-   // 1 - converts Boolean using toNumber
-   // 'packt' == 1
-   // 2 - converts String using toNumber
-   // NaN == 1
-   // outputs false
-
-   console.log("packt" == false);
-   // 1 - converts Boolean using toNumber
-   // 'packt' == 0
-   // 2 - converts String using toNumber
-   // NaN == 0
-   // outputs false
-
-   console.log([0] == true);
-   // 1 - converts Boolean using toNumber
-   // [0] == 1
-   // 2 - converts Object using toPrimitive
-   // 2.1 - [0].valueOf() is not primitive
-   // 2.2 - [0].toString is 0
-   // 0 == 1
-   // outputs false
-
-   //* ****************************** ===
-   console.log("packt" === true); // false
-
-   console.log("packt" === "packt"); // true
-
-   var person1 = { name: "John" };
-   var person2 = { name: "John" };
-   console.log(person1 === person2); // false, different objects
-   ```
+    ### Veja mais exemplos:
+    
+    ```js
+    console.log("packt" ? true : false);
+    // outputs true
+    
+    console.log("packt" == true);
+    // 1 - converts Boolean using toNumber
+    // 'packt' == 1
+    // 2 - converts String using toNumber
+    // NaN == 1
+    // outputs false
+    
+    console.log("packt" == false);
+    // 1 - converts Boolean using toNumber
+    // 'packt' == 0
+    // 2 - converts String using toNumber
+    // NaN == 0
+    // outputs false
+    
+    console.log([0] == true);
+    // 1 - converts Boolean using toNumber
+    // [0] == 1
+    // 2 - converts Object using toPrimitive
+    // 2.1 - [0].valueOf() is not primitive
+    // 2.2 - [0].toString is 0
+    // 0 == 1
+    // outputs false
+    
+    //* ****************************** ===
+    console.log("packt" === true); // false
+    
+    console.log("packt" === "packt"); // true
+    
+    var person1 = { name: "John" };
+    var person2 = { name: "John" };
+    console.log(person1 === person2); // false, different objects
+    ```
 
 ### Conversão Explícita:
 
@@ -418,22 +484,13 @@ Em JavaScript, a conversão de tipos é um processo fundamental, já que JavaScr
    var z = String(y); // z será "10" (uma string)
    ```
 
-2. **Operador de Coerção de Tipos:**
+ 
 
-   - O operador de coerção de tipos (`+`) pode ser usado para concatenar strings ou para converter valores em números.
-
-   ```javascript
-   var x = "10";
-   var y = 5;
-   var z = x + y; // z será "105" (concatenação de strings)
-   var w = +x + y; // w será 15 (adição numérica)
-   ```
-
-### Observações Importantes:
-
-- A conversão de tipos em JavaScript pode levar a resultados inesperados, então é importante entender como ela funciona para evitar comportamentos indesejados em seu código.
-- É sempre uma boa prática usar conversões explícitas quando a intenção é clara para tornar o código mais legível e menos propenso a erros.
-- Além desses métodos e operadores mencionados, há outras nuances de conversão de tipos em JavaScript, como a conversão automática de tipos em operações aritméticas, comparações e outras operações. É útil entender essas nuances para escrever código robusto e prever o comportamento de suas operações.
+    ### Observações Importantes:
+    
+    - A conversão de tipos em JavaScript pode levar a resultados inesperados, então é importante entender como ela funciona para evitar comportamentos indesejados em seu código.
+    - É sempre uma boa prática usar conversões explícitas quando a intenção é clara para tornar o código mais legível e menos propenso a erros.
+    - Além desses métodos e operadores mencionados, há outras nuances de conversão de tipos em JavaScript, como a conversão automática de tipos em operações aritméticas, comparações e outras operações. É útil entender essas nuances para escrever código robusto e prever o comportamento de suas operações.
 
 ## Exercícios
 
