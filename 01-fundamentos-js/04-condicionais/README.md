@@ -276,3 +276,196 @@ let mensagem = idade >= 18 ? "Maior de idade" : "Menor de idade";
 console.log(mensagem);
 
 ```
+
+### Exemplos
+ Vamos começar com exemplos usando `document.getElementById()` para selecionar elementos e `innerHTML` para modificar o conteúdo.
+
+### Exemplo 1: Alterando o conteúdo de um elemento com base em uma seleção usando if/else:
+
+HTML:
+
+```html
+<p id="mensagem"></p>
+<select id="selecao" onchange="alterarMensagem()">
+  <option value="1">Opção 1</option>
+  <option value="2">Opção 2</option>
+  <option value="3">Opção 3</option>
+</select>
+```
+
+JavaScript:
+
+```javascript
+function alterarMensagem() {
+  let selecao = document.getElementById("selecao");
+  let mensagem = document.getElementById("mensagem");
+  
+  if (selecao.value === "1") {
+    mensagem.innerHTML = "Você selecionou a Opção 1.";
+  } else if (selecao.value === "2") {
+    mensagem.innerHTML = "Você selecionou a Opção 2.";
+  } else if (selecao.value === "3") {
+    mensagem.innerHTML = "Você selecionou a Opção 3.";
+  }
+}
+```
+
+### Exemplo 2: Usando switch case para alterar o conteúdo com base em uma seleção:
+
+HTML:
+
+```html
+<p id="mensagem"></p>
+<select id="selecao" onchange="alterarMensagem()">
+  <option value="1">Opção 1</option>
+  <option value="2">Opção 2</option>
+  <option value="3">Opção 3</option>
+</select>
+```
+
+JavaScript:
+
+```javascript
+function alterarMensagem() {
+  let selecao = document.getElementById("selecao");
+  let mensagem = document.getElementById("mensagem");
+  
+  switch (selecao.value) {
+    case "1":
+      mensagem.innerHTML = "Você selecionou a Opção 1.";
+      break;
+    case "2":
+      mensagem.innerHTML = "Você selecionou a Opção 2.";
+      break;
+    case "3":
+      mensagem.innerHTML = "Você selecionou a Opção 3.";
+      break;
+    default:
+      mensagem.innerHTML = "Opção inválida.";
+  }
+}
+```
+
+
+### Exemplo 3: Usando if/else para criar e adicionar elementos com createElement e appendChild:
+
+JavaScript:
+
+```javascript
+function adicionarElemento() {
+  let container = document.getElementById("container");
+  let selecao = document.getElementById("selecao");
+
+  // Limpa o conteúdo anterior
+  container.innerHTML = "";
+
+  if (selecao.value === "1") {
+    let paragrafo = document.createElement("p");
+    paragrafo.textContent = "Você selecionou a Opção 1.";
+    container.appendChild(paragrafo);
+  } else if (selecao.value === "2") {
+    let paragrafo = document.createElement("p");
+    paragrafo.textContent = "Você selecionou a Opção 2.";
+    container.appendChild(paragrafo);
+  } else if (selecao.value === "3") {
+    let paragrafo = document.createElement("p");
+    paragrafo.textContent = "Você selecionou a Opção 3.";
+    container.appendChild(paragrafo);
+  }
+}
+```
+
+HTML:
+
+```html
+<div id="container"></div>
+<select id="selecao" onchange="adicionarElemento()">
+  <option value="1">Opção 1</option>
+  <option value="2">Opção 2</option>
+  <option value="3">Opção 3</option>
+</select>
+```
+
+### Exemplo 4: Usando switch case para criar e adicionar elementos com createElement e appendChild:
+
+JavaScript:
+
+```javascript
+function adicionarElemento() {
+  let container = document.getElementById("container");
+  let selecao = document.getElementById("selecao");
+
+  // Limpa o conteúdo anterior
+  container.innerHTML = "";
+
+  switch (selecao.value) {
+    case "1":
+      let paragrafo1 = document.createElement("p");
+      paragrafo1.textContent = "Você selecionou a Opção 1.";
+      container.appendChild(paragrafo1);
+      break;
+    case "2":
+      let paragrafo2 = document.createElement("p");
+      paragrafo2.textContent = "Você selecionou a Opção 2.";
+      container.appendChild(paragrafo2);
+      break;
+    case "3":
+      let paragrafo3 = document.createElement("p");
+      paragrafo3.textContent = "Você selecionou a Opção 3.";
+      container.appendChild(paragrafo3);
+      break;
+    default:
+      let paragrafoDefault = document.createElement("p");
+      paragrafoDefault.textContent = "Opção inválida.";
+      container.appendChild(paragrafoDefault);
+  }
+}
+```
+
+HTML:
+
+```html
+<div id="container"></div>
+<select id="selecao" onchange="adicionarElemento()">
+  <option value="1">Opção 1</option>
+  <option value="2">Opção 2</option>
+  <option value="3">Opção 3</option>
+</select>
+```
+
+### Exemplo 5: Usando document.write() dentro do switch case:
+
+JavaScript:
+
+```javascript
+function escreverElemento() {
+  let selecao = document.getElementById("selecao");
+
+  switch (selecao.value) {
+    case "1":
+      document.write("Você selecionou a Opção 1.");
+      break;
+    case "2":
+      document.write("Você selecionou a Opção 2.");
+      break;
+    case "3":
+      document.write("Você selecionou a Opção 3.");
+      break;
+    default:
+      document.write("Opção inválida.");
+  }
+}
+```
+
+HTML:
+
+```html
+<select id="selecao" onchange="escreverElemento()">
+  <option value="1">Opção 1</option>
+  <option value="2">Opção 2</option>
+  <option value="3">Opção 3</option>
+</select>
+```
+
+ 
+
