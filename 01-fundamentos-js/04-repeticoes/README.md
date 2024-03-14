@@ -163,3 +163,168 @@ console.log('fim');
 ```
 
 Veja que neste exemplo, a variável 'i' assume cada um dos valores da sequência numérica a cada iteração. Por fim, após o bloco do for está a instrução 'console.log('fim')'. O que aconteceria se a instrução 'console.log('fim')' estiver dentro do bloco do 'for'?
+
+### FOR IN
+
+A declaração for...in executa iterações a partir de uma variável específica, percorrendo todas as propriedades de um objeto. Para cada propriedade distinta, o JavaScript executará uma iteração. Segue a sintaxe: 
+
+```js
+for (variavel in objeto) {
+  declaracoes
+}
+```
+- variável: É uma variável que representará cada chave do objeto em cada iteração.
+- objeto: É o objeto sobre o qual estamos iterando
+
+Exemplo:
+
+Vamos ver um exemplo prático de como usar o for...in com manipulação de HTML. Suponha que queremos alterar o estilo de todas as <li> (itens de lista) em uma lista não ordenada (<ul>) no HTML usando JavaScript.
+
+HTML
+
+```html
+<ul id="minhaLista">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ul>
+
+```
+Javascript
+```js
+const minhaLista = document.getElementById('minhaLista');
+const itens = minhaLista.getElementsByTagName('li');
+
+// Iterando sobre as propriedades do objeto `itens`
+for (let indice in itens) {
+    if (itens.hasOwnProperty(indice)) { // Garantindo que a propriedade pertence diretamente ao objeto
+        itens[indice].style.color = 'blue'; // Alterando a cor do texto para azul
+        itens[indice].style.fontWeight = 'bold'; // Deixando o texto em negrito
+    }
+}
+
+```
+
+É importante observar que o for...in não garante uma ordem específica para a iteração das propriedades de um objeto, especialmente em objetos não numéricos.
+
+
+### FOR...OF
+
+O `for...of` é uma estrutura de repetição introduzida no ECMAScript 2015 (também conhecido como ES6) que permite percorrer elementos iteráveis, como arrays, strings, mapas, conjuntos, etc. Ele oferece uma sintaxe mais simples e elegante em comparação com o `for...in` ao lidar com iteráveis, pois não percorre as propriedades de um objeto, mas sim os valores dos elementos contidos no iterável.
+
+Aqui está a sintaxe básica do `for...of`:
+
+```javascript
+for (variável of iterável) {
+    // Bloco de código a ser executado
+}
+```
+
+Onde:
+
+- `variável`: É uma variável que representará cada elemento do iterável em cada iteração.
+- `iterável`: É o objeto iterável sobre o qual estamos iterando, como um array, uma string, um mapa, um conjunto, etc.
+
+Vamos ver exemplos práticos de como usar o `for...of` com diferentes tipos de iteráveis:
+
+### Iterando sobre um Array:
+
+```javascript
+const frutas = ['maçã', 'banana', 'laranja'];
+
+for (const fruta of frutas) {
+    console.log(fruta);
+}
+```
+
+Neste exemplo, o `for...of` itera sobre cada elemento do array `frutas`, atribuindo cada elemento à variável `fruta`, que é então usada dentro do bloco de código para exibir cada fruta no console.
+
+### Iterando sobre uma String:
+
+```javascript
+const palavra = "JavaScript";
+
+for (const letra of palavra) {
+    console.log(letra);
+}
+```
+
+Neste exemplo, o `for...of` itera sobre cada caractere da string `palavra`, atribuindo cada caractere à variável `letra`, que é então usada dentro do bloco de código para exibir cada letra no console.
+
+### Iterando sobre um Mapa:
+
+```javascript
+const mapa = new Map();
+mapa.set('a', 1);
+mapa.set('b', 2);
+mapa.set('c', 3);
+
+for (const [chave, valor] of mapa) {
+    console.log(`${chave} : ${valor}`);
+}
+```
+
+Neste exemplo, o `for...of` itera sobre cada entrada do mapa `mapa`, que é uma coleção de pares chave-valor. Cada entrada é representada por um array `[chave, valor]`, e o `for...of` atribui automaticamente o primeiro elemento (a chave) à variável `chave` e o segundo elemento (o valor) à variável `valor`.
+
+### Iterando sobre um Conjunto:
+
+```javascript
+const conjunto = new Set([1, 2, 3, 4, 5]);
+
+for (const numero of conjunto) {
+    console.log(numero);
+}
+```
+
+Neste exemplo, o `for...of` itera sobre cada elemento do conjunto `conjunto`, exibindo cada número no console.
+
+O `for...of` é especialmente útil quando você precisa iterar sobre os valores de um iterável, sem se preocupar com a indexação ou propriedades específicas do objeto iterável. Ele simplifica muito o código e torna a iteração mais intuitiva e fácil de entender.
+### Exemplos
+
+#### Exemplo 01
+
+A função a seguir contém uma declaração for que contará o número de opções selecionadas em uma lista (um elemento <select> permite várias seleções). Dentro do for é declarado uma váriavel i inicializada com zero. A declaração for verifica se i é menor que o número de opções no elemento <select>, executa sucessivas declaração if, e incrementa i de um em um a cada passagem pelo laço.
+
+HTML
+
+```html
+<form name="selectForm">
+  <p>
+    <label for="tipoMusica"
+      >Escolha alguns tipos de música, em seguida, clique no botão
+      abaixo:</label
+    >
+    <select id="tipoMusica" name="tipoMusica" multiple="multiple">
+      <option selected="selected">R&B</option>
+      <option>Jazz</option>
+      <option>Blues</option>
+      <option>New Age</option>
+      <option>Classico</option>
+      <option>Ópera</option>
+    </select>
+  </p>
+  <p><input id="btn" type="button" value="Quantos foram selecionados?" /></p>
+</form>
+```
+
+Javascript
+
+```js
+function howMany(selectObject) {
+    var numeroSelecionadas = 0;
+    for (var i = 0; i < selectObject.options.length; i++) {
+      if (selectObject.options[i].selected) {
+        numeroSelecionadas++;
+      }
+    }
+    return numeroSelecionadas;
+  }
+
+  var btn = document.getElementById("btn");
+  btn.addEventListener("click", function () {
+    alert(
+      "Total de opções selecionadas: " +
+        howMany(document.selectForm.tipoMusica),
+    );
+  });
+```
