@@ -328,3 +328,126 @@ function howMany(selectObject) {
     );
   });
 ```
+
+#### Exemplo 02 - Utilizando o loop for para exibir uma lista de números na página HTML
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exemplo de Loop For</title>
+</head>
+<body>
+
+<h2>Números de 1 a 5:</h2>
+<ul id="numeros"></ul>
+
+<script>
+// Selecionando o elemento ul onde os números serão exibidos
+var numerosList = document.getElementById("numeros");
+
+// Loop for para adicionar números de 1 a 5 na lista
+for (var i = 1; i <= 5; i++) {
+    var li = document.createElement("li"); // Criando elemento li
+    li.textContent = i; // Definindo o texto do elemento li
+    numerosList.appendChild(li); // Adicionando o elemento li à lista ul
+}
+</script>
+
+</body>
+</html>
+
+```
+
+
+#### Exemplo 03: Utilizando o loop while para exibir uma lista de cores na página HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exemplo de Loop While</title>
+</head>
+<body>
+
+<h2>Cores:</h2>
+<ul id="cores"></ul>
+
+<script>
+// Selecionando o elemento ul onde as cores serão exibidas
+var coresList = document.getElementById("cores");
+
+// Lista de cores
+var cores = ["vermelho", "verde", "azul", "amarelo", "laranja"];
+
+// Índice inicial
+var i = 0;
+
+// Loop while para adicionar cores à lista
+while (i < cores.length) {
+    var li = document.createElement("li"); // Criando elemento li
+    li.textContent = cores[i]; // Definindo o texto do elemento li
+    coresList.appendChild(li); // Adicionando o elemento li à lista ul
+    i++; // Incrementando o índice
+}
+</script>
+
+</body>
+</html>
+
+```
+
+#### Exemplo 04: Utilizando o loop do-while para exibir uma lista de frutas na página HTML
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exemplo de Loop Do-While</title>
+</head>
+<body>
+
+<h2>Frutas:</h2>
+<ul id="frutas"></ul>
+
+<script>
+// Selecionando o elemento ul onde as frutas serão exibidas
+var frutasList = document.getElementById("frutas");
+
+// Lista de frutas
+var frutas = ["maçã", "banana", "laranja", "uva", "morango"];
+
+// Índice inicial
+var i = 0;
+
+// Loop do-while para adicionar frutas à lista
+do {
+    var li = document.createElement("li"); // Criando elemento li
+    li.textContent = frutas[i]; // Definindo o texto do elemento li
+    frutasList.appendChild(li); // Adicionando o elemento li à lista ul
+    i++; // Incrementando o índice
+} while (i < frutas.length);
+</script>
+
+</body>
+</html>
+```
+
+### Exercício
+
+1. Nos exemplos acima substitua os laços de repetição por for...of...
+2. Crie uma página web que solicite um número e mostre em uma lista numerada todos os números pares de 0 até o número lido utilizando um loop "for".\
+3. Crie uma página web que solicite um número e, em seguida, imprima a tabuada desse número (de 1 a 10) utilizando um loop "for".
+4. Crie uma página web que peça ao usuário para digitar uma frase e, em seguida, conte quantas vogais (a, e, i, o, u) existem na frase utilizando um loop "for".
+5. Crie uma página web que peça ao usuário para digitar uma palavra e, em seguida, imprima a palavra ao contrário utilizando um loop "for"
+6. Crie uma página web que peça ao usuário para adivinhar um número secreto entre 1 e 100. O programa deve informar se o palpite é muito alto, muito baixo ou correto. Continue pedindo ao usuário para adivinhar até que ele acerte o número utilizando um loop "while".
+7. Crie uma página web que peça ao usuário para adivinhar uma palavra de 5 letras (por exemplo: termo). A página deve contar a quantidade de tentativa. Continue pedindo ao usuário para adivinhar até que ele acerte.
+8. Crie uma página web que leia um número n (número de termos de uma progressão aritmética), a1 ( o primeiro termo da progressão) e r (a razão da progressão) e escreva os n termos desta progressão, bem como a soma dos elementos.
+
+
