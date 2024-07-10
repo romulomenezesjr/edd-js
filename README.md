@@ -4,7 +4,7 @@ Bem-vindo ao repositório do Curso de Programação e Estrutura de Dados em Java
 
 ## O que você vai aprender
 
-- **[Fundamentos de JavaScript](01-fundamentos-js)**: [Introdução sobre a linguagem](01-fundamentos-js/01-intro), [Diferenças entre execução na Web e no Node](01-fundamentos-js/02-web-node), Variáveis e tipos de dados, escopo, hoisting, Estruturas de seleção, Estruturas de repetição, Funções, closures, e mais.
+- **[Fundamentos de JavaScript](01-fundamentos-js)**: [Introdução sobre a linguagem](01-fundamentos-js/01-intro); [Diferenças entre execução na Web e no Node](01-fundamentos-js/02-web-node); [Variáveis, escopo e operadores](01-fundamentos-js/03-variaveis-tipos); Tipos de dados, Estruturas de seleção, Estruturas de repetição, Funções, closures, e mais.
 - **Estruturas de Dados e suas Aplicações em JavaScript**: Objetos, Arrays, Matrizes, Pilhas, Filas, Deques, Listas Encadeadas, Árvores e Grafos.
 - **Algoritmos com JavaScript**: Algoritmos de ordenação (como Bubble Sort, Merge Sort, Quick Sort), algoritmos de busca (busca linear e busca binária), e técnicas de programação como recursão.
 - **Boas Práticas de Programação**: Legibilidade do código, refatoração, padrões de projeto e testes unitários com Jest.
