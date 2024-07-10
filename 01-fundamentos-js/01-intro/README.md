@@ -20,15 +20,44 @@ JavaScript, alcançou o status de padrão ECMA em 1997 e adotou o nome oficial E
 
 JavaScript pode ser executado no navegador incluindo o arquivo de script externo usando a tag \<script\>, escrevendo-o dentro da página HTML novamente usando a tag \<script\>, executando-o no console do navegador ou também é possível usar o Node.
 
-### Console do Navegador
+### Navegador
 
 ![imagem](https://javascript.info/article/devtools/chrome.png)
 
-### Tag script
+#### Tag script
 
-![Script](https://res.cloudinary.com/practicaldev/image/fetch/s--SgMK7138--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/99rxu59p7rxos830qxlz.png)
+```html
+</html>
+    <body>
+        <form id="myForm">
+            <input type="text" id="textInput" name="textInput" />
+            <input type="submit" value="Submit" />
+        </form>
 
-### Execução com o node
+    <script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var inputValue = document.getElementById('textInput').value;
+        console.log(inputValue);
+    });
+    </script>
+    </body>
+</html>
+```
+
+### Sistema Operacional
+
+A execução do Javascript no ambiente Node.js requer que o sistema operacional tenha o node.js instalado para que possa executar o script.
+
+```sh
+node script.js
+```
+
+```js
+console.log("Hello World.")
+```
+
+Veja um diagrama da arquitetura do Node para fazer com que o código JS seja executado no sistema operacional.
 
 ![Node](https://res.cloudinary.com/practicaldev/image/fetch/s--cNfT4syU--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/l65m5h5x039we52cqhb4.png)
 
