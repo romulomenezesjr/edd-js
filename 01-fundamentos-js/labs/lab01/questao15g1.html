@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main" class="h-screen flex items-center justify-center">
+        <form 
+            class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            id="meuForm" action="" method="get"
+            >
+            <div class="mb-4 ">
+                
+                <p class="my-5"> Escreva um programa que solicite ao usuário um número e calcule a sua raiz quadrada. Mostre o resultado na tela. </p>
+
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="numero">
+                  Número
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text" name="numero" id="numero">
+            </div>
+            
+            <div class="flex items-center justify-center">
+                <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="Enviar">
+            </div>
+        </form>
+    </div>
+    <script>
+
+        document.getElementById("meuForm").addEventListener("submit", function (e){
+            e.preventDefault()
+            // Recuperando o conteúdo do elemento com ID numero
+            const numero = document.getElementById("numero").value
+
+            const raiz = Math.sqrt(numero)
+
+            // Remove um elemento
+            document.getElementById("meuForm").remove()
+
+            // Adiciona um conteúdo HTML à um elemento
+            document.getElementById("main").innerHTML = `
+            <div class='min-w-80 bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col'>
+                <h1 class='font-bold '> 
+                  Resultado: 
+                </h1>
+                <p>${raiz} </p>
+                <button onclick='location.reload()' class='bg-blue-500 hover:bg-blue-700 text-white rounded mt-5 p-6 '> Atualizar <button>
+                </div>
+                `
+        })
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+
+</body>
+</html>

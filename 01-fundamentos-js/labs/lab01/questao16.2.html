@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main" class="h-screen flex items-center justify-center flex-col">
+      
+        <form 
+            class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            id="meuForm" action="" method="get"
+            >
+            
+            <p class="mb-4"> Escreva um programa que solicite ao usuário um número e imprima a sua tabuada de multiplicação até 10.</p>    
+
+            <div class="mb-4 ">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="numero">
+                  Número
+                </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text" name="numero" id="numero">
+            </div>
+            
+            <div class="flex items-center justify-center">
+                <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="Enviar">
+            </div>
+
+            <ul id="lista">
+
+            </ul>
+        </form>
+    </div>
+    <script>
+
+        document.getElementById("meuForm").addEventListener("submit", function (e){
+            e.preventDefault()
+            // Recuperar o elemento HTML
+            let numeroInput = document.getElementById("numero")
+            // Acessa o conteúdo do elemento input
+            let numero = numeroInput.value
+
+            // Acessa o elemento lista
+            let listaUl = document.getElementById("lista")
+            listaUl.hidden = false
+
+
+            for (let i=0; i<10;i++) {
+                let valor = numero * i
+                let li = document.createElement("li")
+                li.innerText = valor
+                listaUl.appendChild(li)
+            }
+            
+        })
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>
