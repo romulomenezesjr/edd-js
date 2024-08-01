@@ -300,8 +300,7 @@ console.log(pessoas);
 
 ```
 
-
-9. Executar Ações Baseadas em Condições
+8. Executar Ações Baseadas em Condições
 
 Iterar sobre um array permite executar ações condicionais em cada elemento.
 
@@ -317,7 +316,7 @@ numeros.forEach(function(numero) {
 // Output: 2, 4
 ```
 
-11. Ordenação de Elementos
+9. Ordenação de Elementos
    
 Você pode iterar sobre um array para implementar algoritmos de ordenação personalizados.
 
@@ -330,3 +329,14 @@ numeros.sort(function(a, b) {
 });
 console.log(numeros); // [1, 2, 5, 5, 6, 9]
 ```
+
+## Exercício
+Implemente as seguintes funções usando o loop for:
+
+dobrarNumeros(array): Recebe um array de números e retorna um novo array com cada número dobrado.
+filtrarMaioresQueDois(array): Recebe um array de números e retorna um novo array com os números maiores que 2.
+encontrarPrimeiroMaiorQueDois(array): Recebe um array de números e retorna o primeiro número maior que 2.
+somarElementos(array): Recebe um array de números e retorna a soma de todos os elementos.
+adicionarUm(array): Recebe um array de números e adiciona 1 a cada número do array original (modificando o array original).
+criarObjetos(array): Recebe um array de strings e retorna um novo array de objetos, onde cada objeto tem uma propriedade nome com o valor correspondente da string.
+logarPares(array): Recebe um array de números e loga no console apenas os números pares.
