@@ -1,10 +1,15 @@
 # Arrays
 
-Arrays são uma parte fundamental de qualquer linguagem de programação. No JavaScript são um dos recursos mais utilizados e que possuem diversos métodos poderosos para manipular os dados armazenados. Os Arrays são usados para armazenar coleções de múltiplos valores em uma única variável. Algumas das características mais distintivas dos arrays no Javascript são:
+A definição padrão para um array é uma coleção linear de elementos, onde estes podem ser acessados por meio de índices numéricos. Arrays são uma parte fundamental de qualquer linguagem de programação e funcionam de forma similar em todas elas, com pequenas particularidades. 
 
+No Javascript eles são um tipo particular de objeto, onde os índices são os nomes das propriedades e podem ser utilizados para posições. Quando valores inteiros são usados como índices, eles são convertidos internamente para strings para serem acessados como objetos.
+
+Nos ambientes de execução do JavaScript ele é um recurso muito utilizado. Principalmente após as melhorias propostas no ES6, pois ganharam diversos métodos para manipular a coleção de dados armazenados. Algumas das características mais distintivas dos arrays no Javascript são:
+
+
+- São objetos 
+- Acessados por índice numérico ou string
 - Tamanho dinâmico
-- São objetos
-- Acessados por índice numérico
 
 ## Criando um array
 É possível criar um array de várias maneiras:
@@ -19,7 +24,7 @@ let frutas = ['maçã', 'banana', 'laranja'];
 
 - Usando o construtor Array, passando os elementos:
 
-Podemos passar no construtor da classe Array a lista de elementos separados por vírgula. Veja o exemplo a seguir com uma lista de números e uma lista de nomes
+Podemos passar no construtor da classe Array a lista de elementos separados por vírgula. Veja o exemplo a seguir com uma sequencia de números e de nomes
 
 ```js
 let numeros = new Array(1, 2, 3, 4, 5);
@@ -57,6 +62,17 @@ let primeiraFruta = frutas[0]; // 'maçã'
 let segundaFruta = frutas[1];  // 'banana
 ```
 
+Também é possível acessar os elementos usando o índice no formato string. Isso ocorre pois os valores em string são interpretados como atributos de um objeto, observe que podemos criar um atributo dinämico com o nome "quitanda" e acessa-lo por índice ou atributo
+```js
+let frutas = ['maçã', 'banana', 'laranja'];
+let primeiraFruta = frutas["0"]; // 'maçã'
+let segundaFruta = frutas["1"];  // 'banana
+
+frutas.quitanda = "Quitanda do seu zé"
+console.log(frutas["quitanda"])
+console.log(frutas.quitanda)
+```
+
 Quando você acessa uma posição em um array que não foi definida em JavaScript, o valor retornado será undefined. Isso ocorre porque a posição solicitada não possui um valor atribuído.
 
 ```js
@@ -90,7 +106,7 @@ Observe que no exemplo acima o array foi criado com tamanho 3, com os elementos 
 
 ## Arrays são objetos
 
-Arrays são objetos semelhantes a listas,  eles possuem as propriedades acessadas por índices e uma série de métodos embutidos para realizar operações de travessia e mutação. Os elementos de um array são somente propriedades, da mesma forma que length é uma propriedade. Contudo, note que tentando acessar o primeiro elemento de um array da seguinte forma causará um erro de sintaxe, pois o nome da propriedade é inválido:
+Arrays são objetos,  eles possuem as propriedades acessadas por índices e uma série de métodos embutidos para realizar operações de travessia e mutação. Os elementos de um array são somente propriedades, da mesma forma que length é uma propriedade. Contudo, note que tentando acessar o primeiro elemento de um array da seguinte forma causará um erro de sintaxe, pois o nome da propriedade é inválido:
 ```js
 console.log(arr.0); // um erro de sintaxe
 ```
@@ -106,7 +122,137 @@ console.log(objeto.nome)
 objeto["3d"] = "modelo 3d"
 console.log(objeto["3d"])
 ```
+## Métodos
 
+### Representações de String de Arrays
+Existem duas funções que retornam representações de string de um array: `join()` e `toString()`. Ambas as funções retornam uma string contendo os elementos do array delimitados por vírgulas. Aqui estão alguns exemplos:
+
+```javascript
+let names = ["David", "Cynthia", "Raymond", "Clayton", "Mike", "Jennifer"];
+let namestr = names.join();
+console.log(namestr); // David,Cynthia,Raymond,Clayton,Mike,Jennifer
+namestr = names.toString();
+console.log(namestr); // David,Cynthia,Raymond,Clayton,Mike,Jennifer
+```
+
+Quando você chama a função `console.log()` com o nome de um array, ela automaticamente chama a função `toString()` para esse array:
+
+### Clonando Arrays
+
+Existem duas funções que permitem criar novos arrays a partir de arrays existentes: `concat()` e `splice()`. A função `concat()` permite juntar dois ou mais arrays para criar um novo array, e a função `splice()` permite criar um novo array a partir de um subconjunto de um array existente.
+
+Vamos primeiro ver como a função `concat()` funciona. A função é chamada a partir de um array existente, e seu argumento é outro array existente. O argumento é concatenado ao final do array que chama `concat()`. O programa a seguir demonstra como `concat()` funciona:
+
+```javascript
+let cisDept = ["Mike", "Clayton", "Terrill", "Danny", "Jennifer"];
+let dmpDept = ["Raymond", "Cynthia", "Bryan"];
+let itDiv = cisDept.concat(dmpDept);
+console.log(itDiv);
+itDiv = dmpDept.concat(cisDept);
+console.log(itDiv);
+```
+
+O programa gera a seguinte saída:
+
+```
+Mike,Clayton,Terrill,Danny,Jennifer,Raymond,Cynthia,Bryan
+Raymond,Cynthia,Bryan,Mike,Clayton,Terrill,Danny,Jennifer
+```
+
+A primeira linha de saída mostra os dados do array `cisDept` primeiro, e a segunda linha de saída mostra os dados do array `dmpDept` primeiro.
+
+A função `splice()` cria um novo array a partir do conteúdo de um array existente. Os argumentos para a função são a posição inicial para a extração e o número de elementos a serem retirados do array existente. Veja como o método funciona:
+
+```javascript
+let itDiv = ["Mike","Clayton","Terrill","Raymond","Cynthia","Danny","Jennifer"];
+let dmpDept = itDiv.splice(3,3);
+let cisDept = itDiv;
+console.log(dmpDept); // Raymond,Cynthia,Danny
+console.log(cisDept); // Mike,Clayton,Terrill,Jennifer
+```
+
+### Alterando Arrays
+
+O JavaScript possui um conjunto de funções mutadoras que permitem modificar o conteúdo de um array sem referenciar os elementos individuais. Essas funções frequentemente tornam técnicas complexas mais fáceis, como você verá abaixo.
+
+#### Adicionando Elementos a um Array
+
+Existem duas funções mutadoras para adicionar elementos a um array: `push()` e `unshift()`. 
+
+A função `push()` adiciona um elemento ao final de um array:
+
+```javascript
+let nums = [1,2,3,4,5];
+console.log(nums); // 1,2,3,4,5
+nums.push(6);
+console.log(nums); // 1,2,3,4,5,6
+```
+
+A função mutadora para adicionar elementos de array ao início de um array é `unshift()`. Aqui está como a função funciona:
+
+```javascript
+let nums = [2,3,4,5];
+console.log(nums); // 2,3,4,5
+let newnum = 1;
+nums.unshift(newnum);
+console.log(nums); // 1,2,3,4,5
+nums = [3,4,5];
+nums.unshift(newnum,1,2);
+console.log(nums); // 1,2,3,4,5
+```
+
+A segunda chamada para `unshift()` demonstra que você pode adicionar múltiplos elementos a um array com uma única chamada da função.
+
+#### Removendo Elementos de um Array
+Remover um elemento do final de um array é fácil usando a função mutadora `pop()`:
+
+```javascript
+let nums = [1,2,3,4,5,9];
+nums.pop();
+console.log(nums); // 1,2,3,4,5
+```
+
+A função mutadora que precisamos para remover um elemento do início de um array é `shift()`. Aqui está como a função funciona:
+
+```javascript
+let nums = [9,1,2,3,4,5];
+nums.shift();
+console.log(nums); // 1,2,3,4,5
+```
+
+Você notará que não há elementos extras deixados no final do array. Tanto `pop()` quanto `shift()` retornam os valores que removem, para que você possa coletar os valores em uma letiável:
+
+```javascript
+let nums = [6,1,2,3,4,5];
+let first = nums.shift(); // first recebe o valor 9
+nums.push(first);
+console.log(nums); // 1,2,3,4,5,6
+```
+
+### Adicionando ou Removendo no Meio de um Array
+
+Tentar adicionar ou remover elementos no meio de um array leva aos mesmos problemas que encontramos ao tentar adicionar ou remover elementos do início de um array—ambas as operações exigem deslocar os elementos do array, seja para o início ou para o fim. No entanto, existe uma função mutadora que podemos usar para realizar ambas as operações: splice().
+
+Para adicionar elementos a um array usando splice(), você deve fornecer os seguintes argumentos:
+
+O índice inicial (onde você quer começar a adicionar elementos)
+O número de elementos a remover (0 quando você está adicionando elementos)
+Os elementos que você deseja adicionar ao array
+Vamos ver um exemplo simples. O programa a seguir adiciona elementos ao meio de um array:
+
+```javascript
+let nums = [1,2,3,7,8,9];
+let newElements = [4,5,6];
+nums.splice(3,0,newElements);
+console.log(nums); // 1,2,3,4,5,6,7,8,9
+```
+
+Aqui está um exemplo de uso de splice() para remover elementos de um array:
+```javascript
+let nums = [1,2,3,100,200,300,400,4,5];
+nums.splice(3,4);
+console.log(nums); // 1,2,3,4,5
+```
 ## Iterando no Array
 
 Existem várias maneiras de iterar sobre um array. Aqui estão algumas das mais comuns:
@@ -205,7 +351,7 @@ for (let indice in array) {
 - **`for...of`**: Mais legível e fácil de usar para a maioria dos casos de iteração de arrays.
 - **`forEach`**: Simples e direto, mas não pode ser interrompido (break).
 - **`map`**: Ideal para transformar arrays, mas pode ser usado para iteração simples.
-- **`for...in`**: Não recomendado para arrays, mais apropriado para objetos.
+- **`for...in`**: Não recomendado para arrays, ele é mais apropriado para objetos.
 
 ### Métodos 
 
@@ -331,12 +477,20 @@ console.log(numeros); // [1, 2, 5, 5, 6, 9]
 ```
 
 ## Exercício
-Implemente as seguintes funções usando o loop for:
 
-dobrarNumeros(array): Recebe um array de números e retorna um novo array com cada número dobrado.
-filtrarMaioresQueDois(array): Recebe um array de números e retorna um novo array com os números maiores que 2.
-encontrarPrimeiroMaiorQueDois(array): Recebe um array de números e retorna o primeiro número maior que 2.
-somarElementos(array): Recebe um array de números e retorna a soma de todos os elementos.
-adicionarUm(array): Recebe um array de números e adiciona 1 a cada número do array original (modificando o array original).
-criarObjetos(array): Recebe um array de strings e retorna um novo array de objetos, onde cada objeto tem uma propriedade nome com o valor correspondente da string.
-logarPares(array): Recebe um array de números e loga no console apenas os números pares.
+
+1 - Crie uma função que modifique um array, adicionando e removendo elementos, usando o loop for. Queremos o comportamento das funções unshift, push, pop e shift :
+- function push(array, elemento): Adiciona um elemento ao final de um array.
+- function unshift(array, elemento): Adiciona um elemento ao início de um array. Cada elemento existente do array precisa ser deslocado uma posição para cima antes que o novo dado seja adicionado. 
+- function pop(array): Remova o último elemento do array. 
+- function shift(array): Remova o primeiro elemento do array, deslocando as posições posteriores. Remover elementos do início de um array requer deslocar os elementos para o início do array
+
+2 - Implemente as seguintes funções usando o loop for:
+
+- dobrarNumeros(array): Recebe um array de números e retorna um novo array com cada número dobrado.
+- filtrarMaioresQueDois(array): Recebe um array de números e retorna um novo array com os números maiores que 2.
+- encontrarPrimeiroMaiorQueDois(array): Recebe um array de números e retorna o primeiro número maior que 2.
+- somarElementos(array): Recebe um array de números e retorna a soma de todos os elementos.
+- adicionarUm(array): Recebe um array de números e adiciona 1 a cada número do array original (modificando o array original).
+- criarObjetos(array): Recebe um array de strings e retorna um novo array de objetos, onde cada objeto tem uma propriedade nome com o valor correspondente da string.
+- logarPares(array): Recebe um array de números e loga no console apenas os números pares.
