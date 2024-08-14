@@ -49,3 +49,6 @@ mensagem informando o resultado da comparação.
 
 23 - Escreva um programa que solicite ao usuário um texto e conte quantas vezes a letra 'a' (maiúscula ou minúscula) aparece nesse texto. Imprima o resultado.
 
+24 - Escreva um programa que solicite ao usuário uma lista de números separados por vírgula e calcule a média desses números. Imprima o resultado formatado.
+
+25 - Escreva um programa que solicite ao usuário uma palavra e conte quantas vogais (a, e, i, o, u) existem nessa palavra. Imprima o resultado.
