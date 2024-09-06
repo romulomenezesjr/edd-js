@@ -1,26 +1,35 @@
-const meuArray = []
+const meuArray = [1,2,3,4,5,6]
 
 exibirArray()
 
 function exibirArray(){
   const divMeuArray = document.getElementById("meuArray")
-  divMeuArray.appendChild(criarDiv("texto"))
+  divMeuArray.innerHTML = ""
+  for (let i = 0; i < meuArray.length; i++){
+    divMeuArray.appendChild(criarDiv(meuArray[i]))
+  }
 }
 
 function executarPop() {
-  
+  meuArray.pop()
+  exibirArray()
 }
 
 function executarShift(){
- 
+  meuArray.shift()
+  exibirArray()
 }
 
 function executarPush(){
-    
+    let valor = document.getElementById("elemento").value
+    meuArray.push(valor)
+    exibirArray()
 }
 
 function executarUnshift(){
- 
+  let valor = document.getElementById("elemento").value
+  meuArray.unshift(valor)
+  exibirArray()
 }
 
 function criarDiv(valor){ 

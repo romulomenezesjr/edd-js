@@ -1,5 +1,15 @@
 # Arrays
 
+## Sumário
+- [Introdução](#introdução)
+- [Criando um array](#criando-um-array)
+- [Acessando Elementos](#acessando-elementos)
+- [Métodos](#métodos)
+- [Iterando no Array](#iterando-no-array)
+- [Laboratório](#laboratório)
+
+## Introdução
+
 A definição padrão para um array é uma coleção linear de elementos, onde estes podem ser acessados por meio de índices numéricos. Arrays são uma parte fundamental de qualquer linguagem de programação e funcionam de forma similar em todas elas, com pequenas particularidades. 
 
 No Javascript eles são um tipo particular de objeto, onde os índices são os nomes das propriedades e podem ser utilizados para posições. Quando valores inteiros são usados como índices, eles são convertidos internamente para strings para serem acessados como objetos.
@@ -51,7 +61,6 @@ for (let num of array){
     console.log(num);
 }
 ```
-
 ## Acessando Elementos
 
 Os elementos em um array são acessados usando o índice, que começa em 0.
@@ -103,7 +112,6 @@ console.log(array.hasOwnProperty(4)); // true
 ```
 
 Observe que no exemplo acima o array foi criado com tamanho 3, com os elementos [1,2,3] e em seguida foi definido uma posição 4 com o elemento 5. Isso implica que o tamanho de um array não é fixo.
-
 ## Arrays são objetos
 
 Arrays são objetos,  eles possuem as propriedades acessadas por índices e uma série de métodos embutidos para realizar operações de travessia e mutação. Os elementos de um array são somente propriedades, da mesma forma que length é uma propriedade. Contudo, note que tentando acessar o primeiro elemento de um array da seguinte forma causará um erro de sintaxe, pois o nome da propriedade é inválido:
@@ -171,7 +179,7 @@ console.log(dmpDept); // Raymond,Cynthia,Danny
 console.log(cisDept); // Mike,Clayton,Terrill,Jennifer
 ```
 
-### Alterando Arrays
+### Alterando Arrays (Adicionando e Removendo Elementos)
 
 O JavaScript possui um conjunto de funções mutadoras que permitem modificar o conteúdo de um array sem referenciar os elementos individuais. Essas funções frequentemente tornam técnicas complexas mais fáceis, como você verá abaixo.
 
@@ -353,7 +361,7 @@ for (let indice in array) {
 - **`map`**: Ideal para transformar arrays, mas pode ser usado para iteração simples.
 - **`for...in`**: Não recomendado para arrays, ele é mais apropriado para objetos.
 
-### Métodos 
+### Métodos para iteração e transformação do array 
 
 Iterar com métodos sobre arrays em JavaScript é uma prática comum, pois eles são menos verbosos e possuem sintaxe simples. Vamos ver alguns exemplos de como podemos utilizá-los: 
 
@@ -475,17 +483,33 @@ numeros.sort(function(a, b) {
 });
 console.log(numeros); // [1, 2, 5, 5, 6, 9]
 ```
+## Laboratório
 
-## Exercício
+1 - A partir do template publicado no laboratorio/lab01, crie uma aplicação web com javascript/html e css que tenha as seguintes funcionalidades:
+ - Mostrar os dados de um array em uma div da página 
+ - Receber um valor utilizando um input na página e o insira no array ao selecionar botões (push e unshift ), posteriormente mostrando na div da página. 
+ - Remova um valor utilizando botões (shift e pop) do array, posteriormente mostrando na div da página
 
+![Lab01](imagens/lab01.png)
 
-1 - Crie uma função que modifique um array, adicionando e removendo elementos, usando o loop for. Queremos o comportamento das funções unshift, push, pop e shift :
+2 - A partir da questão anterior, implemente as funções que modificam o array, adicionando e removendo elementos, usando o loop for e método slice. Queremos o comportamento das funções unshift, push, pop e shift. As funções deverão ter a seguinte assinatura: 
 - function push(array, elemento): Adiciona um elemento ao final de um array.
 - function unshift(array, elemento): Adiciona um elemento ao início de um array. Cada elemento existente do array precisa ser deslocado uma posição para cima antes que o novo dado seja adicionado. 
 - function pop(array): Remova o último elemento do array. 
 - function shift(array): Remova o primeiro elemento do array, deslocando as posições posteriores. Remover elementos do início de um array requer deslocar os elementos para o início do array
 
-2 - Implemente as seguintes funções usando o loop for:
+![Lab02](imagens/lab02.png)
+
+3 - Utilizando o template do laboratorio/lab03, utilize as funções de travessia e transformação do array para aplicar as seguintes funcionalidades:
+- sort: Ordenar os elementos do array
+- filter: Filtrar os elentos do array maiores que 2
+- map: Passar por todos os elementos do array, dobrando o seu valor
+- find: Encontrar o primeiro elemento do array com valor igual a 10
+- reduce: Aplicar um cálculo para todos os elementos do array e acumulando o resultado da soma em um acumulador
+
+![Lab03](imagens/lab03.png)
+
+4 - Implemente as seguintes funções usando o loop for e adicione os botões para estas funções no laboratorio/lab04:
 
 - dobrarNumeros(array): Recebe um array de números e retorna um novo array com cada número dobrado.
 - filtrarMaioresQueDois(array): Recebe um array de números e retorna um novo array com os números maiores que 2.
@@ -494,3 +518,7 @@ console.log(numeros); // [1, 2, 5, 5, 6, 9]
 - adicionarUm(array): Recebe um array de números e adiciona 1 a cada número do array original (modificando o array original).
 - criarObjetos(array): Recebe um array de strings e retorna um novo array de objetos, onde cada objeto tem uma propriedade nome com o valor correspondente da string.
 - logarPares(array): Recebe um array de números e loga no console apenas os números pares.
+
+5 - Utilizando como base o template no laboratorio/lab05, crie uma função de busca para um número digitado pelo usuário. Sua aplicação deverá informar a quantidade de comparações realizadas ao longo da pesquisa e se o número foi encontrado ou não.
+
+![Lab05](imagens/lab05.png)
