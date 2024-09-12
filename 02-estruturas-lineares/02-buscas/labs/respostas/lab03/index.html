@@ -49,15 +49,21 @@
                         value="pesquisar binaria" onclick="executarPesquisaBinaria()">
                 </div>
 
-                <div class="flex justify-center">
-                    <input type="button"
-                        class="mt-5 w-1/2 rounded bg-blue-500 :bg-blue-700 text-white font-bold py-2 px-4  focus:outline-none focus:shadow-outline"
-                        value="sort" onclick="executarSort()">
-                </div>
+               
             </div>
 
             <p class="mt-10 "> Veja os dados do seu array </p>
-            <div id="meuArray" class="bg-sky-700 shadow-md rounded p-2 m-4 h-20 mx-10 flex justify-start">
+            <div id="meuArray" class="bg-sky-700 shadow-md rounded p-2 m-4 h-30 mx-10 flex justify-start overflow-auto">
+            </div>
+
+            <div class="flex justify-center ">
+                <input type="button"
+                    class="mt-5 w-1/2 rounded bg-blue-500 :bg-blue-700 text-white font-bold py-2 px-4  focus:outline-none focus:shadow-outline mx-10"
+                    value="sort" onclick="executarSort()">
+
+                <input type="button"
+                class="mt-5 w-1/2 rounded bg-blue-500 :bg-blue-700 text-white font-bold py-2 px-4  focus:outline-none focus:shadow-outline mx-10"
+                value="sort" onclick="executarSort()">
             </div>
 
             <div id="resultado"></div>

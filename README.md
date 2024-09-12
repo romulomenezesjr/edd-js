@@ -6,15 +6,16 @@ Bem-vindo ao repositório do Curso de Programação e Estrutura de Dados em Java
 
 - **[Fundamentos de JavaScript](01-fundamentos-js)**: [Introdução sobre a linguagem](01-fundamentos-js/01-intro); [Diferenças entre execução na Web e no Node](01-fundamentos-js/02-web-node); [Variáveis e operadores](01-fundamentos-js/03-variaveis-operadores/); [Tipos de dados](01-fundamentos-js/04-tipos/), [Estruturas condicionais](01-fundamentos-js/05-condicionais/), [Estruturas de repetição](01-fundamentos-js/06-repeticoes), [Funções](01-fundamentos-js/07-funcoes)
 
-- **Estruturas de Dados Lineares e suas Aplicações em JavaScript**:  [Arrays](02-estruturas-lineares/01-arrays/), [Matrizes](02-estruturas-lineares/02-matrizes/), [Pilhas](02-estruturas-lineares/03-pilhas/), [Filas](02-estruturas-lineares/04-filas/), [Deques](02-estruturas-lineares/05-deques/) e [Listas](02-estruturas-lineares/06-listas/).
+- **Estruturas de Dados Lineares e suas Aplicações em JavaScript**:  [Arrays](02-estruturas-lineares/01-arrays/), [Busca linear e busca binária](/02-estruturas-lineares/02-buscas/README.md), [Matrizes](02-estruturas-lineares/03-matrizes/), [Pilhas](02-estruturas-lineares/04-pilhas/), [Filas](02-estruturas-lineares/05-filas/), [Deques](02-estruturas-lineares/06-deques/) e [Listas](02-estruturas-lineares/07-listas/).
 
 - **Estruturas de Dados Não Lineares**:
  [Árvores](03-estruturas-nao-lineares/01-arvores/), [Grafos](03-estruturas-nao-lineares/02-grafos/), [Tabelas](03-estruturas-nao-lineares/03-tabelas/) 
 
 - **Algoritmos com JavaScript**: Algoritmos de ordenação (como Bubble Sort, Merge Sort, Quick Sort), algoritmos de busca (busca linear e busca binária), e técnicas de programação como recursão.
 
-- **Boas Práticas de Programação**: Legibilidade do código, refatoração, padrões de projeto e testes unitários com Jest.
-- **Projetos Práticos**: Ao final de cada módulo, você aplicará o que aprendeu desenvolvendo projetos práticos, como um sistema fila de banco, tabela de medalhas olimpicas, análise de expressões em código, jogos simples e um algoritmo de recomendação.
+- **Extra: Boas Práticas de Programação**: Legibilidade do código, refatoração, padrões de projeto e testes unitários com Jest.
+
+- **Projetos Práticos**: Ao final de cada módulo, você aplicará o que aprendeu desenvolvendo projetos práticos, como: um carrinho de compras, uma agenda de contatos, sistema de controle de fila de banco, tabela de medalhas olimpicas, análise de expressões em código, jogos simples e um algoritmo de recomendação.
 
 ## Pré-requisitos
 
