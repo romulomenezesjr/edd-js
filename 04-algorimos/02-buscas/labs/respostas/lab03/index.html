@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays - Lab 03</title>
+</head>
+
+<body>
+
+    <div id="main" class="h-screen flex items-center justify-center flex-col" >
+
+        <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/2 h-3/4">
+            <h1 class="text-xl font-extrabold leading-normal my-10 "> Lab 05 - Pesquisa Sequencial e Pesquisa Binária</h1>
+
+            <div class="mb-4 ">
+
+                <div class="flex items-center justify-center ">
+
+                    <input class="w-full py-2 px-4 text-gray-700  focus:outline-none focus:shadow-outline" type="text"
+                        name="elemento" id="elemento" list="numeros" placeholder="Digite um valor">
+                    <input type="button"
+                        class="w-1/2 rounded-r-lg bg-blue-500 :bg-blue-700 text-white font-bold py-2 px-4  focus:outline-none focus:shadow-outline "
+                        value="push" onclick="executarPush()">
+                    <datalist id="emocoes">
+                        <option value="1">
+                        <option value="1">
+                        <option value="2">
+                        <option value="3">
+                        <option value="5">
+                    </datalist>
+
+
+
+                </div>
+            </div>
+            <div class="flex flex-col ">
+
+                <div class="flex mt-4 justify-center">
+                    <input class="w-full py-2 px-4 text-gray-700  focus:outline-none focus:shadow-outline" type="text"
+                        name="elementoPesquisado" id="elementoPesquisado" placeholder="Elemento Pesquisado">
+                    <input type="button"
+                        class="w-1/2 rounded bg-blue-500 :bg-blue-700 text-white font-bold py-2 px-4  focus:outline-none focus:shadow-outline"
+                        value="pesquisar" onclick="executarPesquisa()">
+
+                    <input type="button"
+                        class="w-1/2 rounded bg-blue-500 :bg-blue-700 text-white font-bold py-2 px-4  focus:outline-none focus:shadow-outline"
+                        value="pesquisar binaria" onclick="executarPesquisaBinaria()">
+                </div>
+
+               
+            </div>
+
+            <p class="mt-10 "> Veja os dados do seu array </p>
+            <div id="meuArray" class="bg-sky-700 shadow-md rounded p-2 m-4 h-30 mx-10 flex justify-start overflow-auto">
+            </div>
+
+            <div class="flex justify-center ">
+                <input type="button"
+                    class="mt-5 w-1/2 rounded bg-blue-500 :bg-blue-700 text-white font-bold py-2 px-4  focus:outline-none focus:shadow-outline mx-10"
+                    value="sort" onclick="executarSort()">
+
+                <input type="button"
+                class="mt-5 w-1/2 rounded bg-blue-500 :bg-blue-700 text-white font-bold py-2 px-4  focus:outline-none focus:shadow-outline mx-10"
+                value="sort" onclick="executarSort()">
+            </div>
+
+            <div id="resultado"></div>
+
+            <div id="quantidadeComparacoes"></div>
+
+
+        </div>
+
+
+
+    </div>
+    <script src="script.js"></script>/>
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+
+</html>
