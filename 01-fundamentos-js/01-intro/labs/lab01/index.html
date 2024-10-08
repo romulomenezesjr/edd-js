@@ -1,0 +1,17 @@
+</html>
+    <body>
+        <form id="myForm">
+            <input type="text" id="textInput" name="textInput" />
+            <input type="submit" value="Submit" />
+        </form>
+
+    <script>
+        console.log(textInput.value)
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var inputValue = document.getElementById('textInput').value;
+        console.log(inputValue);
+    });
+    </script>
+    </body>
+</html>
