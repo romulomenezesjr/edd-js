@@ -40,19 +40,14 @@ Em situações que exigem o processamento e manipulação de diversos valores po
 
 ## Tipos de Dados Abstratos (TAD)
 
-Um tipo abstrato de dado (TAD) é algo abstraído de tipos e linguagens
-de programação. É uma forma como o programador estrutura os
-dados para resolução de um problema.
+Um tipo abstrato de dado (TAD) é algo abstraído de tipos e linguagens de programação. É uma forma como o programador estrutura os dados para resolução de um problema.
 
 Essas abstrações facilitam imensamente a resolução de problemas que até poderiam ser resolvidos sem o conhecimento de algum TAD, porém de maneira mais ingenua.
 
-Os TADs podem ser vistos como estruturas de dados que encapsulam
-um modelo de dados e as operações que elas suportam, e não
-da maneira como elas são implementadas
+Os TADs podem ser vistos como estruturas de dados que encapsulam um modelo de dados e as operações que elas suportam, e não da maneira como elas são implementadas
 
 
-Para um TAD podemos ter um modelo de dados e um conjunto de operações que normalmente são realizadas. As
-operações definem como:
+Para um TAD podemos ter um modelo de dados e um conjunto de operações que normalmente são realizadas. As operações definem como:
 - Inserir um elemento
 - Remover um elemento
 - Acessar um elemento
@@ -61,8 +56,7 @@ operações definem como:
 
 Cada uma dessas operações pode ser implementada de maneira diferente, a depender do contexto ou do problema.
 
-Ou seja, podemos visualizar o conceito de "tipo abstrato de dado" sob uma perspectiva diferente, não em termos do que um computador pode fazer, mas em função do que o
-usuário quer fazer.
+Ou seja, podemos visualizar o conceito de "tipo abstrato de dado" sob uma perspectiva diferente, não em termos do que um computador pode fazer, mas em função do que o usuário quer fazer.
 
 Os dados de um determinado programa podem ser representados como um tipo abstrato de dados (TAD), que respeita convenções definidas pela aplicação/programador. Analise as perguntas a seguir:
 
@@ -78,11 +72,26 @@ Os dados de um determinado programa podem ser representados como um tipo abstrat
 ## Definição de TADs
 
 
-Um TAD é definido a partir de um conjunto de assinaturas de operações que especifica a sua interface.Devemos também especificar o comportamento da TAD, de forma semântica, ou seja, de maneira independente da implementação.
+Um TAD é definido a partir de um conjunto de assinaturas de operações que especifica a sua interface. Devemos também especificar o comportamento da TAD, de forma semântica, ou seja, de maneira independente da implementação.
 
 
-Em linguagens orientadas a objetos a implementação de TADs é feita por classes definidas pelo programador ou por classes nativas da linguagem. Em Java temos o pacote Collection. Em Python temos o módulo collections.
+Em linguagens orientadas a objetos a implementação de TADs é feita por classes definidas pelo programador ou por classes nativas da linguagem. Por exemplo, na linguagem Java temos o pacote Collection com diversas classes que representam as TADs e na linguagem Python temos o módulo collections também com diversas estruturas já definidas.
 
-Em linguagens estruturadas a implementação é feita pela
-definição de tipos juntamente com a implementação de
-funções, usando typedef e structs.
+Em linguagens estruturadas a implementação é feita pela definição de tipos juntamente com a implementação de funções, usando typedef e structs.
+
+## Exemplos de TADS
+
+### Pilhas
+
+Uma pilha representa uma estrutura de dados que os dados são agrupados e processados apenas em uma das extremidades. Um exemplo é o histórico de edições em um editor de texto.
+
+[](!04-estruturas-nao-lineares/01-arvores)
+
+### Fila
+
+Uma fila represeta um conjunto de dados que devem ser processados de acordo com a ordem de chegada. Um exemplo comum é a fila de um banco para atendimento no caixa.
+
+
+###
+
+### Listas
