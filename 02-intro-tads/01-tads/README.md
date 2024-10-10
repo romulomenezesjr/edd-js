@@ -36,6 +36,15 @@ Na linguagem [C](https://www.inf.pucrs.br/~pinho/LaproI/Structs/Structs.htm) e [
 
 Utilizando o princípio da abstração do paradigma orientado a objetos e as definições de classe podemos modelar dados complexos a partir de contextos do mundo real em nossos projetos. Ao longo dos nossos estudos iremos abordar [classes e de objetos em Javascript](../02-classes-objetos).
 
+```js
+class Pessoa{
+    constructor(nome, idade) {
+        this.nome = nome
+        this.idade = idade
+    }
+    
+}
+```
 Em situações que exigem o processamento e manipulação de diversos valores podemos utilizar os vetores (arrays). Cada elemento de um vetor poderá ser de um tipo simples ou de um tipo complexo.
 
 ## Tipos de Dados Abstratos (TAD)
@@ -74,6 +83,7 @@ Os dados de um determinado programa podem ser representados como um tipo abstrat
 
 Um TAD é definido a partir de um conjunto de assinaturas de operações que especifica a sua interface. Devemos também especificar o comportamento da TAD, de forma semântica, ou seja, de maneira independente da implementação.
 
+![alt text](https://media.geeksforgeeks.org/wp-content/uploads/20190828194629/ADT.jpg)
 
 Em linguagens orientadas a objetos a implementação de TADs é feita por classes definidas pelo programador ou por classes nativas da linguagem. Por exemplo, na linguagem Java temos o pacote Collection com diversas classes que representam as TADs e na linguagem Python temos o módulo collections também com diversas estruturas já definidas.
 
@@ -85,13 +95,26 @@ Em linguagens estruturadas a implementação é feita pela definição de tipos 
 
 Uma pilha representa uma estrutura de dados que os dados são agrupados e processados apenas em uma das extremidades. Um exemplo é o histórico de edições em um editor de texto.
 
-[](!04-estruturas-nao-lineares/01-arvores)
+<div style="text-align: center; display: block">
+<img src="https://www.tutorialspoint.com/data_structures_algorithms/images/stack_example.jpg" >
+</div>
+
+
+Outro exemplo é o controle do acesso aos sites acessados no histórico de navegação em páginas de internet.
 
 ### Fila
 
 Uma fila represeta um conjunto de dados que devem ser processados de acordo com a ordem de chegada. Um exemplo comum é a fila de um banco para atendimento no caixa.
-
-
-###
+<div style="text-align: center; display: block">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxvVKHhkuv-ybLSqH3B3AwAsp-EECoT2WpKQ&s" />
+</div>
 
 ### Listas
+
+Uma lista é uma estrutura que aceita alteração em qualquer posição, porém não deve-se manter espaços vazios entre os elementos após uma remoção e também não é possível adicionar elementos com um espaço entre os demais. Um exemplo é a lista de contatos no seu celular.
+
+
+![ ](https://play-lh.googleusercontent.com/FDErBTOMVcjcE2-B56oxo4Sjkaz1OwM2vnDgQ-mqS4_AIvv0UhkOMj8teew8IjIm2CE=w526-h296-rw)
+### Árvores
+
+Um TAD to tipo árvore é um grafo onde cada nó outros nós ligados a ele. Só pode ser atravessada em um único caminho. Árvores são usadas em diversas aplicações, um exemplo é um mapa digital. No armazenamento de dados em um mapa digital a árvore contém imagens que possuem referência à outras imagens em um nível interior.

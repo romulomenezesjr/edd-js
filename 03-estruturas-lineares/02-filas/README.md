@@ -16,6 +16,8 @@ Peek: Verifica o elemento na frente da fila sem removê-lo.
 isEmpty: Verifica se a fila está vazia
 
 
+![Fila](https://nystudio107.com/img/blog/_1200x630_crop_center-center_100_line/queue-enqueue-dequeue-craft-cms.png.webp)
+
 ## Implementação
 
 

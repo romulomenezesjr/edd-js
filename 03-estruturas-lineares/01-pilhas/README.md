@@ -1,28 +1,63 @@
+
+
 # Pilhas
 
-Arrays, que são o tipo mais comum de estrutura de dados na computação. Como você aprendeu, podemos adicionar e remover elementos de um array em qualquer índice desejado. No entanto, às vezes precisamos de uma forma de estrutura de dados onde tenhamos mais controle sobre a adição e remoção de itens. Existem algumas estruturas de dados que possuem algumas semelhanças com os arrays, mas que nos dão mais controle sobre a adição e remoção de elementos. Uma delas é a Pilha.
+Até agora estudamos a manipulação dos arrays, um tipo de estrutura de utilização genérica comum na computação. Como você aprendeu, podemos adicionar e remover elementos de um array em qualquer índice desejado. No entanto, às vezes precisamos de uma forma de estrutura de dados onde tenhamos mais controle sobre a adição e remoção de itens. 
+
+Existem algumas estruturas de dados que possuem algumas semelhanças com os arrays, mas que nos dão mais controle sobre a adição e remoção de elementos. Uma delas é a Pilha.
+
+Esta estrutura recebeu este nome pois se comporta da mesma forma que uma pilha de itens, como pilha de roupas ou de pratos.
+
+![alt text](https://www.tutorialspoint.com/data_structures_algorithms/images/stack_example.jpg)
+
 
 ## Definição
 
 Uma pilha (stack) é uma estrutura de dados muito comum que segue o princípio LIFO (Last In, First Out), ou seja, o último elemento adicionado à pilha é o primeiro a ser removido. Podemos imaginar uma pilha como uma pilha de pratos: o último prato colocado no topo da pilha é o primeiro a ser retirado.
 
+![alt text](https://www.tutorialspoint.com/data_structures_algorithms/images/stack_representation.jpg)
+
+
+Podemos fazer algumas considerações sobre os elementos:
+- Itens mais perto da base são aqueles que estão na pilha a mais tempo;
+- Itens inseridos recentemente estão mais perto do topo; 
+- O último item inserido é aquele que está na posição em que pode ser removido primeiro;
+
+
+## Exemplos de uso
+
+À medida que você navega de uma página web para outra página, a url das páginas são colocadas em uma pilha. A página atual está no topo e a primeira página que você olhou está na base. Se você clicar no botão Voltar, você começa a se mover pelas páginas na ordem inversa.
+
+<div style="text-align: center; margin: 1rem">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUvJr1d3oMT9g1zDd-EMnS-qq53aPwIYcw1Q&s">
+</div>
+
+
+Quando estamos executando funções que executam outras funções o sistema operacional armazena a chamada em uma pilha na memória. Assim que as instruções return são encontradas, as funções devolvem o valor e, são desempilhadas da memória.
+
+
+<div style="text-align: center; margin: 1rem">
+<img src="https://pbs.twimg.com/media/Et0ScQ8XEAYbXob.png">
+</div>
+
 
 ## Operações
 
-Operações principais em uma pilha
-Push: Adiciona um elemento no topo da pilha.
-Pop: Remove o elemento do topo da pilha.
-Peek (ou Top): Olha o elemento do topo sem removê-lo.
-IsEmpty: Verifica se a pilha está vazia.
-Size: Retorna o tamanho da pilha.
+O tipo abstrato de dados pilha é definido pelas seguintes operações
+
+- push: Adiciona um elemento no topo da pilha.
+- pop: Remove o elemento do topo da pilha.
+- peek (ou Top): Olha o elemento do topo sem removê-lo.
+- isEmpty: Verifica se a pilha está vazia.
+- size: Retorna o tamanho da pilha.
+
 Essas operações são básicas e permitem manipular dados de forma simples, mas eficaz.
 
 
 ## Implementações
 
-### Implementação Estática 
+## Implementação Estática com Arrays
 
-1. Usando Arrays em JavaScript
 Em JavaScript, os arrays podem ser facilmente usados para implementar uma pilha, pois eles já têm métodos como push() e pop().
 
 
@@ -48,7 +83,8 @@ console.log(topItem);   // Output: 2
 ```
 
 
-2. Implementação com Classes
+## Implementação com Classes
+
 Agora, vamos implementar uma pilha usando classes para ter mais controle sobre a estrutura de dados e facilitar sua reutilização.
 
 
@@ -106,7 +142,8 @@ console.log(stack.size());  // Output: 2
 
 ```
 
-3. Casos de uso de uma Pilha
+## Casos de uso de uma Pilha
+
 Pilhas são muito úteis em várias situações. Aqui estão alguns exemplos:
 
 Funções Recursivas: Toda vez que uma função chama a si mesma, a execução atual é armazenada em uma pilha de chamadas.
@@ -117,12 +154,14 @@ Expressões Matemáticas (Conversão e Avaliação): Pilhas são amplamente util
 
 Desfazer/Refazer em editores de texto: As ações realizadas são armazenadas em uma pilha. Quando você clica em "Desfazer", a última ação é removida.
 
-4. Complexidade de Tempo
-Push: O tempo para adicionar um elemento na pilha é O(1).
-Pop: O tempo para remover um elemento do topo da pilha também é O(1).
-Peek: Visualizar o elemento no topo da pilha é O(1).
-Resumo
-Uma pilha segue a regra LIFO (Last In, First Out).
+## Complexidade de Tempo
+
+- push: O tempo para adicionar um elemento na pilha é O(1).
+- pop: O tempo para remover um elemento do topo da pilha também é O(1).
+- peek: Visualizar o elemento no topo da pilha é O(1).
+- isEmpty:
+
+
 As operações mais comuns são push, pop, peek, isEmpty e size.
 Você pode implementar uma pilha de maneira simples usando arrays ou criando uma classe em JavaScript para personalizar suas funcionalidades.
 
