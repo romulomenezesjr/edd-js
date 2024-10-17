@@ -10,8 +10,8 @@
     <div id="main" class="h-screen flex items-center justify-center">
         <form 
             class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-            id="meuForm" action="" method="get"
-            >
+            id="meuForm" action="" method="get">
+
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="nome">
                   Digite uma expressão aritmética
@@ -25,7 +25,9 @@
             </div>
         </form>
     </div>
-    <script>
+    <script type="module" src="parenteses.js"></script>
+    <script type="module" >
+        import {validarExpressao} from "./parenteses.js"
 
         document.getElementById("meuForm").addEventListener("submit", function (e){
             e.preventDefault()
@@ -41,64 +43,6 @@
                 alert("Esta expressão não é válida")
             }
         })
-
-        function validarExpressao(exp) {
-            let pilha = new Stack()
-
-            for (let i = 0; i < exp.length; i++) {
-                if (exp[i] === "("){
-                    pilha.push(exp[i])
-                }
-
-                if (exp[i] === ")" && !pilha.isEmpty()){
-                    pilha.pop()
-                }
-            }
-
-            return pilha.isEmpty()
-        }
-
-        class Stack {
-            constructor() {
-                this.items = [];
-            }
-
-            // Adicionar item à pilha (push)
-            push(element) {
-                this.items.push(element);
-            }
-
-            // Remover o último item da pilha (pop)
-            pop() {
-                if (this.isEmpty()) {
-                return 'Stack is empty';
-                }
-                return this.items.pop();
-            }
-
-            // Ver o último item sem remover (peek)
-            peek() {
-                if (this.isEmpty()) {
-                return 'Stack is empty';
-                }
-                return this.items[this.items.length - 1];
-            }
-
-            // Verificar se a pilha está vazia
-            isEmpty() {
-                return this.items.length === 0;
-            }
-
-            // Ver o tamanho da pilha
-            size() {
-                return this.items.length;
-            }
-
-            // Limpar a pilha
-            clear() {
-                this.items = [];
-            }
-            }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     
