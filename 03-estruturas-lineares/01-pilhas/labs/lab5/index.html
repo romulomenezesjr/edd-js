@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo</title>
+</head>
+<body>
+
+    <div id="main" class="h-screen flex items-center justify-center">
+        <form 
+            class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            id="meuForm" action="" method="get"
+            >
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="nome">
+                  Digite uma expressão aritmética
+                </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text" name="expressao" id="expressao">
+            </div>
+            
+            <div class="flex items-center justify-center">
+                <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="Enviar">
+            </div>
+        </form>
+    </div>
+    <script>
+
+        document.getElementById("meuForm").addEventListener("submit", function (e){
+            e.preventDefault()
+            // Recuperar o elemento HTML
+            let expInput = document.getElementById("expressao")
+            // Acessa o conteúdo do elemento input
+            let exp = expInput.value
+
+            if (validarExpressao(exp)) {
+
+                alert("Esta expressão é válida")
+            } else {
+                alert("Esta expressão não é válida")
+            }
+        })
+
+        function validarExpressao(exp) {
+            let pilha = new Stack()
+
+            for (let i = 0; i < exp.length; i++) {
+                if (exp[i] === "("){
+                    pilha.push(exp[i])
+                }
+
+                if (exp[i] === ")" && !pilha.isEmpty()){
+                    pilha.pop()
+                }
+            }
+
+            return pilha.isEmpty()
+        }
+
+        class Stack {
+            constructor() {
+                this.items = [];
+            }
+
+            // Adicionar item à pilha (push)
+            push(element) {
+                this.items.push(element);
+            }
+
+            // Remover o último item da pilha (pop)
+            pop() {
+                if (this.isEmpty()) {
+                return 'Stack is empty';
+                }
+                return this.items.pop();
+            }
+
+            // Ver o último item sem remover (peek)
+            peek() {
+                if (this.isEmpty()) {
+                return 'Stack is empty';
+                }
+                return this.items[this.items.length - 1];
+            }
+
+            // Verificar se a pilha está vazia
+            isEmpty() {
+                return this.items.length === 0;
+            }
+
+            // Ver o tamanho da pilha
+            size() {
+                return this.items.length;
+            }
+
+            // Limpar a pilha
+            clear() {
+                this.items = [];
+            }
+            }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+</body>
+</html>

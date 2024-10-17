@@ -23,23 +23,29 @@ Podemos fazer algumas considerações sobre os elementos:
 - Itens inseridos recentemente estão mais perto do topo; 
 - O último item inserido é aquele que está na posição em que pode ser removido primeiro;
 
+## Casos de uso de uma Pilha
 
-## Exemplos de uso
+Pilhas são muito úteis em várias situações. Aqui estão alguns exemplos:
 
-À medida que você navega de uma página web para outra página, a url das páginas são colocadas em uma pilha. A página atual está no topo e a primeira página que você olhou está na base. Se você clicar no botão Voltar, você começa a se mover pelas páginas na ordem inversa.
-
-<div style="text-align: center; margin: 1rem">
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUvJr1d3oMT9g1zDd-EMnS-qq53aPwIYcw1Q&s">
-</div>
-
-
-Quando estamos executando funções que executam outras funções o sistema operacional armazena a chamada em uma pilha na memória. Assim que as instruções return são encontradas, as funções devolvem o valor e, são desempilhadas da memória.
-
+- O sistema operacional armazena a chamada em uma pilha na memória quando estamos fazendo uso funções que executam outras funções. Assim que as instruções return são encontradas, as funções devolvem o valor e, são desempilhadas da memória. Veja o exemplo a seguir de uma função recursiva: Uma função que chama a si, enquanto não chegar à condição de parada, terá a execução armazenada em uma pilha de chamadas (call stack).
 
 <div style="text-align: center; margin: 1rem">
 <img src="https://pbs.twimg.com/media/Et0ScQ8XEAYbXob.png">
 </div>
 
+- À medida que você navega de uma página web para outra página, a url das páginas são colocadas em uma pilha. A página atual está no topo e a primeira página que você olhou está na base. Se você clicar no botão Voltar, você começa a se mover pelas páginas na ordem inversa.
+
+- Em um editor de texto a pilha é utilizada para armazenar as versões digitadas. Ao realizar uma nova inserção de texto, o novo texto pode ser empilhado. Para desfazer a edição e retornar ao último estado basta desempilhadar a pilha.
+
+<div style="text-align: center; margin: 1rem">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUvJr1d3oMT9g1zDd-EMnS-qq53aPwIYcw1Q&s">
+</div>
+
+- Expressões Matemáticas (Conversão e Avaliação): Pilhas são amplamente utilizadas em algoritmos que convertem ou avaliam expressões matemáticas. 
+  - Podemos utilizar as pilhas para avaliar os balanceamento de parenteses 
+  - Conversão de números entre diferentes bases numéricas.
+  - Avaliações de expressões infixas, prefixas e posfixas
+  - Reversão de informações
 
 ## Operações
 
@@ -52,6 +58,7 @@ O tipo abstrato de dados pilha é definido pelas seguintes operações
 - size: Retorna o tamanho da pilha.
 
 Essas operações são básicas e permitem manipular dados de forma simples, mas eficaz.
+
 
 
 ## Implementações
@@ -83,9 +90,9 @@ console.log(topItem);   // Output: 2
 ```
 
 
-## Implementação com Classes
+### Utilizando com Classes
 
-Agora, vamos implementar uma pilha usando classes para ter mais controle sobre a estrutura de dados e facilitar sua reutilização.
+Agora, vamos utilizar classes para ter mais controle sobre a estrutura de dados e facilitar sua reutilização.
 
 
 ```js
@@ -141,20 +148,18 @@ console.log(stack.pop());   // Output: 30
 console.log(stack.size());  // Output: 2
 
 ```
+### Utilizando os Métodos da Classe Stack
 
-## Casos de uso de uma Pilha
+Podemos utilizar os métodos implementados na classe Stack para testar o funcionamento da nossa pilha. Realize as chamadas dos métodos do quadro a seguir:
 
-Pilhas são muito úteis em várias situações. Aqui estão alguns exemplos:
+![Testando a classe Stack](./img/testing-stack.png)
 
-Funções Recursivas: Toda vez que uma função chama a si mesma, a execução atual é armazenada em uma pilha de chamadas.
 
-Navegação no navegador: Quando você navega em páginas da web, o histórico é armazenado em uma pilha. Ao pressionar o botão "voltar", a página anterior é retirada da pilha.
 
-Expressões Matemáticas (Conversão e Avaliação): Pilhas são amplamente utilizadas em algoritmos que convertem ou avaliam expressões matemáticas.
 
-Desfazer/Refazer em editores de texto: As ações realizadas são armazenadas em uma pilha. Quando você clica em "Desfazer", a última ação é removida.
 
-## Complexidade de Tempo
+
+### Complexidade de Tempo
 
 - push: O tempo para adicionar um elemento na pilha é O(1).
 - pop: O tempo para remover um elemento do topo da pilha também é O(1).
@@ -165,36 +170,38 @@ Desfazer/Refazer em editores de texto: As ações realizadas são armazenadas em
 As operações mais comuns são push, pop, peek, isEmpty e size.
 Você pode implementar uma pilha de maneira simples usando arrays ou criando uma classe em JavaScript para personalizar suas funcionalidades.
 
-### Implementação Encadeada
+## Implementação Encadeada
 
-Para entender a implementação de pilhas (stacks) com nós em JavaScript, é importante compreender a ideia de usar uma lista encadeada (ou linked list) em vez de um array. Usar nós permite uma implementação flexível, que facilita a adição e remoção de elementos sem realocação de memória, como em arrays.
+Para entender a implementação de pilhas (stacks) com nós em JavaScript, é importante compreender a ideia de usar elementos ligados entre si  em vez de um array. Usar nós permite uma implementação flexível, que facilita a adição e remoção de elementos sem realocação de memória, como em arrays.
 
-1. Conceito de Nó
-Um nó em uma lista encadeada tem duas partes:
+#### Conceito de Nó
 
-O valor ou dado que o nó armazena.
-Um ponteiro (ou referência) para o próximo nó na pilha.
-Quando falamos de pilhas, a operação principal acontece no topo. Portanto, precisamos de uma estrutura onde seja fácil adicionar e remover nós do topo.
+Quando falamos de pilhas, a operação principal acontece no topo. Portanto, precisamos de uma estrutura onde seja fácil adicionar e remover nós do topo. Um nó consiste de duas partes:
+  - O valor ou dado que o nó armazena.
+  - Um ponteiro (ou referência) para o próximo nó na pilha.
 
-2. Estrutura da Pilha com Nós
-Cada elemento da pilha é um nó.
-A pilha mantém uma referência ao topo da pilha, que aponta para o nó mais recente inserido.
-A operação push adiciona um novo nó no topo.
-A operação pop remove o nó do topo.
-3. Implementação da Pilha com Nós
+
+
+#### Estrutura da Pilha com Nós
+
+Cada elemento da pilha é um nó. A pilha mantém uma referência ao topo da pilha, que aponta para o nó mais recente inserido.
+- A operação push adiciona um novo nó no topo.
+- A operação pop remove o nó do topo.
+
+#### Implementação da Pilha com Nós
+
 Vamos criar uma classe Node para representar cada nó da pilha e uma classe Stack para a estrutura da pilha.
 
-Classe Node
 A classe Node terá duas propriedades:
 
-Valor: O dado armazenado no nó.
-Próximo: A referência para o próximo nó.
-Classe Stack
+- Valor: O dado armazenado no nó.
+- Próximo: A referência para o próximo nó.
+
 A classe Stack terá:
 
-Um ponteiro para o topo da pilha.
-Métodos como push, pop, peek, e isEmpty.
-Exemplo de implementação:
+- Um ponteiro para o topo da pilha.
+- Métodos como push, pop, peek, e isEmpty.
+
 
 ```js
 // Classe Node para representar cada nó da pilha
@@ -267,31 +274,38 @@ console.log(pilha.isEmpty()); // Output: false (a pilha não está vazia)
 ```
 
 Explicação do Código:
-A classe Node é responsável por armazenar o valor e uma referência para o próximo nó na pilha.
-A classe Stack gerencia a pilha propriamente dita, contendo o ponteiro para o topo da pilha e o número de elementos.
-O método push adiciona um novo nó no topo da pilha.
-O método pop remove e retorna o valor do nó no topo da pilha.
-O método peek apenas retorna o valor no topo da pilha sem removê-lo.
-O método isEmpty verifica se a pilha está vazia.
-4. Complexidade de Tempo
-Push: A adição de um nó no topo da pilha ocorre em O(1).
-Pop: A remoção do nó do topo também ocorre em O(1).
-Peek: Olhar o valor do topo é uma operação de tempo constante, O(1).
-5. Vantagens da Implementação com Nós
-O uso de nós evita o realocamento de memória, como acontece em arrays.
-A implementação é mais eficiente em termos de inserções e remoções constantes no topo.
-Resumo:
-Pilhas com nós oferecem uma maneira eficiente de organizar e manipular dados, especialmente quando o tamanho da estrutura é dinâmico.
-Usar nós permite criar uma estrutura mais flexível em comparação com arrays, sem precisar lidar com o redimensionamento do array.
-Essa implementação é muito útil em algoritmos que exigem controle explícito da memória, como na avaliação de expressões matemáticas, navegação entre páginas de um navegador, ou funções recursivas.
+- A classe Node é responsável por armazenar o valor e uma referência para o próximo nó na pilha.
+- A classe Stack gerencia a pilha propriamente dita, contendo o ponteiro para o topo da pilha e o número de elementos.
+- O método push adiciona um novo nó no topo da pilha.
+- O método pop remove e retorna o valor do nó no topo da pilha.
+- O método peek apenas retorna o valor no topo da pilha sem removê-lo.
+- O método isEmpty verifica se a pilha está vazia.
+
+### Complexidade de Tempo
+- push: A adição de um nó no topo da pilha ocorre em O(1).
+- pop: A remoção do nó do topo também ocorre em O(1).
+- peek: Olhar o valor do topo é uma operação de tempo constante, O(1).
+
+### Vantagens da Implementação com Nós
+
+Em diversas linguagens os arrays são alocados de forma fixa na memória e a utilização de nós evita o trabalho de  realocação. Essa implementação é muito útil em algoritmos que exigem controle explícito da memória, como na avaliação de expressões matemáticas, navegação entre páginas de um navegador, ou funções recursivas.
+
+Na linguagem Javascript os arrays são objetos e seus elementos são alocados de forma esparça na memória. A implementação usando nós no Javascript nos mostra como a alocação esparça funciona, sendo mais eficiente em termos de inserções e remoções constantes no topo.
+
+Usar nós permite criar uma estrutura mais flexível em comparação com arrays fixos usandos em diversas linguagens ( e até mesmo em Javascript [TypedArray](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Typed_arrays)), sem precisar lidar com o redimensionamento do array.
 
 
 ## Resolvendo problemas usando pilhas
 
 Pilhas têm uma variedade de aplicações em problemas do mundo real. Elas podem ser usadas em problemas de retrocesso (backtracking) para lembrar tarefas ou caminhos visitados, e para desfazer ações (aprenderemos como aplicar esse exemplo quando discutirmos grafos e problemas de retrocesso mais adiante). 
 
-As linguagens de programação Java e C# usam pilhas para armazenar variáveis e chamadas de métodos, e há uma exceção de estouro de pilha (stack overflow) que pode ser lançada especialmente ao trabalhar com algoritmos recursivos (os quais também cobriremos mais adiante neste livro).
-Agora que sabemos como usar uma Pilha, vamos utilizá-la para resolver alguns problemas. Nesta seção, aprenderemos os três exemplos de algoritmos mais famosos que utilizam uma pilha. Iremos abordar o problema de conversão de decimal para binário, onde também transformaremos o algoritmo em um conversor de bases, o problema dos parênteses balanceados, e, finalmente, aprenderemos a resolver o problema da Torre de Hanói usando pilhas.
+As linguagens de programação usam pilhas para armazenar variáveis e chamadas de métodos, e há uma exceção de estouro de pilha (stack overflow) que pode ser lançada especialmente ao trabalhar com algoritmos recursivos.
+
+Agora que sabemos como usar uma Pilha, vamos utilizá-la para resolver alguns problemas. Nesta seção, aprenderemos os três exemplos de algoritmos mais famosos que utilizam uma pilha. 
+
+- Conversão de decimal para binário
+- Balanceamento de parênteses 
+- Torre de Hanói usando pilhas
 
 ### Decimal para binário
 
@@ -338,3 +352,7 @@ Podemos facilmente modificar o algoritmo anterior para que funcione como um conv
   return baseString;
  }
  ```
+
+ ### Balanceamento de Parenteses
+
+ ### Torre de Hanoi
