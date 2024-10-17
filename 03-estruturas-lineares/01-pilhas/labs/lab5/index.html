@@ -25,7 +25,7 @@
             </div>
         </form>
     </div>
-    <script type="module" src="parenteses.js"></script>
+    
     <script type="module" >
         import {validarExpressao} from "./parenteses.js"
 
@@ -37,10 +37,9 @@
             let exp = expInput.value
 
             if (validarExpressao(exp)) {
-
-                alert("Esta expressão é válida")
+                alert("Parenteses Balanceados")
             } else {
-                alert("Esta expressão não é válida")
+                alert("Parenteses Não Balanceados")
             }
         })
     </script>
