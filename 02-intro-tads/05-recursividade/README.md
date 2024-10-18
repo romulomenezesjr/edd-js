@@ -1,159 +1,87 @@
-# Classes
+# Recursividade
 
 
-## Introdução
- 
+## Recursão
 
-Um conceito fundamental da programação orientada a objetos (OOP) são as classes. Elas permitem que você crie abstrações e com isso instancie objetos com propriedades e métodos. Esta funcionalidade aliada com o paradigma facilita a organização e a reutilização do código.
+Uma função pode referir-se e chamar a si própria. Há três maneiras de uma função referir-se a si mesma:
 
-### Definição
+    o nome da função
+    arguments.callee
+    uma variável no escopo que se refere a função
 
-Uma classe é uma definição de um tipo. A partir deste tipo podemos criar objetos. A classe pode especificar propriedades (também chamadas de atributos) e métodos (funções associadas à classe).
-
-### Sintaxe Básica
-
-Em JavaScript, a sintaxe básica para declarar uma classe consiste no uso da palavra chave **class** antes do nome da classe. O corpo da classe fica dentro das chaves {}. Neste espaço se define os membros da classe, como construtores e métodos. O método construtor é definido com o nome **constructor**. O método constructor é um tipo especial de método para criar e iniciar um objeto criado pela classe. Só pode existir um método especial com o nome "constructor" dentro da classe. 
-
-```js
-class NomeDaClasse {
-
-  // Construtor da classe
-  constructor(parametros) {
-    // Inicialização de propriedades
-    this.propriedade = parametros;
-  }
-
-  // Método da classe
-  metodo() {
-    // Código do método
-  }
-
-}
-
-```
-
-### Métodos Estáticos e Propriedades Estáticas
-
-A palavra-chave static define um método estático de uma classe. Métodos estáticos são chamados sem a instanciação da sua classe e não podem ser chamados quando a classe é instanciada. Métodos estáticos são geralmente usados para criar funções de utilidades por uma aplicação.
-
-Propriedades de instâncias devem ser definidas dentro dos métodos da classe. Propriedades de dados estáticos e propriedades de dados prototipados (prototype) devem ser definidos fora da declaração do corpo da classe.
-
-```js
-class NomeDaClasse {
-
-  // Construtor da classe
-  constructor(parametros) {
-    // Inicialização de propriedades
-    this.propriedade = parametros;
-  }
-
-  // Método da classe
-  metodo() {
-    // Código do método
-  }
-
-  static metodoEstatico(){
-    // Código do método que pode ser executado diretamente pela classe
-  }
-}
-
-NomeDaClasse.prototype.valor = 10
-NomeDaClasse.valor = 10
-```
-
-### Criando classes com expressões
-
-Também é possível criar classes como uma expressão, de forma similar à funções:
+Por exemplo, considere a seguinte definição de função:
 
 ```js
 
-const NomeDaClasse = class {
-  constructor(parametros) {
-    this.propriedade = parametros;
-  }
+var foo = function bar() {
+  // declaracoes
 };
 ```
 
-### Instanciando objetos
+Dentro do corpo da função, todos, a seguir, são equivalentes:
 
-Vejamos um exemplo a seguir para instanciar um objeto a partir de uma classe que represente um Carro.
+    bar()
+    arguments.callee()
+    foo()
 
-```js
-class Carro {
-  // Construtor da classe
-  constructor(marca, modelo) {
-    this.marca = marca; // Propriedade de instância
-    this.modelo = modelo; // Propriedade de instância
-  }
-
-  // Método da classe
-  mostrarInfo() {
-    console.log(`Carro: ${this.marca} ${this.modelo}`);
-  }
-}
-
-// Criando uma instância da classe Carro
-const meuCarro = new Carro('Toyota', 'Corolla');
-meuCarro.mostrarInfo(); // Output: Carro: Toyota Corolla
-
-```
-### Herança
-
-
-A palavra-chave extends é usada em uma declaração de classe, ou em uma expressão de classe para criar uma classe como filha de uma outra classe. Se existir um contrutor nas subclasses, é necessário primeiro chamar super() antes de usar a keyword "this".
+Uma função que chama a si mesma é chamada de função recursiva. Em alguns casos, a recursividade é análoga a um laço. Ambos executam o código várias vezes, e ambos necessitam de uma condição (para evitar um laço infinito, ou melhor, recursão infinita, neste caso). Por exemplo, o seguinte laço:
 
 ```js
-class Animal {
-  constructor(nome) {
-    this.nome = nome;
-  }
 
-  falar() {
-    console.log(this.nome + " emite um barulho.");
-  }
+var x = 0;
+while (x < 10) {
+  // "x < 10" a condição do laço
+  // faça coisas
+  x++;
 }
-
-class Cachorro extends Animal {
-  falar() {
-    console.log(this.nome + " latidos.");
-  }
-}
-
-let cachorro = new Cachorro("Mat");
-cachorro.falar();
-
 ```
+pode ser convertido em função recursiva e uma chamada para a função:
+```js
 
-### Propriedades Privadas
+function loop(x) {
+  if (x >= 10)
+    // "x >= 10" a condição de parada (equivalente a "!(x < 10)")
+    return;
+  // faça coisas
+  loop(x + 1); // chamada recursiva
+}
+loop(0);
+```
+No entanto, alguns algoritmos não podem ser simples laços iterativos. Por exemplo, conseguir todos os nós da estrutura de uma árvore (por exemplo, o DOM) é mais fácil se feito recursivamente:
+```js
 
-Propriedades privadas podem ser definidas de duas maneiras:
-
-- Com o uso de um sublinhado (_):
-
-  Essa é uma convenção de nomenclatura que indica que a propriedade é considerada privada. É apenas uma convenção e não impede que o código fora da classe acesse a propriedade. Por exemplo
-
-  ```js
-  class Conta {
-    constructor(saldo) {
-      this._saldo = saldo; // Propriedade privada por convenção
-    }
+function walkTree(node) {
+  if (node == null)
+    //
+    return;
+  // faça algo com o nó
+  for (var i = 0; i < node.childNodes.length; i++) {
+    walkTree(node.childNodes[i]);
   }
-  ```
+}
+```
+Em comparação ao laço da função, cada chamada recursiva realiza outras chamadas recursivas.
 
-- Com o símbolo de hash (#):
+É possível converter qualquer algoritmo recursivo para um não recursivo, mas muitas vezes a lógica é muito mais complexa e exige o uso de pilhas. Na verdade a própria recursão usa pilha: a pilha de função.
 
-  Essa é a sintaxe moderna para definir propriedades privadas, que realmente restringe o acesso a essas propriedades fora da classe. Somente métodos dentro da própria classe podem acessar propriedades definidas dessa forma. Por exemplo:
-  ```js
-  class Conta {
-    #saldo; // Propriedade privada
+O comportamento da pilha pode ser vista a seguir no exemplo:
+```js
 
-    constructor(saldo) {
-      this.#saldo = saldo; // Acesso permitido
-    }
+function foo(i) {
+  if (i < 0) return;
+  document.writeln("begin:" + i);
+  foo(i - 1);
+  document.writeln("end:" + i);
+}
+foo(3);
+```
+que produz:
 
-    verSaldo() {
-      return this.#saldo; // Acesso permitido
-    }
-  }
-  ```
-
+begin:3
+begin:2
+begin:1
+begin:0
+end:0
+end:1
+end:2
+end:3
