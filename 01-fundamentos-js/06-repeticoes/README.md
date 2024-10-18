@@ -442,12 +442,19 @@ do {
 ### Exercício
 
 1. Nos exemplos acima substitua os laços de repetição por for...of...
+   
 2. Crie uma página web que solicite um número e mostre em uma lista numerada todos os números pares de 0 até o número lido utilizando um loop "for".\
+   
 3. Crie uma página web que solicite um número e, em seguida, imprima a tabuada desse número (de 1 a 10) utilizando um loop "for".
+   
 4. Crie uma página web que peça ao usuário para digitar uma frase e, em seguida, conte quantas vogais (a, e, i, o, u) existem na frase utilizando um loop "for".
+   
 5. Crie uma página web que peça ao usuário para digitar uma palavra e, em seguida, imprima a palavra ao contrário utilizando um loop "for"
+   
 6. Crie uma página web que peça ao usuário para adivinhar um número secreto entre 1 e 100. O programa deve informar se o palpite é muito alto, muito baixo ou correto. Continue pedindo ao usuário para adivinhar até que ele acerte o número utilizando um loop "while".
-7. Crie uma página web que peça ao usuário para adivinhar uma palavra de 5 letras (por exemplo: termo). A página deve contar a quantidade de tentativa. Continue pedindo ao usuário para adivinhar até que ele acerte.
-8. Crie uma página web que leia um número n (número de termos de uma progressão aritmética), a1 ( o primeiro termo da progressão) e r (a razão da progressão) e escreva os n termos desta progressão, bem como a soma dos elementos.
+   
+8. Crie uma página web que peça ao usuário para adivinhar uma palavra de 5 letras (por exemplo: termo). A página deve contar a quantidade de tentativa. Continue pedindo ao usuário para adivinhar até que ele acerte.
+   
+9. Crie uma página web que leia um número n (número de termos de uma progressão aritmética), a1 ( o primeiro termo da progressão) e r (a razão da progressão) e escreva os n termos desta progressão, bem como a soma dos elementos.
 
 
