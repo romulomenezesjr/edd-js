@@ -440,10 +440,11 @@ do {
 ```
 
 ## Exercício
+Para as questões práticas utilize este [modelo](https://codepen.io/R-mulo-Costa-de-Menezes-J-nior/pen/qBzEYyo)
 
 1. Nos exemplos acima substitua os laços de repetição por for...of...
    
-2. Crie uma página web que solicite um número e mostre em uma lista numerada todos os números pares de 0 até o número lido utilizando um loop "for".\
+2. Crie uma página web que solicite um número e mostre em uma lista numerada todos os números pares de 0 até o número lido utilizando um loop "for"
    
 3. Crie uma página web que solicite um número e, em seguida, imprima a tabuada desse número (de 1 a 10) utilizando um loop "for".
    
