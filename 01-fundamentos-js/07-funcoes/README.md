@@ -228,91 +228,6 @@ function getScore() {
 getScore(); // Retorna "Chamahk scored 5"
 ```
 
-## Recursão
-
-Uma função pode referir-se e chamar a si própria. Há três maneiras de uma função referir-se a si mesma:
-
-    o nome da função
-    arguments.callee
-    uma variável no escopo que se refere a função
-
-Por exemplo, considere a seguinte definição de função:
-
-```js
-
-var foo = function bar() {
-  // declaracoes
-};
-```
-
-Dentro do corpo da função, todos, a seguir, são equivalentes:
-
-    bar()
-    arguments.callee()
-    foo()
-
-Uma função que chama a si mesma é chamada de função recursiva. Em alguns casos, a recursividade é análoga a um laço. Ambos executam o código várias vezes, e ambos necessitam de uma condição (para evitar um laço infinito, ou melhor, recursão infinita, neste caso). Por exemplo, o seguinte laço:
-
-```js
-
-var x = 0;
-while (x < 10) {
-  // "x < 10" a condição do laço
-  // faça coisas
-  x++;
-}
-```
-pode ser convertido em função recursiva e uma chamada para a função:
-```js
-
-function loop(x) {
-  if (x >= 10)
-    // "x >= 10" a condição de parada (equivalente a "!(x < 10)")
-    return;
-  // faça coisas
-  loop(x + 1); // chamada recursiva
-}
-loop(0);
-```
-No entanto, alguns algoritmos não podem ser simples laços iterativos. Por exemplo, conseguir todos os nós da estrutura de uma árvore (por exemplo, o DOM) é mais fácil se feito recursivamente:
-```js
-
-function walkTree(node) {
-  if (node == null)
-    //
-    return;
-  // faça algo com o nó
-  for (var i = 0; i < node.childNodes.length; i++) {
-    walkTree(node.childNodes[i]);
-  }
-}
-```
-Em comparação ao laço da função, cada chamada recursiva realiza outras chamadas recursivas.
-
-É possível converter qualquer algoritmo recursivo para um não recursivo, mas muitas vezes a lógica é muito mais complexa e exige o uso de pilhas. Na verdade a própria recursão usa pilha: a pilha de função.
-
-O comportamento da pilha pode ser vista a seguir no exemplo:
-```js
-
-function foo(i) {
-  if (i < 0) return;
-  document.writeln("begin:" + i);
-  foo(i - 1);
-  document.writeln("end:" + i);
-}
-foo(3);
-```
-que produz:
-
-begin:3
-begin:2
-begin:1
-begin:0
-end:0
-end:1
-end:2
-end:3
-
 ## Funções aninhadas e closures
 
 Você pode aninhar uma função dentro de outra. A função aninhada (interna) é acessível apenas para a função que a contém (exterior). Isso constitui uma **closure**. Uma closure é uma expressão (tipicamente uma função) que pode ter variáveis livres em conjunto com um ambiente que conecta estas variáveis (que "fecha" a expressão).
@@ -384,7 +299,8 @@ Neste exemplo, C acessa y do B e x do A. Isso pode ser feito porque:
     Devido a closure B inclui A, a closure C inclui A, C pode acessar tanto argumentos e variáveis de B como de A. Em outras palavras, C encadeia o escopo de B e A, nesta ordem.
 
 O inverso, no entanto, não é verdadeiro. A não pode acessar C, porque A não pode acessar qualquer argumento ou variável de B. Assim, C é privado somente a B.
-Conflitos de nome
+
+#### Conflitos de nome
 
 Quando dois argumentos ou variáveis nos escopos da closure tem o mesmo nome, há um conflito de nome. Mas escopos internos tem prioridade, por isso o escopo mais interno tem a maior prioridade, enquanto que o escopo mais externo tem a menor. Esta é a cadeia de escopo. O primeiro da cadeia é o escopo mais interno, e o último é o escopo mais externo. Considere o seguinte:
 
@@ -566,14 +482,15 @@ function multiplicar(multiplicador, ...args) {
 var arr = multiplicar(2, 1, 2, 3);
 console.log(arr); // [2, 4, 6]
 ```
-Funções de seta
+## Funções de seta
 
-Uma expressão função de seta (anteriormente conhecida como função de seta gorda) tem uma sintaxe pequena em comparação com a expressão de função e lexicalmente vincula o valor this. Funções de seta são sempre anônimas. Consulte também no blog hacks.mozilla.org no post: "ES6 In Depth: Arrow functions".
+Uma expressão função de seta (arrow function) tem uma sintaxe pequena em comparação com a expressão de função e lexicalmente vincula o valor this. Funções de seta são sempre anônimas. Consulte também no blog hacks.mozilla.org no post: "ES6 In Depth: Arrow functions".
 
 Dois fatores influenciaram a introdução de funções de seta: funções mais curtas e o léxico this.
 Funções curtas
 
 Em alguns padrões funcionais, funções curtas são bem-vindas. Compare:
+
 ```js
 
 var a = ["Hydrogen", "Helium", "Lithium", "Beryllium"];
@@ -585,9 +502,70 @@ var a2 = a.map(function (s) {
 var a3 = a.map((s) => s.length);
 ```
 
-Léxico this
+## Módulos
 
-Até as funções de seta, cada nova função definia seu próprio valor this (um novo objeto no caso de um construtor, indefinido em chamadas de função no modo estrito, o objeto de contexto se a função é chamada como um "método de objeto", etc.). Isso pode ser irritante com um estilo de programação orientada a objetos.
+Não havia sistema de módulos integrados nos primeiros dias do JavaScript. Os códigos foram escritos em um escopo global, tornando funções e variáveis ​​acessíveis globalmente, resultando em conflitos de nomenclatura e bases de código complexas. A falta de encapsulamento e modularidade dificultou aos desenvolvedores a reutilização de código em vários projetos.
+
+A evolução dos módulos JavaScript resultou em uma abordagem mais organizada e sustentável para escrever código, permitindo o encapsulamento e o gerenciamento eficazes de dependências de código.
+
+Atualmente, para modularizar os programas em Javascript o módulo ES (esm - Ecma Script Module) é o formato padrão oficial para empacotar código JavaScript para reutilização, e a maioria dos navegadores modernos oferece suporte nativo aos módulos.
+
+Node.js, entretanto, oferece suporte ao formato de módulo CommonJS por padrão. Os módulos CommonJS são carregados usando require e as variáveis ​​e funções são exportadas de um módulo CommonJS com module.exports
+
+Existem algumas diferenças entre o ESM e o CommonJS, mas as principais são:
+
+Arquivo de funções modulares em CommonJS
+
+```js
+module.exports.add = function(a, b) {
+        return a + b;
+} 
+
+module.exports.subtract = function(a, b) {
+        return a - b;
+} 
+```
+
+Arquivo importando as funções em CommonJS
+
+```js
+const {add, subtract} = require('./util')
+
+console.log(add(5, 5)) // 10
+console.log(subtract(10, 5)) // 5
+```
+
+
+Arquivo de funções em ESM
+
+```js
+export function add(a, b) {
+        return a + b;
+}
+
+export function subtract(a, b) {
+        return a - b;
+}
+```
+Arquivo importando as funções em ESM
+
+```js
+import {add, subtract} from './util.mjs'
+
+console.log(add(5, 5)) // 10
+console.log(subtract(10, 5)) // 5
+```
+
+Utilizar ESM nos nossos arquivos é bastante vantajoso pois possibilita a modularização nos arquivos HTML. Ao utilizar módulos no navegador devemos importar os scripts com a tag type com o valor module.
+
+```html
+<script type="module" src="app.js">
+```
+
+## Léxico this
+
+Até as funções de seta, cada nova função definia seu próprio valor this (um novo objeto no caso de um construtor, indefinido em chamadas de função no modo estrito, o objeto de contexto se a função é chamada como um "método de objeto", etc.). 
+
 ```js
 
 function Pessoa() {
@@ -632,43 +610,50 @@ function Pessoa(){
 
 var p = new Pessoa();
 ```
-Funções pré-definidas
+## Funções pré-definidas
 
 JavaScript tem várias funções pré-definidas:
 
-eval()
+- eval()
 
     O método eval() avalia código JavaScript representado como uma string.
-uneval() Non-standard
+
+- uneval() 
 
     O método uneval() cria uma representação de string do código-fonte de um Object.
-isFinite()
+
+- isFinite()
 
     A função global isFinite() determina se o valor passado é um número finito. Se necessário, o parâmetro é primeiro convertido para um número.
-isNaN()
+
+- isNaN()
 
     A função isNaN() determina se um valor é NaN ou não. Nota: coerção dentro da função isNaN tem regras interessantes; você pode, alternativamente, querer usar Number.isNaN(), como definido no ECMAScript 6, ou você pode usar typeof para determinar se o valor não é um número.
-parseFloat()
+
+- parseFloat()
 
     A função parseFloat() analisa um argumento do tipo string e retorna um número de ponto flutuante.
-parseInt()
+
+- parseInt()
 
     A função parseInt() analisa um argumento do tipo string e retorna um inteiro da base especificada (base do sistema numérico).
-decodeURI()
+- decodeURI()
 
     A função decodeURI() decodifica uma Uniform Resource Identifier (URI) criada anteriormente por encodeURI ou por uma rotina similar.
-decodeURIComponent()
+
+- decodeURIComponent()
 
     O método decodeURIComponent() decodifica um componente Uniform Resource Identifier (URI) criado anteriormente por encodeURIComponent ou por uma rotina similar.
-encodeURI()
+
+- encodeURI()
 
     O método encodeURI() codifica um Uniform Resource Identifier (URI), substituindo cada ocorrência de determinados caracteres por um, dois, três, ou quatro sequências de escape que representa a codificação UTF-8 do caractere (só serão quatro sequências de escape para caracteres compostos de dois caracteres "substitutos").
-encodeURIComponent()
+- encodeURIComponent()
 
     O método encodeURIComponent() codifica um componente Uniform Resource Identifier (URI), substituindo cada ocorrência de determinados caracteres por um, dois, três, ou quatro sequências de escape que representa a codificação UTF-8 do caractere (só serão quatro sequências de escape para caracteres compostos de dois caracteres "substitutos").
-escape() Deprecated
+- escape() Deprecated
 
     O método obsoleto escape() calcula uma nova string na qual certos caracteres foram substituídos por uma sequência de escape hexadecimal. Use encodeURI ou encodeURIComponent em vez disso.
-unescape() Deprecated
+- unescape() Deprecated
 
     O método obsoleto unescape() calcula uma nova string na qual sequências de escape hexadecimais são substituídas pelo caractere que ela representa. As sequências de escape podem ser introduzidas por uma função como escape. Por unescape() estar obsoleto, use decodeURI() ou decodeURIComponent ao invés dele.
