@@ -317,16 +317,16 @@ Essa conversão é uma das primeiras coisas que você aprende na faculdade (nas 
 
 ```js
 function divideBy2(decNumber){
-  var remStack = new Stack(),
-  rem,
-  binaryString = '';
-  while (decNumber > 0){ //{1}
-    rem = Math.floor(decNumber % 2); //{2}
-    remStack.push(rem); //{3}
-    decNumber = Math.floor(decNumber / 2); //{4}
+  const restoStack = new Stack()
+  let resto, binaryString = ''
+
+  while (decNumber > 0){ 
+    resto = parseInt(decNumber % 2)
+    restoStack.push(resto) 
+    decNumber = parseInt(decNumber / 2)
   }
-  while (!remStack.isEmpty()){ //{5}
-    binaryString += remStack.pop().toString();
+  while (!restoStack.isEmpty())
+    binaryString += restoStack.pop().toString()
   }
   return binaryString;
  }

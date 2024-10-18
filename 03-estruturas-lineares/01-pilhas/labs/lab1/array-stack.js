@@ -9,9 +9,14 @@ function pop(){
 }
 
 function peek(){
-    const pos_ultimo = pilha.length - 1
-    const ultimo = pilha[pos_ultimo]
-    return ultimo
+    if (pilha.length > 0) {
+        const pos_ultimo = pilha.length - 1
+        const ultimo = pilha[pos_ultimo]
+        return ultimo
+    } else {
+        return null
+    }
+    
 }
 
 function isEmpty(){
@@ -26,15 +31,5 @@ function size(){
     return pilha.length
 }
 
-console.log(isEmpty())
-push(4)
-push("dog")
-console.log(peek())
-push(true)
-console.log(size())
-push(8.4)
-console.log(pop())
-console.log(pop())
-console.log(pop())
-console.log(size())
 
+export {push, pop, peek, size, isEmpty}

@@ -1,36 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <main>
+    <main class="h-screen flex items-center justify-center">
 
-        <div>
-            <div>
-                <input type="text" id="elemento">
+        <div class="shadow-md rounded w-1/2">
+            <div id="stack" class="bg-white shadow-md px-8 py-4 pb-8 mx-4">
+
             </div>
-            <div id="buttons">
-                <button id="push">push</button>
-                <button id="pop">pop</button>
-                <button id="peek">peek</button>
-                <button id="isEmpty">isEmpty</button>
-                <button id="size">size</button> 
+
+            <form class="bg-white px-8 pt-6 pb-8 flex flex-row justify-center " id="meuForm"">
+                <input 
+                    type=" text"
+                    class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="elemento">
+                <input
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="submit" value="push">
+            </form>
+
+            
+            <div class="flex flex-row justify-center">
+                <button id="popButton"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2">pop</button>
+                <button id="peekButton"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2">peek</button>
+                <button id="isEmptyButton"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2">isEmpty</button>
+                <button id="sizeButton"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mx-2">
+                    size
+                </button>
+            </div>
+
+            <div id="logger" class="bg-white px-8 pt-6 pb-8 mb-4 ">
+
             </div>
         </div>
 
-        <div id="stack">
 
-        </div>
 
-        <div id="logger">
 
-        </div>
     </main>
+
     <script type="module" src="script.js">
 
     </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </body>
+
 </html>
