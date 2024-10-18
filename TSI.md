@@ -4,8 +4,8 @@
 | 02   |  [Fundamentos JS](./01-fundamentos-js/)                            | Eleições
 | 03   | [Fundamentos JS](./01-fundamentos-js/02-web-node/)                 | Fundamentos JS: Web x Node
 | 04   |  [Fundamentos JS](./01-fundamentos-js/03-variaveis-operadores/)    | Fundamentos JS: Variáveis; Tipos
-| 05   | [Fundamentos JS](./01-fundamentos-js/04-tipos/)                    | 
-| 06   |  [Fundamentos JS](./01-fundamentos-js/05-condicionais/)            |  
+| 05   | [Fundamentos JS](./01-fundamentos-js/04-tipos/)                    | Condicionais / Repetições
+| 06   |  [Fundamentos JS](./01-fundamentos-js/05-condicionais/)            |  Funções
 | 07   | [Fundamentos JS](./01-fundamentos-js/06-repeticoes/)               | 
 | 08   |  [Fundamentos JS](./01-fundamentos-js/07-funcoes/)                 | 
 | 09   |  [Introdução à TADS ](./02-intro-tads/01-tads/)                    | 
