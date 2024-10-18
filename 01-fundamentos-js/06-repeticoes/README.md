@@ -439,7 +439,7 @@ do {
 </html>
 ```
 
-### Exercício
+## Exercício
 
 1. Nos exemplos acima substitua os laços de repetição por for...of...
    
@@ -456,5 +456,3 @@ do {
 8. Crie uma página web que peça ao usuário para adivinhar uma palavra de 5 letras (por exemplo: termo). A página deve contar a quantidade de tentativa. Continue pedindo ao usuário para adivinhar até que ele acerte.
    
 9. Crie uma página web que leia um número n (número de termos de uma progressão aritmética), a1 ( o primeiro termo da progressão) e r (a razão da progressão) e escreva os n termos desta progressão, bem como a soma dos elementos.
-
-
