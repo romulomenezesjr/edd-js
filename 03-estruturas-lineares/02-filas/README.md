@@ -390,3 +390,77 @@ A diferença entre a implementação das classes Queue padrão e PriorityQueue �
 Primeiro, precisamos comparar sua prioridade com os demais elementos (linha {2}). Quando encontramos um item que tem uma prioridade maior do que o elemento que estamos tentando adicionar, então inserimos o novo elemento uma posição antes (com essa lógica, também respeitamos os outros elementos com a mesma prioridade, mas que foram adicionados à fila primeiro). Para fazer isso, podemos usar o método splice da classe array do JavaScript que você aprendeu no Capítulo 2, Arrays. Uma vez que encontramos um elemento com uma prioridade mais alta, inserimos o novo elemento (linha {3}), e paramos de percorrer a fila (linha {4}). Dessa forma, nossa fila também será organizada e classificada por prioridade.
 
 Além disso, se a prioridade que estamos adicionando for maior do que qualquer prioridade já adicionada, ou se a fila estiver vazia, simplesmente a adicionamos ao final da fila (linha {5}).
+
+
+## Resolvendo problemas usando pilhas
+
+Uma simulação de impressora é interessante pois nos permite estudar o comportamento de uma fila. Ao passo que usuários enviam um trabalho para uma impressora compartilhada, as tarefas são colocadas em uma fila para serem processadas de maneira que a primeira a chegar seja a primeira a ser atendida.
+
+Vamos definir uma tarefa como sendo a quantidade de páginas de um arquivo e o usuário que a enviou. Também vamos definir uma variável para controlar as páginas impressas. O comportamento de uma tarefa terá a impressão de uma página por vez e a verificação se ela está concluída.
+
+Uma impressora será definida pela quantidade de páginas impressas por minuto (ppm) para que possamos simular a execução. Internamente à impressora temos a fila que controla o funcionamento. Vamos definir a classe Printer com um construtor com ppm com parâmetros e a definição de tarefas atuais (currentTask) e fila de impressão (printQueue)
+
+- O método chamado addTask deve adicionar uma tarefa para a impressora. O atributo printQueue para enfileirar o trabalho na fila. 
+
+- O método principal desta simulação está no algoritmo que consulta a fila de impressão e imprime cada página de cada tarefa até ela ser finalizada.
+
+- O método printTasks na classe Printer tem o comportamento do algoritmo descrito no fluxograma. No seu algoritmo, enquanto a fila não estiver vazia, desempilhe cada tarefa e execute método printPage enquanto a tarefa não estiver concluída.
+
+![](./img/printqueue.png)
+
+```js
+import {Queue} from "./linked-queue.js"
+
+class Task {
+    constructor(pages, user) {
+      this.user = user
+      this.pages = pages
+      this.printedPages = 0
+    }
+    printPage(){
+      this.printedPages += 1
+    }
+    isDone(){
+      return this.printedPages === this.pages
+    }
+    toString(){
+      return `${this.printedPages}/${this.pages} - ${this.user}`
+    }
+  }
+
+class Printer {
+  constructor(ppm) {
+    this.pageRate = ppm
+    this.currentTask = null
+    this.printQueue = new Queue()
+  }
+
+  addTask(task){
+    this.printQueue.enqueue(task)
+  }
+  printTasks(){
+    while (!this.printQueue.isEmpty()) {
+        console.log(this.printQueue.size())
+        let task = this.printQueue.dequeue()
+        while(!task.isDone()) {
+            task.printPage()
+            console.log(task)
+        }
+    }
+  }
+}
+
+export {Printer, Task}
+```
+
+Podemos criar um objeto printer e adicionar tarefas à ele. Após isso vamos iniciar a simulação.
+
+```js
+import {Printer, Task} from "./printer.js"
+const printer = new Printer(30)
+printer.addTask(new Task(3,"Romulo"))
+printer.addTask(new Task(1,"Maria"))
+printer.addTask(new Task(10,"Joao"))
+printer.addTask(new Task(2,"Pedro"))
+printer.printTasks()
+```
