@@ -1,96 +1,196 @@
 # Fila
 
-Uma fila é uma coleção ordenada de itens que segue o princípio FIFO (First In First Out), também conhecido como o princípio de primeiro a entrar, primeiro a sair. A adição de novos elementos em uma fila ocorre na cauda, e a remoção é feita pela frente. O elemento mais recente adicionado à fila deve esperar no final da fila.  
+A fila (queue - kyo͞o ) é uma estrutura estremamente importante e comum no nosso dia-a-dia. Elas determinam a ordem de atendimento/processamento em diversas situações, nos meios digitais e no cotidiano das pessoas. 
 
-O exemplo mais popular de uma fila na vida real. Temos filas para o cinema, a cafeteria e a fila do caixa em um supermercado, entre outros exemplos. A primeira pessoa que está na fila é a primeira que será atendida.
+Em uma fila as pessoas são atendidas conforme a posição em que elas chegaram na fila. Aquele a ser atendido é o primeiro da fila. Quando o primeiro da fila é chamado, a fila  "anda", ou seja, o segundo passa a ser o primeiro, o terceiro passa a ser o segundo e assim por diante até a última pessoa.
 
-Um exemplo muito popular na Ciência da Computação é a fila de impressão. Suponha que precisamos imprimir cinco documentos. Abrimos cada documento e clicamos no botão de imprimir. Cada documento será enviado para a fila de impressão. O primeiro documento que pedimos para ser impresso será o primeiro a ser impresso, e assim por diante, até que todos os documentos sejam impressos.
+Normalmente, para entrar em uma fila, uma pessoa deve se colocar na última posição, ou seja, no fim da fila. Desta forma, quem chega primeiro tem preferencia.
 
-## Operações básicas da Fila
+## Definição
 
-Aqui estão as operações principais realizadas em uma fila:
-
-Enqueue (inserir): Adiciona um elemento no final da fila.
-Dequeue (remover): Remove o elemento da frente da fila.
-Peek: Verifica o elemento na frente da fila sem removê-lo.
-isEmpty: Verifica se a fila está vazia
-
+A fila é uma coleção ordenada de itens que segue o princípio FIFO (First In First Out), também conhecido como o princípio de primeiro a entrar, primeiro a sair. A adição de novos elementos em uma fila ocorre na cauda (rear), e a remoção é feita pela frente. O elemento mais recente adicionado à fila deve esperar no final da fila. 
 
 ![Fila](https://nystudio107.com/img/blog/_1200x630_crop_center-center_100_line/queue-enqueue-dequeue-craft-cms.png.webp)
+
+## Casos de uso
+Alguns exemplos que vivenciamos no cotidiano são as filas para o cinema, para a cafeteria e a fila do caixa em um supermercado. 
+
+<div style="text-align: center; margin: 1rem">
+<img src="https://www.shutterstock.com/image-photo/turin-italy-april-2018-crowd-260nw-1072534601.jpg" alt="Pessoas aguardando na fila">
+</div>
+
+Um exemplo muito popular na informática é a fila de impressão. Suponha que precisamos imprimir cinco documentos. Abrimos cada documento e clicamos no botão de imprimir. Cada documento será enviado para a fila de impressão. O primeiro documento que pedimos para ser impresso será o primeiro a ser impresso, e assim por diante, até que todos os documentos sejam impressos.
+
+<div style="text-align: center; margin: 1rem ">
+<img src="https://www.howtogeek.com/wp-content/uploads/2017/01/cpj_top.png " alt="Fila de impressão no Windows">
+</div>
+
+
+A unidade de controle (UC) de uma  CPU controla a fila de processos que desejam acessar a unidade lógico aritmética (ULA). Diversos tipos de fila podem ser utilizadas, uma estratégia comum é a fila com prioridades, fazendo com que a movimentação dos elementos seja guiada de acordo com os algoritmos de cada fila
+
+
+As operações de enfileirar e desenfileirar permanecem da mesma forma: Primeiro processo a entrar na fila deverá ser o primeiro a sair para ser executado pela ULA.
+
+<div style="text-align: center; margin: 1rem">
+<img src="https://www.researchgate.net/publication/271844675/figure/fig1/AS:682383569321996@1539704329886/Multiple-Priority-Queues-Scheduling-Model.png" alt="Fila de impressão no Windows">
+</div>
+
+
+ 
+Um pacote na fila de comunicação em redes de computadores é colocado na fila ao chegar em dispositivos de comutação para que ela seja roteado para o destino. Cada pacote é processado e enfileirado para a saída correta
+Quando a demanda de um roteador é muito grande ele pode eliminar os últimos pacotes que chegaram a fila por um processo de Drop Tail
+
+
+<div style="text-align: center; margin: 1rem">
+<img src="https://www.researchgate.net/profile/Pavlos-Efraimidis/publication/230700261/figure/fig4/AS:668682397175816@1536437715604/The-network-model-with-the-flows-and-their-packets-the-router-and-the-router-queue.png" alt="Fila de impressão no Windows">
+</div>
+
+O Windows armazena os dados de operações de leitura e escrita de arquivos em buffers de dados, mantidos pelo sistema para otimizar o desempenho do disco. Quando um aplicativo grava em um arquivo, o sistema geralmente armazena os dados em buffer e os grava no disco regularmente. Esse armazenamento em buffer para gravação de dados em dispositivos de memória secundária também pode ser feito com filas. 
+
+## Operações
+
+ O tipo abstrato de dados fila é definido pelas seguintes operações
+
+- enqueue (inserir): Adiciona um elemento no final da fila.
+- dequeue (remover): Remove o elemento da frente da fila.
+- front: Verifica o elemento na frente da fila sem removê-lo.
+- rear: Verifica o último elemento na fila, sem removê-lo
+- isEmpty: Verifica se a fila está vazia
+- size: Verifica o tamanho da fila
+
+
+
+ 
+### Utilizando as operações 
+
+Podemos utilizar as operações implementadas para testar o funcionamento da nossa fila. Para as diferentes implementações vistas anteriormente realize as chamadas dos métodos do quadro a seguir:
+
+![Testando a classe Stack](./img/queue-test.png)
+
+Inicialmente utilize o [lab1](./labs/lab1/) para aplicar as operações de uma fila usando os métodos push e shift do array javascript. Em seguida, faça a implementação e utilize as chamadas dos métodos em uma pequena aplicação.
+
+![](./img/js-array-queue.png)
 
 ## Implementação
 
 
-A fila pode ser implementada de várias formas em JavaScript, como com arrays, objetos, ou classes. Vamos implementar usando uma classe.
+A fila pode ser implementada de várias formas em JavaScript, como com arrays, objetos, ou classes.
 
-Exemplo de implementação de Fila usando uma classe:
+### Implementação com Arrays
+
+Em JavaScript, os arrays podem ser facilmente usados para implementar uma fila, pois eles já têm métodos como push() que insere um elemento na última posição e o shift() que remove um elemento da primeira posição.
 
 ```js
-// Implementação de uma classe Fila (Queue)
-class Queue {
-  constructor() {
-    this.items = []; // Array para armazenar os elementos da fila
-  }
+const items = []
 
-  // Método para adicionar um elemento na fila (enqueue)
-  enqueue(element) {
-    this.items.push(element); // Adiciona o elemento no final da fila
-  }
-
-  // Método para remover o elemento da frente da fila (dequeue)
-  dequeue() {
-    if (this.isEmpty()) {
-      return 'A fila está vazia'; // Verifica se a fila está vazia
-    }
-    return this.items.shift(); // Remove e retorna o primeiro elemento da fila
-  }
-
-  // Método para ver o elemento na frente da fila (peek)
-  peek() {
-    if (this.isEmpty()) {
-      return 'A fila está vazia'; // Verifica se a fila está vazia
-    }
-    return this.items[0]; // Retorna o primeiro elemento sem removê-lo
-  }
-
-  // Método para verificar se a fila está vazia
-  isEmpty() {
-    return this.items.length === 0; // Retorna true se o array estiver vazio
-  }
-
-  // Método para verificar o tamanho da fila
-  size() {
-    return this.items.length; // Retorna o número de elementos na fila
-  }
-
-  // Método para limpar a fila
-  clear() {
-    this.items = []; // Limpa o array, removendo todos os elementos
-  }
+function enqueue(element){
+    items.push(element)
 }
 
-// Exemplo de uso da Fila
-const fila = new Queue();
+function dequeue(){
+    return items.shift()
+}
 
-// Adicionando elementos à fila
-fila.enqueue('Documento 1');
-fila.enqueue('Documento 2');
-fila.enqueue('Documento 3');
+function size(){
+    return items.length
+}
 
-console.log(fila.peek());   // Output: 'Documento 1' (primeiro da fila)
-console.log(fila.dequeue()); // Output: 'Documento 1' (remove o primeiro)
-console.log(fila.size());    // Output: 2 (restam dois elementos)
-console.log(fila.peek());   // Output: 'Documento 2' (novo primeiro da fila)
+function isEmpty(){
+    return items.length === 0
+}
+
+function front(){
+    return isEmpty()? null: items[0]
+}
+
+function rear(){
+    return isEmpty()? null: items[size()-1]
+}
+
+export {enqueue, dequeue, size, isEmpty, front, rear}
 
 ```
 
-## Explicação do Código:
-enqueue(element): Adiciona um elemento no final da fila com o método push(), que insere no final do array.
-dequeue(): Remove o primeiro elemento da fila com shift(), que remove o primeiro item de um array.
-peek(): Mostra o primeiro elemento da fila sem removê-lo.
-isEmpty(): Verifica se a fila está vazia ao checar se o comprimento do array é 0.
-size(): Retorna o tamanho da fila.
-clear(): Remove todos os elementos da fila, limpando o array.
+### Implementação com Classe
+
+Vamos  implementar a fila usando uma classe.
+
+Arquivo class-queue.js
+```js
+// Implementação de uma classe Fila (Queue)
+class Queue {
+    constructor(){
+        this.items = []
+    }
+    // Método para adicionar um elemento na fila 
+    enqueue(element){
+        this.items.push(element)
+    }
+    // Método para remover o elemento da frente da fila
+    dequeue(){
+        if (this.isEmpty()){
+            return "A fila está vazia"
+        }
+        return this.items.shift()
+    }
+    // Método para verificar o tamanho da fila
+    size(){
+        return this.items.length
+    }
+    // Método para verificar se a fila está vazia
+    isEmpty(){
+        return this.items.length === 0
+    }
+    // Método para ver o elemento na frente da fila
+    front(){
+        return this.isEmpty()? "A fila está vazia": items[0]
+    }
+    // Método para ver o elemento no final da fila
+    rear(){
+        return this.isEmpty()? "A fila está vazia": items[size()-1]
+    }
+    // Método para limpar a fila
+    clear() {
+        this.items = []; // Limpa o array, removendo todos os elementos
+    }
+}
+
+export {Queue}
+```
+Arquivo app.js
+```js
+import {Queue} from "./class-queue.js"
+
+const q = new Queue()
+
+let valor_retornado = q.isEmpty()
+console.log(valor_retornado)
+
+q.enqueue(4)
+q.enqueue("dog")
+q.enqueue(true)
+
+valor_retornado = q.size()
+console.log(valor_retornado)
+
+valor_retornado = q.isEmpty()
+console.log(valor_retornado)
+
+q.enqueue(8.4)
+
+valor_retornado = q.dequeue()
+console.log(valor_retornado)
+
+valor_retornado = q.dequeue()
+console.log(valor_retornado)
+
+valor_retornado = q.size()
+console.log(valor_retornado)
+
+valor_retornado = q.isEmpty()
+console.log(valor_retornado)
+
+```
 
 ## Complexidade de Tempo:
 enqueue: O tempo de inserção é O(1), pois estamos apenas adicionando ao final da fila.
@@ -98,185 +198,97 @@ dequeue: O tempo de remoção é O(n), pois shift() precisa reorganizar os índi
 peek e isEmpty: Ambas as operações têm tempo O(1).
 
 
-## Fila com Objeto para Melhor Desempenho
-Usar um array para implementar uma fila pode ter uma desvantagem na operação dequeue(), já que shift() tem um custo O(n) para reorganizar os índices. Podemos melhorar isso usando um objeto para manter um índice separado para o início e o fim da fila.
-
-Aqui está a implementação de uma fila usando um objeto:
-```js
-class QueueWithObject {
-  constructor() {
-    this.items = {};
-    this.front = 0; // Índice do início da fila
-    this.rear = 0;  // Índice do final da fila
-  }
-
-  // Adiciona um elemento no final da fila
-  enqueue(element) {
-    this.items[this.rear] = element;
-    this.rear++;
-  }
-
-  // Remove o elemento da frente da fila
-  dequeue() {
-    if (this.isEmpty()) {
-      return 'A fila está vazia';
-    }
-    const removed = this.items[this.front];
-    delete this.items[this.front];
-    this.front++;
-    return removed;
-  }
-
-  // Verifica o primeiro elemento sem removê-lo
-  peek() {
-    if (this.isEmpty()) {
-      return 'A fila está vazia';
-    }
-    return this.items[this.front];
-  }
-
-  // Verifica se a fila está vazia
-  isEmpty() {
-    return this.rear === this.front;
-  }
-
-  // Tamanho da fila
-  size() {
-    return this.rear - this.front;
-  }
-
-  // Limpa a fila
-  clear() {
-    this.items = {};
-    this.front = 0;
-    this.rear = 0;
-  }
-}
-
-// Exemplo de uso da fila com objeto
-const filaObj = new QueueWithObject();
-
-filaObj.enqueue('A');
-filaObj.enqueue('B');
-filaObj.enqueue('C');
-
-console.log(filaObj.peek());    // Output: 'A'
-console.log(filaObj.dequeue()); // Output: 'A'
-console.log(filaObj.size());    // Output: 2
-
-```
-
-Vantagens do Objeto:
-A operação de dequeue() agora tem tempo O(1), pois não há necessidade de reorganizar os elementos após a remoção.
-Melhor para grandes quantidades de dados ou em cenários de tempo crítico.
-
 ## Fila Ligada
 
 Para implementar uma fila usando nós (nodes), também chamada de fila ligada (linked queue), utilizamos uma estrutura onde cada elemento (nó) contém duas partes:
 
-O valor do elemento.
-Uma referência para o próximo nó da fila.
+- O valor do elemento.
+- Uma referência para o próximo nó da fila.
+
+
+<div style="text-align: center; margin: 2rem">
+<img src="./img/linked-queue.png">
+</div>
+
 Essa estrutura é útil pois permite que as operações de enqueue (inserir) e dequeue (remover) tenham complexidade constante O(1), já que não precisamos deslocar ou reorganizar elementos como em arrays.
 
 ```js
-// Classe que representa um nó da fila
 class Node {
-  constructor(value) {
-    this.value = value;   // Valor do nó
-    this.next = null;     // Referência para o próximo nó
-  }
+    constructor(value){
+        this.value = value
+        this.next = null
+    }
 }
 
-// Classe que representa a fila
-class LinkedQueue {
-  constructor() {
-    this.front = null;  // Referência para o primeiro nó (início da fila)
-    this.rear = null;   // Referência para o último nó (final da fila)
-    this.size = 0;      // Tamanho da fila
-  }
-
-  // Método para adicionar um elemento na fila (enqueue)
-  enqueue(value) {
-    const newNode = new Node(value);  // Cria um novo nó
-
-    if (this.isEmpty()) {
-      this.front = newNode;  // Se a fila estiver vazia, o novo nó é o primeiro
-      this.rear = newNode;   // E também é o último
-    } else {
-      this.rear.next = newNode; // O último nó atual aponta para o novo nó
-      this.rear = newNode;      // O novo nó se torna o último
+class Queue {
+    constructor(){
+        this.front = null
+        this.rear = null
+        this._size = 0
     }
-    this.size++; // Incrementa o tamanho da fila
-  }
-
-  // Método para remover um elemento da fila (dequeue)
-  dequeue() {
-    if (this.isEmpty()) {
-      return 'A fila está vazia'; // Não há nada para remover
+    // Método para adicionar um elemento na fila 
+    enqueue(element){
+        const node = new Node(element)
+        if (this.front === null && this.rear === null) {
+            this.front = node
+            this.rear = node
+        } else {
+            this.rear.next = node 
+            this.rear = node
+        }
+        
+        this._size += 1      
     }
+    // Método para remover o elemento da frente da fila
+    dequeue(){
+        if ( this.isEmpty() ) { // Não há nada para remover
+            return "A fila está vazia"
+        }
+        const node = this.front  // Valor do nó removido
+        this.front = this.front.next  // O próximo nó se torna o primeiro
 
-    const removedValue = this.front.value; // Valor do nó removido
-    this.front = this.front.next;          // O próximo nó se torna o primeiro
+        if (!this.front) {
+          this.rear = null; // Se a fila ficar vazia, rear também se torna null
+        }
 
-    if (!this.front) {
-      this.rear = null; // Se a fila ficar vazia, rear também se torna null
+        this._size -= 1
+        return node.value
     }
-
-    this.size--; // Decrementa o tamanho da fila
-    return removedValue;
-  }
-
-  // Método para ver o primeiro elemento da fila (peek)
-  peek() {
-    if (this.isEmpty()) {
-      return 'A fila está vazia';
+    
+    // Método para verificar o tamanho da fila
+    size(){
+        return this._size
     }
-    return this.front.value; // Retorna o valor do primeiro nó
-  }
-
-  // Método para verificar se a fila está vazia
-  isEmpty() {
-    return this.size === 0;
-  }
-
-  // Método para verificar o tamanho da fila
-  getSize() {
-    return this.size;
-  }
-
-  // Método para limpar a fila
-  clear() {
-    this.front = null;
-    this.rear = null;
-    this.size = 0;
-  }
+    // Método para verificar se a fila está vazia
+    isEmpty(){
+        return this._size === 0
+    }
+    // Método para ver o elemento na frente da fila
+    front(){
+        return this.isEmpty()? "A fila está vazia": this.front.value
+    }
+    // Método para ver o elemento no final da fila
+    rear(){
+        return this.isEmpty()? "A fila está vazia": this.rear.value
+    }
+    // Método para limpar a fila
+    clear() {
+        this.front = null 
+        this.rear = null
+        this._size = 0
+    }
 }
 
-// Exemplo de uso da fila ligada
-const filaLigada = new LinkedQueue();
-
-// Adicionando elementos à fila
-filaLigada.enqueue('Primeiro');
-filaLigada.enqueue('Segundo');
-filaLigada.enqueue('Terceiro');
-
-console.log(filaLigada.peek());    // Output: 'Primeiro' (o primeiro da fila)
-console.log(filaLigada.dequeue()); // Output: 'Primeiro' (remove o primeiro)
-console.log(filaLigada.peek());    // Output: 'Segundo' (agora é o primeiro)
-console.log(filaLigada.getSize()); // Output: 2 (restam dois elementos)
-filaLigada.clear();
-console.log(filaLigada.isEmpty()); // Output: true (a fila está vazia)
-
+export {Queue}
 ```
 
 ### Vantagens da implementação com nós (linked queue):
-A operação enqueue e dequeue são realizadas em tempo constante O(1), pois não há necessidade de deslocar ou reorganizar elementos como acontece em um array.
-Essa estrutura é eficiente para gerenciar filas dinâmicas de tamanho variável, já que não há necessidade de redimensionar arrays.
+A operação enqueue e dequeue são realizadas em tempo constante O(1), pois não há necessidade de deslocar ou reorganizar elementos como acontece em um array. Essa estrutura é eficiente para gerenciar filas dinâmicas de tamanho variável, já que não há necessidade de redimensionar arrays.
 
 Implementar filas usando nós (fila ligada) é uma maneira eficiente de gerenciar coleções de elementos quando a inserção e remoção frequentes são necessárias. É particularmente útil quando não queremos os custos de realocação de memória que podem ocorrer em arrays.
 
 
-# A fila de prioridade  
+## Fila de prioridade  
 
 As filas são amplamente aplicadas na Ciência da Computação e também em nossas vidas, existem algumas versões modificadas da fila padrão que implementamos no tópico anterior. Uma versão modificada é a fila de prioridade. Os elementos são adicionados e removidos com base em uma prioridade. Um exemplo da vida real é a fila de embarque no aeroporto. Os passageiros da primeira classe e da classe executiva têm prioridade sobre os passageiros da classe econômica. 
 
