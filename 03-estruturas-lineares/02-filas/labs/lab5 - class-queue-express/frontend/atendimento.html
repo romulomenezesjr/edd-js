@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atendimento</title>
+  </head>
+
+  <body class="container mx-auto px-8 py-28 sm:px-12">
+    <h1
+      class="sm:mb-18 mb-24 w-full text-center text-4xl font-extrabold dark:text-slate-50 sm:mx-auto sm:w-4/5"
+    >
+      Atender Primeiro da Fila
+    </h1>
+    <div class="flex flex-col items-center">
+      <div class="rounded-lg bg-white py-5 px-6 text-center text-slate-800 shadow-lg shadow-slate-200 w-full text-4xl">
+        <div id="resposta"></div>
+      </div>
+      <button
+        class="mt-10 w-96 flex items-center justify-center rounded-md bg-violet-900 px-4 py-3 font-semibold text-white shadow-md shadow-violet-700 transition hover:bg-slate-900"
+        id="dequeue"
+        onclick="dequeueButton()"
+      >
+        dequeue
+      </button>
+    </div>
+
+    <script>
+      function dequeueButton() {
+        const url = "http://localhost:8000/dequeue";
+
+        fetch(url)
+          .then(async (response) => {
+            if (!response.ok) {
+              alert("Erro");
+            }
+            const json = await response.json();
+            const element = json.element;
+
+            resposta.innerHTML = element;
+          })
+          .catch((err) => {
+            alert("Erro");
+          });
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>

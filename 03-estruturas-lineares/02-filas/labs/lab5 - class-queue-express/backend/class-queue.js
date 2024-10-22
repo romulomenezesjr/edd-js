@@ -23,11 +23,11 @@ class Queue {
     }
     // Método para ver o elemento na frente da fila
     front(){
-        return this.isEmpty()? "A fila está vazia": items[0]
+        return this.isEmpty()? "A fila está vazia": this.items[0]
     }
     // Método para ver o elemento no final da fila
     rear(){
-        return this.isEmpty()? "A fila está vazia": items[size()-1]
+        return this.isEmpty()? "A fila está vazia": this.items[size()-1]
     }
     // Método para limpar a fila
     clear() {

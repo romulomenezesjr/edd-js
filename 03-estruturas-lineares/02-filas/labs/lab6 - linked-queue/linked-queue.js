@@ -7,9 +7,7 @@ class Node {
 
 class Queue {
     constructor(){
-        this.front = null
-        this.rear = null
-        this._size = 0
+        this.clear()
     }
     // Método para adicionar um elemento na fila 
     enqueue(element){
@@ -31,6 +29,11 @@ class Queue {
         }
         const node = this.front
         this.front = this.front.next
+
+        if (!this.front) {
+            this.rear = null; // Se a fila ficar vazia, rear também se torna null
+        }
+
         this._size -= 1
         return node.value
     }
