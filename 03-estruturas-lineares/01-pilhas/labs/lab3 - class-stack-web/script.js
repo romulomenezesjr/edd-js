@@ -35,7 +35,7 @@ function logValue(value){
     logger.innerHTML = `<p>${value}</p>`
     setTimeout(()=>{
         logger.innerHTML = ""
-    }, 1500)
+    }, 2500)
 }
 
 function renderizar(){

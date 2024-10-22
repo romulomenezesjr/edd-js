@@ -23,7 +23,7 @@ Podemos fazer algumas considerações sobre os elementos:
 - Itens inseridos recentemente estão mais perto do topo; 
 - O último item inserido é aquele que está na posição em que pode ser removido primeiro;
 
-## Casos de uso de uma Pilha
+## Casos de uso
 
 Pilhas são muito úteis em várias situações. Aqui estão alguns exemplos:
 
@@ -59,11 +59,11 @@ O tipo abstrato de dados pilha é definido pelas seguintes operações
 
 Essas operações são básicas e permitem manipular dados de forma simples, mas eficaz.
 
-
-
 ## Implementações
 
-## Implementação Estática com Arrays
+A pilha pode ser implementada de várias formas em JavaScript, como com arrays, objetos e classes. 
+
+### Implementação Estática com Arrays
 
 Em JavaScript, os arrays podem ser facilmente usados para implementar uma pilha, pois eles já têm métodos como push() e pop().
 
@@ -148,9 +148,9 @@ console.log(stack.pop());   // Output: 30
 console.log(stack.size());  // Output: 2
 
 ```
-### Utilizando os Métodos da Classe Stack
+### Utilizando as operações
 
-Podemos utilizar os métodos implementados na classe Stack para testar o funcionamento da nossa pilha. Realize as chamadas dos métodos do quadro a seguir:
+Podemos utilizar as operações implementadas da Stack para testar o funcionamento da nossa pilha. Realize as chamadas dos métodos do quadro a seguir:
 
 ![Testando a classe Stack](./img/testing-stack.png)
 
