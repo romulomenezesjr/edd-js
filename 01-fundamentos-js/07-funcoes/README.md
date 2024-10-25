@@ -166,7 +166,25 @@ y = meucarro.make; // y recebe o valor "Toyota"
 
 ![Escopo](./escopo.png)
 
-### Hoisting (içar/elevar, em português)
+### Argumentos Rest
+
+Quando você não sabe quantos argumentos a função pode receber, pode usar o operador rest (...) para coletar todos os argumentos restantes em um array.
+
+```js
+function somarTodos(...numeros) {
+  let soma = 0
+  for (let e of numeros){
+    soma += e
+  }
+  return soma
+}
+
+console.log(somarTodos(1, 2, 3, 4, 5)); // 15
+console.log(somarTodos(10, 20));         // 30
+
+```
+
+## Hoisting (içar/elevar, em português)
 
 As declarações de de variáveis e funções são colocadas na memória durante a fase de compilação. Mesmo que chamemos a função em nosso código primeiro, antes que a função seja escrita, o código ainda funciona. Isto ocorre por conta de como a execução de contexto funciona em JavaScript.
 
@@ -201,6 +219,7 @@ console.log(num); // retorna 6
 ## Escopo da função
 
 As variáveis definidas no interior de uma função não podem ser acessadas de nenhum lugar fora da função, porque a variável está definida apenas no escopo da função. No entanto, uma função pode acessar todas variáveis e funções definida fora do escopo onde ela está definida. Em outras palavras, a função definida no escopo global pode acessar todas as variáveis definidas no escopo global. A função definida dentro de outra função também pode acessar todas as variáveis definidas na função hospedeira e outras variáveis ao qual a função hospedeira tem acesso.
+
 ```js
 
 // As seguintes variáveis são definidas no escopo global
@@ -240,6 +259,7 @@ Em resumo:
     A função interna forma uma closure: a função interna pode usar os argumentos e variáveis da função externa, enquanto a função externa não pode usar os argumentos e variáveis da função interna.
 
 O exemplo a seguir mostra as funções aninhadas:
+
 ```js
 
 function addSquares(a, b) {
@@ -251,8 +271,10 @@ function addSquares(a, b) {
 a = addSquares(2, 3); // retorna 13
 b = addSquares(3, 4); // retorna 25
 c = addSquares(4, 5); // retorna 41
+
 ```
 Uma vez que a função interna forma uma closure, você pode chamar a função externa e especificar argumentos para a função externa e interna:
+
 ```js
 
 function fora(x) {
@@ -317,213 +339,119 @@ result = fora()(20); // retorna 20 em vez de 10
 ```
 O conflito de nome acontece na declaração return x e está entre o parâmetro x de dentro e a variável x de fora. A cadeia de escopo aqui é {dentro, fora, objeto global}. Por isso o x de dentro tem precedência sobre o x de fora, e 20 (x de dentro) é retornado em vez de 10 (x de fora).
 
-### Closures
 
-Closures são um dos recursos mais poderosos de JavaScript. JavaScript permite o aninhamento de funções e garante acesso completo à função interna a todas as variáveis e funções definidas dentro da função externa (e todas as outras variáveis e funções que a função externa tem acesso). 
 
-No entanto, a função externa não tem acesso às variáveis e funções definidas dentro da função interna. Isto proporciona uma espécie de segurança para as variáveis da função interna. Além disso, uma vez que a função interna tem acesso ao escopo da função externa, as variáveis e funções definidas na função externa vão durar na memória mais do que a própria função externa, isto se a função interna permanecer na memória mais tempo do que a função externa. 
-
-Uma closure é criada quando a função interna é de alguma forma disponibilizada para qualquer escopo fora da função externa.
-```js
-
-var pet = function (nome) {
-    // A função externa define uma variável "nome"
-    var getNome = function () {
-      return nome; // A função interna tem acesso à variável "nome"  da função externa
-    };
-
-    return getNome; // Retorna a função interna, expondo-a assim para escopos externos
-  },
-  myPet = pet("Vivie");
-
-myPet(); // Retorna "Vivie"
-```
-Ela pode ser mais complexa que o código acima. Um objeto contendo métodos para manipular as variáveis da função externa pode ser devolvida.
-```js
-
-var criarPet = function (nome) {
-  var sex;
-
-  return {
-    setNome: function (newNome) {
-      nome = newNome;
-    },
-
-    getNome: function () {
-      return nome;
-    },
-
-    getSex: function () {
-      return sex;
-    },
-
-    setSex: function (newSex) {
-      if (
-        typeof newSex == "string" &&
-        (newSex.toLowerCase() == "macho" || newSex.toLowerCase() == "fêmea")
-      ) {
-        sex = newSex;
-      }
-    },
-  };
-};
-
-var pet = criarPet("Vivie");
-pet.getNome(); // Vivie
-
-pet.setNome("Oliver");
-pet.setSex("macho");
-pet.getSex(); // macho
-pet.getNome(); // Oliver
-```
-Nos códigos acima, a variável nome da função externa é acessível para as funções internas, e não há nenhuma outra maneira para acessar as variáveis internas, exceto pelas funções internas. As variáveis internas da função interna atuam como armazenamento seguro para as funções internas. Elas armazenam "persistentes", mas seguros, os dados com os quais as funções internas irão trabalhar. As funções não tem que ser atribuídas a uma variável, ou ter um nome.
-```js
-
-var getCode = (function () {
-  var secureCode = "0]Eal(eh&2"; // Um código que não queremos que pessoas de fora sejam capazes de modificar
-
-  return function () {
-    return secureCode;
-  };
-})();
-
-getCode(); // Retorna o secureCode
-```
-Há, no entanto, uma série de armadilhas que se deve ter cuidado ao usar closures. Se uma função fechada define uma variável com o mesmo nome de uma variável em um escopo externo, não há nenhuma maneira de se referir para a variável em um escopo externo novamente.
-```js
-
-var createPet = function (nome) {
-  // Função externa define uma variável chamada "nome"
-  return {
-    setNome: function (nome) {
-      // Função fechada define uma variável chamada "nome"
-      nome = nome; // ??? Como podemos acessar o "nome" definido pela função externa ???
-    },
-  };
-};
-```
-A palavra reservada this é muito complicada em closures, elas têm de ser usadas com muito cuidado. O objeto ao que this se refere depende completamente de onde a função foi chamada, ao invés de onde ela foi definida.
-Usando objeto de argumentos
-
-Os argumentos de uma função são mantidos em um objeto do tipo array. Dentro de uma função, você pode endereçar os argumentos passados para ele conforme:
-js
-
-arguments[i];
-
-onde i é um número ordinal do argumento, começando com zero. Então, o primeiro argumento passado para a função seria arguments[0]. O número total de argumentos é indicado por arguments.length.
-
-Usando o objeto arguments, você pode chamar a função com mais argumentos do que o formalmente declarado. Isso muitas vezes é útil se você não sabe de antemão quantos argumentos serão passados para a função. Você pode usar arguments.length para determinar a quantidade de argumentos passados para a função, e então acessar cada argumento usando o objeto arguments.
-
-Por exemplo, considere uma função que concatena várias strings. O argumento formal para a função é uma string que especifica os caracteres que separam os itens para concatenar. A função definida como segue:
-```js
-
-function myConcat(separador) {
-  var result = "", // inicializa a lista
-    i;
-  // itera por meio de argumentos
-  for (i = 1; i < arguments.length; i++) {
-    result += arguments[i] + separador;
-  }
-  return result;
-}
-```
-Você pode passar qualquer quantidade de argumentos para esta função, e ela concatena cada argumento na string "list":
-```js
-
-// retorna "red, orange, blue, "
-myConcat(", ", "red", "orange", "blue");
-
-// retorna "elephant; giraffe; lion; cheetah; "
-myConcat("; ", "elephant", "giraffe", "lion", "cheetah");
-
-// retorna "sage. basil. oregano. pepper. parsley. "
-myConcat(". ", "sage", "basil", "oregano", "pepper", "parsley");
-```
-Nota: Nota: A variável arguments é "como um array", mas não é um array. Ela é como um array pois possui um índice numerado e a propriedade length. No entanto, não possui todos os métodos de manipulação de array.
-
-Veja objeto Function na referência do JavaScript para maiores informações.
-Parâmetros de função
-
-Começando com ECMAScript 6, há dois tipos novos de parâmetros: parâmetros padrão e parâmetros rest.
-Parâmetros padrão
-
-Em JavaScript, parâmetros padrões de funções são undefined. No entanto, em algumas situações pode ser útil definir um valor padrão diferente. Isto é onde os parâmetros padrão podem ajudar.
-
-No passado, a estratégia geral para definir padrões era testar os valores de parâmetro no corpo da função e atribuir um valor se eles fossem undefined. Se, no exemplo a seguir, nenhum valor é fornecido para b na chamada, seu valor seria undefined ao avaliar a*b e a chamada para multiplicar retornaria NaN. No entanto, isso é pego com a segunda linha neste exemplo:
-js
-
-function multiplicar(a, b) {
-  b = typeof b !== "undefined" ? b : 1;
-
-  return a * b;
-}
-
-multiplicar(5); // 5
-
-Com parâmetros padrão, a verificação no corpo da função não é mais necessária. Agora você pode simplesmente colocar 1 como valor padrão para b no campo de declaração de parâmetros:
-js
-
-function multiplicar(a, b = 1) {
-  return a * b;
-}
-
-multiplicar(5); // 5
-
-Mais detalhes, consulte parâmetros padrão na referência.
-Parâmetros rest
-
-A sintaxe de parâmetro rest permite representar um número indefinido de argumentos como um array. No exemplo, usamos parâmetros rest para coletar argumentos do segundo argumento ao último. Então os multiplicamos pelo primeiro argumento. Neste exemplo é usado uma arrow function, que será introduzida na próxima seção.
-```js
-
-function multiplicar(multiplicador, ...args) {
-  return args.map((x) => multiplicador * x);
-}
-
-var arr = multiplicar(2, 1, 2, 3);
-console.log(arr); // [2, 4, 6]
-```
 ## Funções de seta
 
-Uma expressão função de seta (arrow function) tem uma sintaxe pequena em comparação com a expressão de função e lexicalmente vincula o valor this. Funções de seta são sempre anônimas. Consulte também no blog hacks.mozilla.org no post: "ES6 In Depth: Arrow functions".
+Uma expressão função de seta (arrow function) tem uma sintaxe pequena em comparação com a expressão de função, estas funções também são sempre anônimas.  Dois fatores influenciaram a introdução de funções de seta: funções mais curtas e o léxico this.
 
-Dois fatores influenciaram a introdução de funções de seta: funções mais curtas e o léxico this.
-Funções curtas
+### Funções curtas
 
-Em alguns padrões funcionais, funções curtas são bem-vindas. Compare:
+Em algumas situações que seguem padrões funcionais, as funções curtas são bem-vindas. Execute os exemplos do [Lab06](./labs/lab07-%20arrow/) e observe exemplos a seguir:
 
 ```js
 
-var a = ["Hydrogen", "Helium", "Lithium", "Beryllium"];
+const a = ["Hydrogen", "Helium", "Lithium", "Beryllium"];
 
-var a2 = a.map(function (s) {
+// Formato 1
+function calcLength(s) {
+  return s.length;
+}
+const a1 = a.map(calcLength)
+
+// Formato 2
+const a2 = a.map(function (s) {
   return s.length;
 });
 
-var a3 = a.map((s) => s.length);
+// Formato 3
+const a3 = a.map((s) => s.length);
 ```
+
+
+
 
 ## Módulos
 
-Não havia sistema de módulos integrados nos primeiros dias do JavaScript. Os códigos foram escritos em um escopo global, tornando funções e variáveis ​​acessíveis globalmente, resultando em conflitos de nomenclatura e bases de código complexas. A falta de encapsulamento e modularidade dificultou aos desenvolvedores a reutilização de código em vários projetos.
+Nas primeiras versões do JavaScript não havia sistema de módulos integrados. Todos os códigos escritos ficavam em um escopo global, tornando funções e variáveis ​​acessíveis de qualquer lugar. Isso poderia resultar em conflitos de nomenclatura em bases de código complexas. A falta de encapsulamento e modularidade dificultou aos desenvolvedores a reutilização de código em vários projetos.
 
 A evolução dos módulos JavaScript resultou em uma abordagem mais organizada e sustentável para escrever código, permitindo o encapsulamento e o gerenciamento eficazes de dependências de código.
 
-Atualmente, para modularizar os programas em Javascript o módulo ES (esm - Ecma Script Module) é o formato padrão oficial para empacotar código JavaScript para reutilização, e a maioria dos navegadores modernos oferece suporte nativo aos módulos.
+### ESM (Ecma Script Modules)
 
-Node.js, entretanto, oferece suporte ao formato de módulo CommonJS por padrão. Os módulos CommonJS são carregados usando require e as variáveis ​​e funções são exportadas de um módulo CommonJS com module.exports
+Para modularizar os programas em Javascript o módulo ES (esm - Ecma Script Module) é o formato oficial para empacotar código JavaScript para reutilização. Na maioria dos navegadores modernos já existe suporte nativo aos módulos. 
 
-Existem algumas diferenças entre o ESM e o CommonJS, mas as principais são:
-
-Arquivo de funções modulares em CommonJS
+Execute o código do [Lab 04](./labs/lab04%20-%20commonjs-esm/) e observe nos exemplos a seguir as funções exportadas seguindo o formato ESM:
 
 ```js
-module.exports.add = function(a, b) {
+export function add(a, b) {
+        return a + b;
+}
+
+export function subtract(a, b) {
+        return a - b;
+}
+```
+
+Também é possível exportar após a definição das funções, porém estas duas formas não devem ser usadas ao mesmo tempo. 
+
+```js
+function add(a,b){
+    return a+b
+}
+
+function sub(a,b){
+    return a-b
+}
+export {sub, add}
+```
+
+Para importar estas funções de outras partes do projeto temos que usar a instrução import:
+
+```js
+import {add, subtract} from './util.js'
+
+console.log(add(5, 5)) // 10
+console.log(subtract(10, 5)) // 5
+```
+
+Ao utilizar módulos no navegador devemos importar os scripts com a tag type com o valor module.
+
+```html
+<html>
+  <body></body>
+  <script type="module" src="app.js">
+</html>
+```
+### CommonJS
+
+O Node.js oferece suporte ao formato de módulo CommonJS por padrão. Os módulos CommonJS são carregados usando require e as variáveis ​​e funções são exportadas de um módulo com exports. Veja mais detalhes na [referencia oficial](https://nodejs.org/docs/latest/api/modules.html#modules-commonjs-modules)
+
+Execute os scripts no [Lab04](./labs/lab04%20-%20commonjs-esm/commonjs/) e observe a sintaxe a seguir:
+
+```js
+exports.add = function(a, b) {
         return a + b;
 } 
 
-module.exports.subtract = function(a, b) {
+exports.subtract = function(a, b) {
         return a - b;
 } 
+```
+
+Assim como no ESM, para arquivos com diversas funções e que necessitam aplicar o encapsulamento, podemos exportar da seguinte forma:
+```js
+
+const add = function(a, b) {
+    return a + b;
+} 
+
+const subtract = function(a, b) {
+    return a - b;
+} 
+
+module.exports = {add: add, subtract: subtract}
+
 ```
 
 Arquivo importando as funções em CommonJS
@@ -536,124 +464,210 @@ console.log(subtract(10, 5)) // 5
 ```
 
 
-Arquivo de funções em ESM
+
+
+
+## Callback
+
+O JavaScript executa o código sequencialmente, seguindo uma ordem de cima para baixo, como qualquer outra linguagem. No entanto, como ele foi criado para executar na web, onde alguns dados podem não estar prontos devido à atrasos/latencia da redes. Sendo assim, ele pode executar instruções já disponíveis. Este comportamento é chamado de execução assíncrona. Execute o [Lab 06](./labs/lab08%20-%20callback/) e observe o exemplo a seguir:
 
 ```js
-export function add(a, b) {
-        return a + b;
+function sleep(segundos) {
+    console.log("antes")
+    setTimeout(() => {
+        console.log("dormiu...")
+    }, segundos)
+    console.log("depois")
 }
+sleep(2000)
 
-export function subtract(a, b) {
-        return a - b;
-}
 ```
-Arquivo importando as funções em ESM
+
+
+Em JavaScript, funções são objetos. E como podem ser armazenadas em variáveis, também pode ser passadas como parâmetros para outras funções.  Uma função callback é uma função passada a outra função como argumento, que é então invocado dentro da função externa para completar algum tipo de rotina ou ação.
+
+O exemplo a seguir é de uma  callback synchronous, uma vez que é executada imediatamente.
 
 ```js
-import {add, subtract} from './util.mjs'
+  function greeting(name) {
+    alert("Olá " + name)
+  }
 
-console.log(add(5, 5)) // 10
-console.log(subtract(10, 5)) // 5
+  function processUserInput(callback) {
+    const name = prompt("Por favor insira seu nome.")
+    callback(name)
+  }
+
+  processUserInput(greeting)
+
 ```
 
-Utilizar ESM nos nossos arquivos é bastante vantajoso pois possibilita a modularização nos arquivos HTML. Ao utilizar módulos no navegador devemos importar os scripts com a tag type com o valor module.
+No entanto, que callbacks são normalmente utilizados para continuar a execução do código após uma operação asynchronous ser terminada — essas são chamadas asynchronous callbacks. Um bom exemplo são as funções callback executadas dentro de um bloco .then() encadeado ao final de uma promessa após essa promessa ser cumprida ou rejeitada. Essa estrutura é usada em muitas APIs da web modernas, como a fetch().
 
-```html
-<script type="module" src="app.js">
+
+```js
+console.log("antes")
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json())
+      .then(json => console.log(json))
+console.log("depois")
+
 ```
 
-## Léxico this
+## Promises
 
-Até as funções de seta, cada nova função definia seu próprio valor this (um novo objeto no caso de um construtor, indefinido em chamadas de função no modo estrito, o objeto de contexto se a função é chamada como um "método de objeto", etc.). 
+Funções que não possuem um retorno imediato, como o fecth, são chamadas de funções assíncronas. Mesmo que elas tenham uma instrução de retorno, quando chamadas elas vão retornar um objeto do tipo Promise. Somente quando o resultado estiver pronto a Promise será resolvida e dará o valor retornado. Quando a função assíncrona lança uma exceção ou algum valor, a Promise será rejeitada com o valor lançado.
+
+Uma função assíncrona pode conter uma expressão await, que pausa a execução da função assíncrona e espera pela resolução da Promise passada, e depois retoma a execução da função assíncrona e retorna o valor resolvido.
+
+Veja o exemplo a seguir com o uso de callback para aguardar o resultado da chamada da função **fecth**. A resposta só é entregue após algum período de tempo, a depender da latencia. Só é possível usar o valor, imprimindo-o nos callbacks.
+
+```js
+function fecthApi(){
+    console.log("antes")
+    const result = fetch('https://jsonplaceholder.typicode.com/todos/1')
+        .then(response => response.json())
+        .then(json => console.log(json))
+        .catch(err=>console.log(err))
+        
+    console.log("depois")
+}
+```
+
+As Promises, por outro lado, são uma evolução dos Callbacks. Elas foram introduzidas para lidar com o problema conhecido como "Callback Hell" ou "Pyramid of Doom", onde várias chamadas assíncronas aninhadas podem tornar o código difícil de entender. As Promises oferecem uma estrutura mais limpa e elegante para tratar operações assíncronas.
+
+Junto com as Promises, usamos o Async/Await, que proporcionam uma maneira mais legível e concisa de lidar com operações assíncronas. Ao utilizar palavras-chave como "async" e "await", o código se torna mais linear e fácil de seguir, eliminando a necessidade de callbacks e reduzindo a complexidade.
+
+![Callback, Async](./async.png)
+
+### Async, Await
+
+Async/Await é uma forma mais moderna de lidar com operações assíncronas em JavaScript, tornando o código mais legível e fácil de manter. Async/Await permite escrever código assíncrono de forma similar ao código síncrono, sem a necessidade de encadeamentos de .then() e .catch().
+
+Para definir uma função assíncrona, basta usar a palavra-chave async antes da declaração da função. Quando uma função é declarada como assíncrona, ela automaticamente retorna uma Promise
+
+```js
+async function minhaFuncao() {
+    return "Hello, Async!";
+}
+
+minhaFuncao().then(console.log); // Output: Hello, Async!
+
+```
+
+O await é usado dentro de funções assíncronas para "esperar" que uma Promise seja resolvida antes de continuar com a execução do código. Isso torna o fluxo de código muito mais legível.
+
+```js
+async function obterDados() {
+    const resposta = await fetch('https://api.exemplo.com/dados');
+    const dados = await resposta.json();
+    console.log(dados);
+}
+
+obterDados();
+
+```
+
+### Calback
+
+Neste exemplo, o Callback é a função anônima que recebe os dados e os exibe no console. Esta abordagem é simples, mas pode levar a problemas de legibilidade com chamadas aninhadas.
+
+```js
+function fecthApi(){
+    console.log("antes")
+    const result = fetch('https://jsonplaceholder.typicode.com/todos/1')
+        .then(response => {
+          return response.json()
+        })
+        .then(json => {
+          console.log(json)
+        })
+    console.log("depois")
+}
+```
+
+
+
+A função **fetch** retorna uma Promise, e a palavra-chave await é usada para esperar pela resolução da Promise. O código se torna ainda mais linear e fácil de entender
 
 ```js
 
-function Pessoa() {
-  // O construtor Pessoa() define 'this' como sendo ele.
-  this.idade = 0;
-  setInterval(function crescer() {
-    // No modo não estrito, a função crescer define 'this'
-    // como o objeto global, o que é diferente do 'this'
-    // definido pelo construtor Pessoa().
-    this.idade++;
-  }, 1000);
-}
-var p = new Pessoa();
-```
+async function fecthApiAsync(){
+    console.log("antes")
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+    const json = await response.json()
+    console.log(json)
+    console.log("depois")
 
-No ECMAScript 3/5, este problema foi resolvido atribuindo o valor em this a uma variável que poderia ser fechada.
+}
+```
+### Criando uma Promise
+
+Para criar uma Promise, você usa o construtor Promise, que recebe uma função chamada executor como argumento. A função executor aceita dois parâmetros: resolve e reject. Você chama resolve quando a operação é bem-sucedida e reject quando ocorre um erro.
+
 
 ```js
-function Pessoa() {
-  var self = this; // Alguns preferem 'that' em vez de 'self'.
-  // Escolha um e seja consistente.
-  self.idade = 0;
+const minhaPromise = new Promise((resolve, reject) => {
+  const sucesso = true; // Simulando uma operação
 
-  setInterval(function crescer() {
-    // A chamada de retorno refere-se à variável 'self' na qual
-    // o valor é o objeto esperado.
-    self.idade++;
-  }, 1000);
-}
+  if (sucesso) {
+    resolve("A operação foi bem-sucedida!"); // Conclusão bem-sucedida
+  } else {
+    reject("A operação falhou."); // Falha
+  }
+});
+
 ```
-Como alternativa, uma função vinculada poderia ser criada para que o valor da propriedade this seja passado para a função crescer().
 
-Funções de seta capturam o valor this do contexto delimitado, então o código a seguir funciona conforme o esperado.
+### Consumindo uma Promise
+
+Para lidar com o resultado de uma Promise, você usa os métodos .then() e .catch():
+
+    .then(): é chamado quando a Promise é resolvida com sucesso. Ele aceita uma função de callback que recebe o valor resolvido.
+
+    .catch(): é chamado quando a Promise é rejeitada. Ele aceita uma função de callback que recebe o motivo da rejeição.
+
 ```js
-function Pessoa(){
-  this.idade = 0;
+minhaPromise
+  .then((resultado) => {
+    console.log(resultado); // "A operação foi bem-sucedida!"
+  })
+  .catch((erro) => {
+    console.error(erro); // Se falhar, exibe o erro
+  });
 
-  setInterval(() => {
-    this.idade++; // propriedade |this|refere ao objeto pessoa
-  }, 1000);
-}
-
-var p = new Pessoa();
 ```
-## Funções pré-definidas
 
-JavaScript tem várias funções pré-definidas:
+### Estados de uma Promise
 
-- eval()
+Uma Promise pode estar em um dos três estados:
 
-    O método eval() avalia código JavaScript representado como uma string.
+  - pending: a promise foi criada e a função assíncrona à qual está associada não foi concluída com sucesso ou falhou ainda. Este é o estado em que sua promise está quando é retornada de uma chamada para fetch(), e a solicitação ainda está sendo feita.
+    
+  - fulfilled: a função assíncrona foi concluída com sucesso. Quando uma promise é fulfilled, seu manipulador then() é chamado.
+    
+  - rejected: a função assíncrona falhou. Quando uma promise é rejected, seu manipulador catch() é chamado.
 
-- uneval() 
+Execute o exemplo a seguir uma vez e em seguinda substitua o **bad-scheme** por http para obter o resultado correto.
 
-    O método uneval() cria uma representação de string do código-fonte de um Object.
 
-- isFinite()
+```js
+const fetchPromise = fetch(
+  "bad-scheme://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+);
 
-    A função global isFinite() determina se o valor passado é um número finito. Se necessário, o parâmetro é primeiro convertido para um número.
+fetchPromise
+  .then((resposta) => {
+    if (!resposta.ok) {
+      throw new Error(`HTTP error: ${resposta.status}`);
+    }
+    return resposta.json();
+  })
+  .then((data) => {
+    console.log(data[0].name);
+  })
+  .catch((error) => {
+    console.error(`Não foi possível obter os produtos: ${error}`);
+  });
 
-- isNaN()
-
-    A função isNaN() determina se um valor é NaN ou não. Nota: coerção dentro da função isNaN tem regras interessantes; você pode, alternativamente, querer usar Number.isNaN(), como definido no ECMAScript 6, ou você pode usar typeof para determinar se o valor não é um número.
-
-- parseFloat()
-
-    A função parseFloat() analisa um argumento do tipo string e retorna um número de ponto flutuante.
-
-- parseInt()
-
-    A função parseInt() analisa um argumento do tipo string e retorna um inteiro da base especificada (base do sistema numérico).
-- decodeURI()
-
-    A função decodeURI() decodifica uma Uniform Resource Identifier (URI) criada anteriormente por encodeURI ou por uma rotina similar.
-
-- decodeURIComponent()
-
-    O método decodeURIComponent() decodifica um componente Uniform Resource Identifier (URI) criado anteriormente por encodeURIComponent ou por uma rotina similar.
-
-- encodeURI()
-
-    O método encodeURI() codifica um Uniform Resource Identifier (URI), substituindo cada ocorrência de determinados caracteres por um, dois, três, ou quatro sequências de escape que representa a codificação UTF-8 do caractere (só serão quatro sequências de escape para caracteres compostos de dois caracteres "substitutos").
-- encodeURIComponent()
-
-    O método encodeURIComponent() codifica um componente Uniform Resource Identifier (URI), substituindo cada ocorrência de determinados caracteres por um, dois, três, ou quatro sequências de escape que representa a codificação UTF-8 do caractere (só serão quatro sequências de escape para caracteres compostos de dois caracteres "substitutos").
-- escape() Deprecated
-
-    O método obsoleto escape() calcula uma nova string na qual certos caracteres foram substituídos por uma sequência de escape hexadecimal. Use encodeURI ou encodeURIComponent em vez disso.
-- unescape() Deprecated
-
-    O método obsoleto unescape() calcula uma nova string na qual sequências de escape hexadecimais são substituídas pelo caractere que ela representa. As sequências de escape podem ser introduzidas por uma função como escape. Por unescape() estar obsoleto, use decodeURI() ou decodeURIComponent ao invés dele.
+```
