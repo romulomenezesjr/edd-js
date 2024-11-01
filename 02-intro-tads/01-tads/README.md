@@ -23,8 +23,6 @@ Na linguagem [C](https://www.inf.pucrs.br/~pinho/LaproI/Structs/Structs.htm) e [
     } Pessoa;
     ```
 
-
-
 - Exemplo na linguagem Go: 
 
     ```go
@@ -115,6 +113,20 @@ Uma lista é uma estrutura que aceita alteração em qualquer posição, porém 
 
 
 ![ ](https://play-lh.googleusercontent.com/FDErBTOMVcjcE2-B56oxo4Sjkaz1OwM2vnDgQ-mqS4_AIvv0UhkOMj8teew8IjIm2CE=w526-h296-rw)
+### Grafos
+
+Informalmente, um grafo é um grupo de pontos (vértices) ligados por um grupo de linhas (arestas). Aqui, o exemplo de um grafo:
+
+![](./grafos.webp)
+
+Eles podem ser usados em diversas aplicações na computação, como inteligencia artificial, trajetos de caminhos em jogos ou mapas digitais.
+
 ### Árvores
 
-Um TAD to tipo árvore é um grafo onde cada nó outros nós ligados a ele. Só pode ser atravessada em um único caminho. Árvores são usadas em diversas aplicações, um exemplo é um mapa digital. No armazenamento de dados em um mapa digital a árvore contém imagens que possuem referência à outras imagens em um nível interior.
+Um TAD to tipo árvore é um grafo onde cada nó outros nós ligados a ele. Só pode ser atravessada em um único caminho. 
+
+![](./Tree.png)
+
+Árvores são usadas em diversas aplicações, um exemplo é um mapa digital. No armazenamento de dados em um mapa digital a árvore contém imagens que possuem referência à outras imagens em um nível interior.
+
+![](./quadtrees.jpg)

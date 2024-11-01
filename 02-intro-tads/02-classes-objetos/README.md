@@ -1,3 +1,172 @@
+# Objetos
+
+Um objeto é uma coleção de dados e/ou funcionalidades relacionadas (que geralmente consistem em diversas variáveis e funções — que são chamadas de propriedades e métodos quando estão dentro de objetos).
+
+## Definição
+
+No JavaScript, a criação de um objeto pode ser feita com a definição e a inicialização de uma variável. Ao imprimir este objeto no console podemos ver a representação dele.
+
+```js
+const pessoa = {};
+console.log(pessoa)
+```
+um objeto é composto de vários membros, cada um com um nome (ex.: nome e idade vistos acima), e um valor (ex.: ['Bob', 'Smith'] e 32). Cada par nome/valor deve ser separado por uma vírgula e o nome e valor, em cada caso, separados por dois pontos. A sintaxe sempre segue esse padrão:
+
+```js
+const nomeDoObjeto = {
+  nomeMembro1: valorMembro1,
+  nomeMembro2: valorMembro2,
+  nomeMembro3: valorMembro3,
+}
+```
+Desta forma, podemos definir objetos com atributos e métodos, da seguinte maneira:
+
+```js
+const pessoa = {
+  nome: ["Bob", "Smith"],
+  idade: 32,
+  sexo: "masculino",
+  interesses: ["música", "esquiar"],
+  bio: function () {
+    console.log(
+      this.nome[0] +
+        " " +
+        this.nome[1] +
+        " tem " +
+        this.idade +
+        " anos de idade. Ele gosta de " +
+        this.interesses[0] +
+        " e " +
+        this.interesses[1] +
+        ".",
+    );
+  },
+  saudacao: function () {
+    console.log("Oi! Eu sou " + this.nome[0] + ".");
+  },
+}
+
+```
+
+O valor de um membro do objeto pode ser praticamente qualquer coisa. Em nosso objeto pessoa, temos uma string, um número, dois arrays e duas functions. Os primeiros quatro são data items (dados) e são referenciados como propriedades do objeto. Enquanto os dois últimos itens são funções que permitem que o objeto faça algo com esses dados. São chamados de métodos do objeto.
+
+Um objeto como esse é chamado de objeto literal — ao pé da letra, escrevemos o conteúdo do objeto conforme o criamos. Isto está em contraste com objetos instanciados de classes.
+
+É muito comum criar um objeto usando um objeto literal quando você deseja transferir uma série de itens de dados relacionados estruturados de alguma maneira, por exemplo, enviando uma solicitação para o servidor para ser colocado em um banco de dados. Enviar um único objeto é muito mais eficiente do que enviar vários itens individualmente, e é mais fácil trabalhar com um array, quando você deseja identificar itens individuais pelo nome.
+
+## Modificando um Objeto
+
+Após a definição de um objeto, é possível utilizar os atributos e métodos. Também é possível definir com novos atributos e métodos. Insira alguns dos itens a seguir:
+
+```js
+console.log(pessoa.nome)
+pessoa.bio()
+pessoa.cidade = "Picui"
+pessoa.despedida = function(){
+  this.saudacao()
+  console.log("Adeus, estou indo embora.")
+}
+```
+
+
+## Notação de ponto
+
+As propriedades de objetos e métodos são acessados usando notação de ponto. O objeto nome (pessoa) atua como namespace (espaço de nomes) — ele deve ser digitado primeiro para que você acesse qualquer valor encapsulada dentro do objeto. Depois você escreve um ponto, então o item que quer acessar — isso pode ser o nome de uma simples propriedade, um item de um array ou a chamada para um dos métodos do objeto, por exemplo:
+
+```js
+pessoa.idade;
+pessoa.interesse[1];
+pessoa.bio();
+
+```
+### Sub namespaces
+
+É possível fazer o valor de um membro de um objeto ser outro objeto. Por exemplo, tente alterar o nome do membro de:
+
+```js
+nome: ['Bob', 'Smith'],
+// para
+nome : {
+  primeiro: 'Bob',
+  ultimo: 'Smith'
+},
+
+```
+
+Aqui estamos efetivamente criando um sub-namespace. Para acessar esses itens você apenas precisa encadear mais um passo ao final de outro ponto. 
+
+```js
+console.log(pessoa.nome.primeiro)
+console.log(pessoa.nome.ultimo)
+```
+
+## Notação de colchetes
+
+Há outra forma de acessar propriedades do objeto — usando notação de colchetes. 
+
+```js
+pessoa.idade
+pessoa.nome.primeiro
+// pode ser acessado usando []
+pessoa["idade"]
+pessoa["nome"]["primeiro"]
+```
+
+Fica muito parecido com a maneira que acessamos itens de um array, e, na realidade, segue o mesmo princípio. Só que ao invés de usarmos um número de índice para selecionar um item, usamos o nome associado a cada valor. Não é por menos que objetos às vezes são chamados de arrays associativos — eles mapeiam strings a valores do mesmo modo que arrays mapeiam números a valores.
+
+## Entendendo o this
+
+Você pode ter reparado o uso do this ao definir o método despedida. A palavra-chave this se refere ao objeto atual em que o código está sendo escrito — nesse caso o this se refere a pessoa. Vamos ilustrar o que queremos dizer com um par de objetos pessoa:
+
+```js
+const pessoa1 = {
+  nome: "Chris",
+  saudacao: function () {
+    alert("Oi! Meu nome é " + this.nome + ".");
+  },
+}
+
+const pessoa2 = {
+  nome: "Brian",
+  saudacao: function () {
+    alert("Oi! Meu nome é " + this.nome + ".");
+  },
+}
+
+```
+
+Neste caso, pessoa1.saudacao() gerará "Oi! Meu nome é Chris."; No entanto, pessoa2.saudacao() retornará "Oi! Meu nome é Brian.", mesmo que os códigos dos métodos sejam idênticos. Como dissemos antes, o this é igual ao código do objeto dentro dele — não é exatamente útil quando estamos escrevendo objetos literais na mão, mas é realmente incrível quando adicionamos objetos gerados dinamicamente (por exemplo usando construtores)
+
+## Você vem usando objetos o tempo todo
+
+Enquanto passava por esses exemplos, você provavelmente andou pensando que essa notação de ponto que estamos usando é muito familiar. Isso é porque você vem usando isso. 
+
+ Todas as vezes que trabalhamos num exemplo que usa uma API interna do navegador ou objetos Javascript, estamos usando objetos, porque esses recursos são construídos usando exatamente o mesmo tipo de estrutura de objetos. 
+
+ Então quando usamos métodos de strings como split, estamos usando um método disponível na instância da class String. Toda vez que você cria uma string em seu código, essa string é automaticamente criada como uma instância de String, e, portanto, possui vários métodos e propriedades comuns que estão disponíveis para ela.
+
+ ```js
+ const minhaString = "1,2,3,4"
+ minhaString.split(",");
+ ```
+
+Quando você acessa o DOM (document object model) você está usando métodos disponíveis na instância da class Document. Cada vez que a página é recarrecada, uma instância de Document é criada, chamando document, que representa a estrutura inteira da página, conteúdo e outros recursos como sua URL. Isso significa que ela tem vários métodos e propriedades disponíveis nela.
+
+
+```js
+const minhaDiv = document.createElement("div")
+const meuVideo = document.querySelector("video")
+
+```
+
+Objetos/APIs embutidos nem sempre criam instâncias de objetos automaticamente. Por exemplo, a API de Notificações — que permite que navegadores modernos disparem notificações de sistema — requerem que você inicialize uma nova instância de objeto usando o construtor para cada notificação que queira disparar. Tente entrar o seguinte no seu console Javascript:
+
+```js
+const minhaNotificacao = new Notification("Hello!")
+```
+
+    A partir desta estrutura para criar objetos seria possível criar uma função possa construir um objeto a partir de parametros fornecidos? 
+
 # Classes
 
 
@@ -76,7 +245,7 @@ const NomeDaClasse = class {
 
 ### Instanciando objetos
 
-Vejamos um exemplo a seguir para instanciar um objeto a partir de uma classe que represente um Carro.
+O exemplo a seguir irá instanciar um objeto a partir de uma classe que represente um Carro.
 
 ```js
 class Carro {
@@ -119,7 +288,7 @@ class Cachorro extends Animal {
   }
 }
 
-let cachorro = new Cachorro("Mat");
+let cachorro = new Cachorro("Rex");
 cachorro.falar();
 
 ```
