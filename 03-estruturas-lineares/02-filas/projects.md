@@ -1,0 +1,4 @@
+- Página única com todas as operacoes de fila (items/enqueue/dequeue/front)
+- Fila de Atendimento Prioritário 
+- Multiplas filas para chamar em concurso
+- Fila circular
