@@ -45,7 +45,7 @@ class Queue {
     size(){
         return this.items.length
     }
-
 }
 
-
+//queue-class.mjs
+export {Queue}

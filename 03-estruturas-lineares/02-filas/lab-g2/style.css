@@ -1,0 +1,23 @@
+body {
+    width: 80%;
+    margin:auto;
+}
+input[type="text"] {
+    width: 200px;
+}
+input[type="button"]{
+    margin: 1rem 0;
+    width: 200px;
+}
+.box {
+    margin: 2rem;
+    padding: 2rem;
+    border: 1px black dotted;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#primeiro {
+    font-size: 64px;
+}

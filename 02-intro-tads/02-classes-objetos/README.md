@@ -167,6 +167,38 @@ const minhaNotificacao = new Notification("Hello!")
 
     A partir desta estrutura para criar objetos seria possível criar uma função possa construir um objeto a partir de parametros fornecidos? 
 
+
+# Prototipos de Objetos
+
+O JavaScript é frequentemente descrito como uma linguagem baseada em protótipos — para fornecer herança, os objetos podem ter um objeto de protótipo, que atua como um objeto de modelo do qual herda métodos e propriedades. 
+
+As propriedades e os métodos são definidos na propriedade prototype nas funções construtoras dos Objetos, não nas próprias instâncias do objeto.
+
+Vamos ver o exemplo do construtor Person() a instância de objeto person1:
+
+```js
+function Person(first, last, age, gender, interests) {
+  // property and method definitions
+  this.first = first
+  this.last = last
+  //...
+}
+const person1 = new Person("Bob", "Smith", 32, "male", ["music", "skiing"])
+```
+
+Ao chamar o método **valueOf()** em person1, temos a execução do método herdado da classe Object.
+
+## A propriedade prototype: Onde os membros herdados são definidos
+
+As propriedades e os métodos herdados são definidos na propriedade **prototype**. Ao observar a página de referência do Object, verá, à esquerda, um grande número de propriedades e métodos, 
+
+Você pode conferir as propriedades de protótipo existentes para si mesmo:
+
+```js
+Person.prototype;
+```
+
+
 # Classes
 
 

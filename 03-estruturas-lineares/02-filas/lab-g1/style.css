@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+div {
+    margin: 10px auto;
+    width: 60%;
+    border: 1px black solid;
+    border-radius: 15px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#formulario {
+    display: flex;
+    box-sizing: border-box;
+    padding: 15px;
+}

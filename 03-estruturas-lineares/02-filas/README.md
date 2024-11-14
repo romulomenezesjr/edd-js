@@ -464,3 +464,24 @@ printer.addTask(new Task(10,"Joao"))
 printer.addTask(new Task(2,"Pedro"))
 printer.printTasks()
 ```
+
+
+## Projetos
+
+- Criar uma aplicação de página única que permita realizar todas as operacoes de fila (items/enqueue/dequeue/front)
+
+
+- Criar uma aplicação com fila de atendimento prioritário. 
+
+Uma fila prioritária possui uma mudança no comportamento de **enfileirar (enqueue)**. Ao enfileirar um novo item na fila ele deverá ser incluído na última posição conforme sua prioridade. Os outros itens devem ser realocados uma posição atrás.
+
+
+- Multiplas filas para chamar em concurso
+
+Em concursos públicos, a convocação de candidatos geralmente obedece a uma ordem de classificação, que pode variar de acordo com cotas específicas e reservas legais de vagas, como para candidatos negros (20%), pessoas com deficiência (PcD) (5%) e o público em geral. 
+
+A convocação é feita alternadamente: chamam-se candidatos da ampla concorrência, depois das cotas raciais e, em seguida, da cota de PcD, seguindo a proporcionalidade exigida até o preenchimento das vagas.
+
+A cada 5 de ampla concorrência, deve-se chamar um candidato das cotas para candidatos negros. A cada 20 candidatos chamados, deve-se chamar 1 candidato das contas para PcD
+
+- Fila circular
