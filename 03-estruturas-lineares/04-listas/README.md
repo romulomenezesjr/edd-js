@@ -39,7 +39,7 @@ O seguinte diagrama exemplifica a estrutura de uma lista ligada:
 ```mermaid
   graph LR;
       A-->B;
-      A-->C;
-      B-->D;
+      B-->C;
       C-->D;
+      
 ```
