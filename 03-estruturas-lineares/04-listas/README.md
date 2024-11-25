@@ -37,9 +37,9 @@ Cada elemento consiste em um nó, que armazena o próprio elemento e também uma
 O seguinte diagrama exemplifica a estrutura de uma lista ligada:
 
 ```mermaid
-graph LR
-    Node1[Data | Next] --> Node2[Data | Next]
-    Node2[Data | Next] --> Node3[Data | Next]
-    Node3[Data | null]
-
+  graph LR;
+      A-->B;
+      A-->C;
+      B-->D;
+      C-->D;
 ```
