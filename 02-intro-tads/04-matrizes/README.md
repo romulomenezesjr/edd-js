@@ -58,11 +58,11 @@ Neste exemplo, o laço externo (i) percorre as linhas da matriz e o laço intern
 
 ### Função para definir uma matriz
 
-Podemos extender a classe nativa Array do javascript para acrescentar uma função que gere uma matriz com **n** linhas e **m** colunas da seguinte forma: 
+Podemos criar uma função que gere uma matriz com **n** linhas e **m** colunas da seguinte forma: 
 
 ```js
 
-Array.matrix = function(n, m, initial=0) {
+const matrix = function(n, m, initial=0) {
  let arr = [];
  for (let i = 0; i < n; ++i) {
   let columns = [];
@@ -74,6 +74,21 @@ Array.matrix = function(n, m, initial=0) {
  return arr;
  }
 
+```
+
+Uma forma alternativa de popular os elementos de um array é através do método fill()
+
+Podemos criar uma função que gere uma matriz com **n** linhas e **m** colunas da seguinte forma: 
+
+```js
+
+const matrix = function(n, m, initial=0) {
+ let arr = [];
+ for (let i = 0; i < n; ++i) {
+    arr[i] = new Array(m).fill(initial)
+ }
+ return arr;
+ }
 ```
 
 ## Matriz Tridimensional (3D)

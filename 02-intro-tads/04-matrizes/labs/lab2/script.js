@@ -7,15 +7,12 @@
     ["Grã-Bretanha", 22, 21, 22]
 ];
 
-// Seleciona o corpo da tabela
 const tbody = document.querySelector("#quadro-medalhas tbody");
 
 // Itera sobre o array e cria as linhas da tabela
 medalhas.forEach(pais => {
-    // Cria uma nova linha
     const tr = document.createElement("tr");
 
-    // Adiciona o nome do país
     const tdPais = document.createElement("td");
     tdPais.textContent = pais[0];
     tr.appendChild(tdPais);
