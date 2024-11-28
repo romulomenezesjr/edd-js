@@ -10,7 +10,8 @@ No JavaScript, a criação de um objeto pode ser feita com a definição e a ini
 const pessoa = {};
 console.log(pessoa)
 ```
-um objeto é composto de vários membros, cada um com um nome (ex.: nome e idade vistos acima), e um valor (ex.: ['Bob', 'Smith'] e 32). Cada par nome/valor deve ser separado por uma vírgula e o nome e valor, em cada caso, separados por dois pontos. A sintaxe sempre segue esse padrão:
+
+Um objeto é composto de vários membros, cada um com um nome (ex.: nome e idade vistos acima), e um valor (ex.: ['Bob', 'Smith'] e 32). Cada par nome/valor deve ser separado por uma vírgula e o nome e valor, em cada caso, separados por dois pontos. A sintaxe sempre segue esse padrão:
 
 ```js
 const nomeDoObjeto = {
