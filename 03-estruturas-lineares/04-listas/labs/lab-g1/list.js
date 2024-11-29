@@ -26,7 +26,10 @@ class List {
         }
         this.size += 1
     }
+    // remove do fim
+    pop(){
 
+    }
     // insere no inicio
     shift(value) {
         let node = new Node(value)
@@ -42,8 +45,25 @@ class List {
         this.size += 1
     }
 
+    // remove do inicio
+    unshift(){
+
+    }
+
+    // inserir 'value' na posicao 'pos'
     insert(value, pos){
         
+    }
+
+    // remover algum valor na posição 'pos'
+    delete(pos){
+
+    }
+
+    // pesquisa um valor e retorna a posição 
+    // na lista
+    search(value){
+
     }
 
     print(){
@@ -61,4 +81,6 @@ lista.append(34)
 lista.append(35)
 lista.shift(0)
 lista.shift(1)
+//1 0 33 34 35
 lista.print()
+lista.search(33)
