@@ -23,7 +23,7 @@ Esses conceitos formam a base para o design e a implementação de um ADT de lis
 
 ## Arrays e Listas
 
-Os arrays na linguagem javascript são implementados com operações de listas. Cada linguagem possui sua própria implementação de arrays, existem linguagens que implementam arrays com tamanhos fixos (na maioria das linguagens). 
+Os arrays na linguagem javascript são implementados com operações de listas. Podemos manipulá-lo facilmente acessando posições, inserindo ou removendo elementos por meio dos métodos implementados nos arrays do javascript. Cada linguagem possui sua própria implementação de arrays, existem linguagens que implementam arrays sem métodos e com tamanhos fixos (na maioria das linguagens). 
 
 Embora essa estrutura seja muito conveniente e nos fornece uma sintaxe prática com [] para acessar seus elementos, ela possui desvantagens ao realizar algumas operações, como inserir ou remover itens do início ou do meio do array. Estas operações são consideradas "caras" pois os elementos precisam ser realocados (em outras linguagens) ou os índices precisam ser realocados (em javascript).
 
@@ -36,10 +36,83 @@ Cada elemento consiste em um nó, que armazena o próprio elemento e também uma
 
 O seguinte diagrama exemplifica a estrutura de uma lista ligada:
 
-```mermaid
-  graph LR;
-      A-->B;
-      B-->C;
-      C-->D;
-      
+![](https://media.geeksforgeeks.org/wp-content/uploads/20240917161540/Singly-Linked-List.webp)
+
+Um dos benefícios de uma lista ligada em comparação a um array convencional é que não precisamos deslocar os elementos ao adicionar ou remover itens. No entanto, esta implementação possui uma passo adicional. Devemos marcar as posições de início e fim com alguma variável a qual chamaremos de ponteiros. 
+
+Outro detalhe é que, em um array, podemos acessar diretamente qualquer elemento em qualquer posição; já em uma lista ligada, se quisermos acessar um elemento do meio, precisamos começar do início (a cabeça da lista) e iterar por ela até encontrar o elemento desejado.
+
+### Exemplos do mundo real
+
+Temos alguns exemplos do mundo real que podem ser representados como uma lista ligada. O primeiro exemplo é uma fila de dança (conga line). Cada pessoa é um elemento, e as mãos representam os ponteiros que conectam a próxima pessoa na fila. Você pode adicionar pessoas à fila — basta encontrar o local onde deseja inseri-las, desconectar a ligação, inserir a nova pessoa e reconectar novamente.
+
+![](https://img.freepik.com/vetores-premium/pessoas-idosas-danca-conga-ficar-na-fila-com-confete-caindo-homens-e-mulheres-idosos-ativos-avo-e-avos-personagens-festa-lazer-conceito-desenhos-animados-pessoas-ilustracao-vetorial_87771-20065.jpg?w=1380)
+
+Outro exemplo seria uma caça ao tesouro. Você tem uma pista, e essa pista é o ponteiro para o local onde encontrará a próxima pista. Com esse vínculo, você vai ao próximo lugar e obtém outra pista que levará à seguinte. A única maneira de obter uma pista no meio da lista é seguindo a lista desde o início (da primeira pista).
+
+![](https://media.istockphoto.com/id/1252391957/vector/antique-vector-treasure-map.jpg?s=612x612&w=0&k=20&c=HLqALRm0QuuVMgR-dcpzGtEdhoQC9uRPDnXaDfwJCYQ=)
+
+Outro exemplo — que pode ser o mais popular para ilustrar listas ligadas — é o de um trem. Um trem consiste em uma série de veículos (também conhecidos como vagões). Cada vagão está conectado ao outro. Você pode facilmente desacoplar um vagão, mudar sua posição, ou adicioná-lo e removê-lo. A figura a seguir demonstra um trem. Cada vagão é um elemento da lista, e a ligação entre os vagões representa o ponteiro.
+
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaV2jgrui6-MPUNo1dtKs4S4EP7O99KBEwpw&s)
+
+        Você conhece algum outro exemplos do uso de listas ligadas?
+
+
+## Criando Listas Ligadas
+
+
+
+Agora que você entendeu a estrutura de uma lista ligada, vamos implementá-la no javascript a partir da classe a seguir. Observe que além da classe LinkedList vamos criar uma classe Node que representa um elemento da lista (conteúdo do item e próximo).
+
+
+```js
+class Node {
+    constructor(data) {
+        this.data = data;   
+        this.next = null;   
+    }
+}
+
+class LinkedList {
+
+    constructor(){
+
+    }
+
+    traverse(){
+
+    }
+    
+    insert(pos=0) {
+
+    }
+
+    delete(pos=0){
+
+    }
+
+    search(value){
+
+    }
+
+    destroy(){
+
+    }
+}
+
 ```
+
+### Operações
+
+Traversal
+Searching
+Length
+Insertion:
+Insert at the beginning
+Insert at the end
+Insert at a specific position
+Deletion:
+Delete from the beginning
+Delete from the end
+Delete a specific node
