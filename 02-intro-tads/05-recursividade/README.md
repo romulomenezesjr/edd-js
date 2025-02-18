@@ -1,7 +1,15 @@
 # Recursividade
 
+- Recursividade
+  - Recursividade
+    - Recursividade
 
-## Recursão
+Recursão é o processo de definir algo em termos de si mesmo e é, algumas vezes, chamado de definição circular.
+O conceito de algo recursivo está dentro de si, que por sua vez está dentro de si e assim sucessivamente, infinitamente.
+
+
+
+### Recursividade no Javascript
 
 Uma função pode referir-se e chamar a si própria. Há três maneiras de uma função referir-se a si mesma:
 

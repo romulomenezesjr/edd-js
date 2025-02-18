@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Refeitório do IFPB </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div>
+        <h1>Fila para almoço</h1>
+    </div>
+    
+    <div id="formulario">
+        <input 
+            type="text" 
+            name="nome" 
+            id="nome" 
+            placeholder="Digite seu nome para entrar na fila">
+        <input type="button" value="OK" onclick="botaoEnfileirar()">
+    </div>
+
+    <div>
+        <h2 id="primeiro"> </h2>
+
+        <input type="button" value="Chamar" onclick="botaoChamar()">
+
+    </div>
+
+    <script src="fila.js"> </script>
+    <script>
+        function botaoChamar(){
+            const primeiro = desenfileirar()
+            document.querySelector("#primeiro").innerHTML = primeiro
+        }
+
+        function botaoEnfileirar(){
+            const nome = document.querySelector("#nome").value
+            enfileirar(nome)
+        }
+    </script>
+    
+</body>
+</html>

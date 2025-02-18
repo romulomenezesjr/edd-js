@@ -200,17 +200,13 @@ peek e isEmpty: Ambas as operações têm tempo O(1).
 
 ## Fila Ligada
 
-Para implementar uma fila usando nós (nodes), também chamada de fila ligada (linked queue), utilizamos uma estrutura onde cada elemento (nó) contém duas partes:
-
-- O valor do elemento.
-- Uma referência para o próximo nó da fila.
-
+Para implementar uma fila usando nós (nodes), também chamada de fila ligada (linked queue), utilizamos a estrutura Node descrita a seguir. Nesta implementação os elementos ficam salvos dentro do nó e conectados entre si. A estrutura da Fila armazena o nó que representa o início (front/head) e o nó que representa o término da fila (rear/tail)
 
 <div style="text-align: center; margin: 2rem">
 <img src="./img/linked-queue.png">
 </div>
 
-Essa estrutura é útil pois permite que as operações de enqueue (inserir) e dequeue (remover) tenham complexidade constante O(1), já que não precisamos deslocar ou reorganizar elementos como em arrays.
+Essa estrutura é útil pois permite que as operações de enqueue (inserir) e dequeue (remover) tenham complexidade constante O(1), já que não precisamos deslocar ou reorganizar elementos como em arrays. Veja a seguir a implementação em javascript:
 
 ```js
 class Node {
@@ -282,10 +278,20 @@ class Queue {
 export {Queue}
 ```
 
+### Complexidade de Tempo
+
+- enqueue: A adição de um nó no fim da fila ocorre em O(1).
+- dequeue: A remoção do nó do início também ocorre em O(1).
+- front: O acesso ao nó no início também ocorre em O(1) pois acessa apenas a variável front.
+- rear: O acesso ao nó no fim também ocorre em O(1) pois acessa apenas a variável rear.
+
+
 ### Vantagens da implementação com nós (linked queue):
+
 A operação enqueue e dequeue são realizadas em tempo constante O(1), pois não há necessidade de deslocar ou reorganizar elementos como acontece em um array. Essa estrutura é eficiente para gerenciar filas dinâmicas de tamanho variável, já que não há necessidade de redimensionar arrays.
 
 Implementar filas usando nós (fila ligada) é uma maneira eficiente de gerenciar coleções de elementos quando a inserção e remoção frequentes são necessárias. É particularmente útil quando não queremos os custos de realocação de memória que podem ocorrer em arrays.
+
 
 
 ## Fila de prioridade  
@@ -387,9 +393,9 @@ console.log(filaPrioridade.size()); // Output: 3
 
 A diferença entre a implementação das classes Queue padrão e PriorityQueue é que precisamos criar um elemento especial (linha {1}) para ser adicionado à PriorityQueue. Este elemento contém o elemento que desejamos adicionar à fila (pode ser de qualquer tipo), além da prioridade na fila.
 
-Primeiro, precisamos comparar sua prioridade com os demais elementos (linha {2}). Quando encontramos um item que tem uma prioridade maior do que o elemento que estamos tentando adicionar, então inserimos o novo elemento uma posição antes (com essa lógica, também respeitamos os outros elementos com a mesma prioridade, mas que foram adicionados à fila primeiro). Para fazer isso, podemos usar o método splice da classe array do JavaScript que você aprendeu no Capítulo 2, Arrays. Uma vez que encontramos um elemento com uma prioridade mais alta, inserimos o novo elemento (linha {3}), e paramos de percorrer a fila (linha {4}). Dessa forma, nossa fila também será organizada e classificada por prioridade.
+Primeiro, precisamos comparar sua prioridade com os demais elementos. Quando encontramos um item que tem uma prioridade maior do que o elemento que estamos tentando adicionar, então inserimos o novo elemento uma posição antes (com essa lógica, também respeitamos os outros elementos com a mesma prioridade, mas que foram adicionados à fila primeiro). Para fazer isso, podemos usar o método splice da classe array do JavaScript. Uma vez que encontramos um elemento com uma prioridade mais alta, inserimos o novo elemento, e paramos de percorrer a fila. Dessa forma, nossa fila também será organizada e classificada por prioridade.
 
-Além disso, se a prioridade que estamos adicionando for maior do que qualquer prioridade já adicionada, ou se a fila estiver vazia, simplesmente a adicionamos ao final da fila (linha {5}).
+Além disso, se a prioridade que estamos adicionando for maior do que qualquer prioridade já adicionada, ou se a fila estiver vazia, simplesmente a adicionamos ao final da fila.
 
 
 ## Resolvendo problemas usando pilhas
@@ -464,3 +470,24 @@ printer.addTask(new Task(10,"Joao"))
 printer.addTask(new Task(2,"Pedro"))
 printer.printTasks()
 ```
+
+
+## Projetos
+
+- Criar uma aplicação de página única que permita realizar todas as operacoes de fila (items/enqueue/dequeue/front)
+
+
+- Criar uma aplicação com fila de atendimento prioritário. 
+
+Uma fila prioritária possui uma mudança no comportamento de **enfileirar (enqueue)**. Ao enfileirar um novo item na fila ele deverá ser incluído na última posição conforme sua prioridade. Os outros itens devem ser realocados uma posição atrás.
+
+
+- Multiplas filas para chamar em concurso
+
+Em concursos públicos, a convocação de candidatos geralmente obedece a uma ordem de classificação, que pode variar de acordo com cotas específicas e reservas legais de vagas, como para candidatos negros (20%), pessoas com deficiência (PcD) (5%) e o público em geral. 
+
+A convocação é feita alternadamente: chamam-se candidatos da ampla concorrência, depois das cotas raciais e, em seguida, da cota de PcD, seguindo a proporcionalidade exigida até o preenchimento das vagas.
+
+A cada 5 de ampla concorrência, deve-se chamar um candidato das cotas para candidatos negros. A cada 20 candidatos chamados, deve-se chamar 1 candidato das contas para PcD
+
+- Fila circular

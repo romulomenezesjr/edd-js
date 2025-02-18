@@ -63,144 +63,118 @@ Essas operações são básicas e permitem manipular dados de forma simples, mas
 
 A pilha pode ser implementada de várias formas em JavaScript, como com arrays, objetos e classes. 
 
-### Implementação Estática com Arrays
+### Implementação usando Arrays
 
-Em JavaScript, os arrays podem ser facilmente usados para implementar uma pilha, pois eles já têm métodos como push() e pop().
+Em JavaScript, os arrays podem ser facilmente usados para implementar uma pilha, pois eles já possuem métodos como push() e pop(). Os outros métodos presentes na pilha são apenas acesso ao conteúdo do array e à propriedade length.
 
-
-```js
-let stack = [];
-
-// Adicionando elementos na pilha (push)
-stack.push(1);
-stack.push(2);
-stack.push(3);
-
-console.log(stack);  // Output: [1, 2, 3]
-
-// Removendo o último elemento da pilha (pop)
-let lastItem = stack.pop();
-console.log(lastItem);  // Output: 3
-console.log(stack);     // Output: [1, 2]
-
-// Ver o elemento do topo da pilha (peek)
-let topItem = stack[stack.length - 1];
-console.log(topItem);   // Output: 2
-
-```
-
-
-### Utilizando com Classes
-
-Agora, vamos utilizar classes para ter mais controle sobre a estrutura de dados e facilitar sua reutilização.
-
+Arquivo **stack.js**
 
 ```js
-class Stack {
-  constructor() {
-    this.items = [];
-  }
+const stack = []
 
-  // Adicionar item à pilha (push)
-  push(element) {
-    this.items.push(element);
-  }
-
-  // Remover o último item da pilha (pop)
-  pop() {
-    if (this.isEmpty()) {
-      return 'Stack is empty';
-    }
-    return this.items.pop();
-  }
-
-  // Ver o último item sem remover (peek)
-  peek() {
-    if (this.isEmpty()) {
-      return 'Stack is empty';
-    }
-    return this.items[this.items.length - 1];
-  }
-
-  // Verificar se a pilha está vazia
-  isEmpty() {
-    return this.items.length === 0;
-  }
-
-  // Ver o tamanho da pilha
-  size() {
-    return this.items.length;
-  }
-
-  // Limpar a pilha
-  clear() {
-    this.items = [];
-  }
+function push(value){
+    stack.push(value)
 }
-
-const stack = new Stack();
-stack.push(10);
-stack.push(20);
-stack.push(30);
-
-console.log(stack.peek());  // Output: 30
-console.log(stack.pop());   // Output: 30
-console.log(stack.size());  // Output: 2
+function pop(){
+    return stack.pop()
+}
+function peek(){
+    return stack[size()-1]
+}
+function isEmpty(){
+    return size() === 0
+}
+function size(){
+    return stack.length 
+}
+export {push, pop, peek, isEmpty, size, stack}
 
 ```
-### Utilizando as operações
 
-Podemos utilizar as operações implementadas da Stack para testar o funcionamento da nossa pilha. Realize as chamadas dos métodos do quadro a seguir:
+Podemos utilizar esta implementação a partir de outro arquivo **app.js**.
 
-![Testando a classe Stack](./img/testing-stack.png)
+```js
+import {push, pop, peek, size, isEmpty, stack  } from './stack.js'
+
+console.log(isEmpty())
+push(4)
+push('dog')
+console.log(peek())
+push(true)
+console.log(size())
+console.log(isEmpty())
+push(8.4)
+console.log(pop())
+console.log(pop())
+console.log(size())
+
+```
+
+### Implementação usando Classes
+
+Na nossa segunda implementação vamos utilizar classes para abstrair o conceito de pilha e empacotar as operações desta estrutura. Assim, podemos ter mais controle sobre a estrutura e facilitar sua utilização.
+
+Arquivo **stack-class.js**
+
+```js
+class Stack{
+    constructor(){
+        this.stack = []
+    }
+
+    push(value){
+        this.stack.push(value)
+    }
+    pop(){
+        return this.stack.pop()
+    }
+    peek(){
+        return this.stack[this.size()-1]
+    }
+    isEmpty(){
+        return this.size() === 0
+    }
+    size(){
+        return this.stack.length 
+    }
+}
+export {Stack}
+```
+
+Podemos utilizar esta implementação em outro arquivo **app.js**
+
+```js
+import {Stack } from './stack-class.js'
+
+const s = new Stack()
+console.log(s.isEmpty())
+s.push(4)
+s.push('dog')
+console.log(s.peek())
+s.push(true)
+console.log(s.size())
+console.log(s.isEmpty())
+s.push(8.4)
+console.log(s.pop())
+console.log(s.pop())
+console.log(s.size())
+
+```
 
 
-
-
-
-
-### Complexidade de Tempo
-
-- push: O tempo para adicionar um elemento na pilha é O(1).
-- pop: O tempo para remover um elemento do topo da pilha também é O(1).
-- peek: Visualizar o elemento no topo da pilha é O(1).
-- isEmpty:
-
-
-As operações mais comuns são push, pop, peek, isEmpty e size.
-Você pode implementar uma pilha de maneira simples usando arrays ou criando uma classe em JavaScript para personalizar suas funcionalidades.
-
-## Implementação Encadeada
-
-Para entender a implementação de pilhas (stacks) com nós em JavaScript, é importante compreender a ideia de usar elementos ligados entre si  em vez de um array. Usar nós permite uma implementação flexível, que facilita a adição e remoção de elementos sem realocação de memória, como em arrays.
+### Implementação Pilha Encadeada
 
 #### Conceito de Nó
 
-Quando falamos de pilhas, a operação principal acontece no topo. Portanto, precisamos de uma estrutura onde seja fácil adicionar e remover nós do topo. Um nó consiste de duas partes:
+Precisamos de uma estrutura onde seja fácil armazenar os dados e fazer ligações com outra parte da pilha. Chamaremos essa estrutura de nó (Node) e ele consiste de duas partes:
   - O valor ou dado que o nó armazena.
   - Um ponteiro (ou referência) para o próximo nó na pilha.
 
+#### Implementação dos Nós
 
-
-#### Estrutura da Pilha com Nós
-
-Cada elemento da pilha é um nó. A pilha mantém uma referência ao topo da pilha, que aponta para o nó mais recente inserido.
-- A operação push adiciona um novo nó no topo.
-- A operação pop remove o nó do topo.
-
-#### Implementação da Pilha com Nós
-
-Vamos criar uma classe Node para representar cada nó da pilha e uma classe Stack para a estrutura da pilha.
-
-A classe Node terá duas propriedades:
-
+Vamos criar uma classe Node para representar cada nó da lista e ela terá duas propriedades:
 - Valor: O dado armazenado no nó.
 - Próximo: A referência para o próximo nó.
-
-A classe Stack terá:
-
-- Um ponteiro para o topo da pilha.
-- Métodos como push, pop, peek, e isEmpty.
 
 
 ```js
@@ -212,65 +186,86 @@ class Node {
   }
 }
 
-// Classe Stack para representar a pilha
-class Stack {
-  constructor() {
-    this.topo = null; // O topo da pilha começa vazio
-    this.tamanho = 0; // Controle do tamanho da pilha
-  }
+```
 
-  // Método para adicionar um elemento na pilha (push)
-  push(valor) {
-    const novoNo = new Node(valor); // Cria um novo nó
-    novoNo.proximo = this.topo;     // Aponta o próximo nó para o nó atual do topo
-    this.topo = novoNo;             // Atualiza o topo para ser o novo nó
-    this.tamanho++;                 // Aumenta o tamanho da pilha
-  }
+#### Implementação da Pilha
 
-  // Método para remover o elemento do topo da pilha (pop)
-  pop() {
-    if (this.isEmpty()) {
-      return 'A pilha está vazia';  // Verifica se a pilha está vazia
+Para entender a implementação de pilhas (stacks) com nós é importante compreender a ideia de usar elementos ligados entre si em vez de um array. Usar nós permite uma implementação flexível, que facilita a adição e remoção de elementos sem realocação de memória ou alteração de índices.
+
+Cada elemento da pilha é um nó. A pilha mantém uma referência ao topo da pilha, que aponta para o nó mais recente inserido.
+- A operação push adiciona um novo nó no topo.
+- A operação pop remove o nó do topo.
+- A operação peek retorna o valor presente no nó do topo
+- A operação size retorna a quantidade de elementos na pilha
+- A operação isEmpty retorna se a pilha está vazia.
+
+#### Implementação da Pilha
+
+A classe Stack terá:
+
+- Um ponteiro para o topo da pilha.
+- Métodos como push, pop, peek, e isEmpty.
+
+
+```js
+// Classe Node para representar cada nó da pilha
+class Node {
+    constructor(value){
+        this.value = value
+        this.prev = null
     }
-
-    const noRemovido = this.topo;   // Pega o nó do topo
-    this.topo = this.topo.proximo;  // Atualiza o topo para o próximo nó
-    this.tamanho--;                 // Diminui o tamanho da pilha
-    return noRemovido.valor;        // Retorna o valor removido
-  }
-
-  // Método para ver o valor no topo da pilha (peek)
-  peek() {
-    if (this.isEmpty()) {
-      return 'A pilha está vazia'; // Verifica se a pilha está vazia
-    }
-    return this.topo.valor; // Retorna o valor no topo
-  }
-
-  // Método para verificar se a pilha está vazia
-  isEmpty() {
-    return this.tamanho === 0;
-  }
-
-  // Método para ver o tamanho da pilha
-  size() {
-    return this.tamanho;
-  }
 }
 
-// Exemplo de uso da pilha com nós
-const pilha = new Stack();
+export default class LinkedStack {
+    constructor(){
+        this.top = null
+    }
+    
+    push(value) {
+        const node = new Node(value)
+        if (this.isEmpty()){
+            this.top = node
+        } else {
+            node.prev = this.top
+            this.top = node
+        }
+    }
 
-pilha.push(10);
-pilha.push(20);
-pilha.push(30);
+    pop(){
+        if (this.isEmpty()){
+            console.log("A pilha está vazia")
+            return null
+        } else {
+            const value = this.top.value
+            this.top = this.top.prev
+            return value
+        }
+        
+    }
 
-console.log(pilha.peek());  // Output: 30 (valor no topo)
-console.log(pilha.pop());   // Output: 30 (remove e retorna o valor do topo)
-console.log(pilha.size());  // Output: 2 (dois elementos restantes)
-console.log(pilha.peek());  // Output: 20 (novo topo da pilha)
-console.log(pilha.isEmpty()); // Output: false (a pilha não está vazia)
+    isEmpty(){
+        return this.top === null
+    }
 
+    peek(){
+        if (this.isEmpty()){
+            console.log("A pilha está vazia")
+            return null
+        }
+        return this.top.value
+    }
+
+    size(){
+        let temp = this.top
+        let _size = 0
+        while (temp !== null){
+            _size += 1
+            temp = temp.prev
+        }
+        return _size
+    }
+
+}
 ```
 
 Explicação do Código:
@@ -281,12 +276,7 @@ Explicação do Código:
 - O método peek apenas retorna o valor no topo da pilha sem removê-lo.
 - O método isEmpty verifica se a pilha está vazia.
 
-### Complexidade de Tempo
-- push: A adição de um nó no topo da pilha ocorre em O(1).
-- pop: A remoção do nó do topo também ocorre em O(1).
-- peek: Olhar o valor do topo é uma operação de tempo constante, O(1).
-
-### Vantagens da Implementação com Nós
+#### Vantagens da Implementação com Nós
 
 Em diversas linguagens os arrays são alocados de forma fixa na memória e a utilização de nós evita o trabalho de  realocação. Essa implementação é muito útil em algoritmos que exigem controle explícito da memória, como na avaliação de expressões matemáticas, navegação entre páginas de um navegador, ou funções recursivas.
 
@@ -294,6 +284,24 @@ Na linguagem Javascript os arrays são objetos e seus elementos são alocados de
 
 Usar nós permite criar uma estrutura mais flexível em comparação com arrays fixos usandos em diversas linguagens ( e até mesmo em Javascript [TypedArray](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Typed_arrays)), sem precisar lidar com o redimensionamento do array.
 
+
+
+### Utilizando as operações
+
+Podemos utilizar as operações implementadas da Stack para testar o funcionamento da nossa pilha. Realize as chamadas dos métodos do quadro a seguir:
+
+![Testando a classe Stack](./img/testing-stack.png)
+
+### Complexidade de Tempo
+
+- push: O tempo para adicionar um elemento na pilha é O(1).
+- pop: O tempo para remover um elemento do topo da pilha também é O(1).
+- peek: Visualizar o elemento no topo da pilha é O(1).
+- isEmpty:
+
+
+As operações mais comuns são push, pop, peek, isEmpty e size.
+Você pode implementar uma pilha de maneira simples usando arrays ou criando uma classe em JavaScript para personalizar suas funcionalidades.
 
 ## Resolvendo problemas usando pilhas
 
