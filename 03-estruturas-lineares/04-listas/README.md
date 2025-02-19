@@ -237,13 +237,15 @@ list.print(); // B
 
 ```
 
-## Implementação com Nós Ligados
+## Listas Ligadas
 
 As listas ligadas armazenam uma coleção sequencial de elementos, mas, diferentemente dos arrays contíguos ou dos arrays no javascript (objetos especiais), os elementos nas listas ligadas não estão localizados de forma contígua na memória.
 
 Cada elemento consiste em um nó, que armazena o próprio elemento e também uma referência (também conhecida como ponteiro ou link) que aponta para o próximo elemento. O seguinte diagrama exemplifica a estrutura de uma lista ligada:
 
-![](https://media.geeksforgeeks.org/wp-content/uploads/20240917161540/Singly-Linked-List.webp)
+<div align="center">
+  <img width="480"  src="https://media.geeksforgeeks.org/wp-content/uploads/20240917161540/Singly-Linked-List.webp">
+</div>
 
 Um dos benefícios de uma lista ligada em comparação a um array convencional é que não precisamos deslocar os elementos ao adicionar ou remover itens. No entanto, esta implementação possui uma passo adicional. Devemos marcar as posições de início e fim com alguma variável a qual chamaremos de ponteiros. 
 
@@ -253,21 +255,26 @@ Outro detalhe é que, em um array, podemos acessar diretamente qualquer elemento
 
 Temos alguns exemplos do mundo real que podem ser representados como uma lista ligada. O primeiro exemplo é uma fila de dança (conga line). Cada pessoa é um elemento, e as mãos representam os ponteiros que conectam a próxima pessoa na fila. Você pode adicionar pessoas à fila — basta encontrar o local onde deseja inseri-las, desconectar a ligação, inserir a nova pessoa e reconectar novamente.
 
-![](https://img.freepik.com/vetores-premium/pessoas-idosas-danca-conga-ficar-na-fila-com-confete-caindo-homens-e-mulheres-idosos-ativos-avo-e-avos-personagens-festa-lazer-conceito-desenhos-animados-pessoas-ilustracao-vetorial_87771-20065.jpg?w=1380)
+<div align="center">
+  <img width="480"  src="https://img.freepik.com/vetores-premium/pessoas-idosas-danca-conga-ficar-na-fila-com-confete-caindo-homens-e-mulheres-idosos-ativos-avo-e-avos-personagens-festa-lazer-conceito-desenhos-animados-pessoas-ilustracao-vetorial_87771-20065.jpg?w=480">
+</div>
+
 
 Outro exemplo seria uma caça ao tesouro. Você tem uma pista, e essa pista é o ponteiro para o local onde encontrará a próxima pista. Com esse vínculo, você vai ao próximo lugar e obtém outra pista que levará à seguinte. A única maneira de obter uma pista no meio da lista é seguindo a lista desde o início (da primeira pista).
 
-![](https://media.istockphoto.com/id/1252391957/vector/antique-vector-treasure-map.jpg?s=612x612&w=0&k=20&c=HLqALRm0QuuVMgR-dcpzGtEdhoQC9uRPDnXaDfwJCYQ=)
+<div align="center">
+  <img width="480" src="https://media.istockphoto.com/id/1252391957/vector/antique-vector-treasure-map.jpg?s=612x612&w=0&k=20&c=HLqALRm0QuuVMgR-dcpzGtEdhoQC9uRPDnXaDfwJCYQ=">
+</div>
+
 
 Outro exemplo — que pode ser o mais popular para ilustrar listas ligadas — é o de um trem. Um trem consiste em uma série de veículos (também conhecidos como vagões). Cada vagão está conectado ao outro. Você pode facilmente desacoplar um vagão, mudar sua posição, ou adicioná-lo e removê-lo. A figura a seguir demonstra um trem. Cada vagão é um elemento da lista, e a ligação entre os vagões representa o ponteiro.
 
-![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaV2jgrui6-MPUNo1dtKs4S4EP7O99KBEwpw&s)
+<div align="center">
+  <img width="480" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaV2jgrui6-MPUNo1dtKs4S4EP7O99KBEwpw&s">
+</div>
 
-        Você conhece algum outro exemplos do uso de listas ligadas?
 
-
-## Criando Listas Ligadas
-
+## Implementação Listas Ligadas
 
 
 Agora que você entendeu a estrutura de uma lista ligada, vamos implementá-la no javascript a partir da classe a seguir. Observe que além da classe LinkedList vamos criar uma classe Node que representa um elemento da lista (conteúdo do item e próximo).
@@ -280,22 +287,62 @@ class Node {
         this.next = null;   
     }
 }
-
+/**
+ * 
+ * 
+- insert(position, element) - Inserir elementos em uma posição específica.
+- remove(element) - Remover um elemento da lista.
+- removeAt(position) - Remover elementos em uma posição específica.
+- indexOf(element) - Retorna a posição de um dado elemento
+- isEmpty() - Retorna se a lista está vazia
+- size() - Retorna o tamanho da lista
+- toString() - Retorna a lista como texto
+- print() - Imprime os elementos da lista
+- clear() - Limpar a lista removendo todos os elementos atuais para torná-la vazia.
+ * 
+ */
 class LinkedList {
 
     constructor(){
 
     }
 
-    traverse(){
+    /** 
+     * Adicionar elementos no final da lista
+     */
+    append(element) {
 
     }
-    
-    insert(pos=0) {
+
+    insert(position, element) {
 
     }
 
-    delete(pos=0){
+    remove(element) {
+
+    }
+
+    removeAt(position){
+
+    }
+
+    indexOf(element) {
+
+    }
+
+    isEmpty(){
+      
+    }
+
+    size() {
+
+    } 
+
+    print() {
+
+    }
+
+    clear(){
 
     }
 
@@ -303,9 +350,14 @@ class LinkedList {
 
     }
 
-    destroy(){
+    toString(){
 
     }
+
+    toArray(){
+
+    }
+
 }
 
 ```
