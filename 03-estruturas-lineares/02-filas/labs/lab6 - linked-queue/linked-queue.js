@@ -12,12 +12,12 @@ class Queue {
     // Método para adicionar um elemento na fila 
     enqueue(element){
         const node = new Node(element)
-        if (this.front === null && this.rear === null) {
+        if (this.front === null && this.tail === null) {
             this.front = node
-            this.rear = node
+            this.tail = node
         } else {
-            this.rear.next = node 
-            this.rear = node
+            this.tail.next = node 
+            this.tail = node
         }
         
         this._size += 1      
@@ -31,7 +31,7 @@ class Queue {
         this.front = this.front.next
 
         if (!this.front) {
-            this.rear = null; // Se a fila ficar vazia, rear também se torna null
+            this.tail = null; // Se a fila ficar vazia, tail também se torna null
         }
 
         this._size -= 1
@@ -50,14 +50,32 @@ class Queue {
         return this.isEmpty()? "A fila está vazia": this.front.value
     }
     // Método para ver o elemento no final da fila
-    rear(){
-        return this.isEmpty()? "A fila está vazia": this.rear.value
+    tail(){
+        return this.isEmpty()? "A fila está vazia": this.tail.value
     }
     // Método para limpar a fila
     clear() {
         this.front = null 
-        this.rear = null
+        this.tail = null
         this._size = 0
+    }
+    print(){
+        let temp = this.front
+        while(temp !== null) {
+            console.log(temp.value)
+            temp = temp.next
+        }
+    }
+
+    toArray(){
+
+        let temp = this.front
+        const array = []
+        while(temp !== null) {
+            array.push(temp.value)
+            temp = temp.next
+        }
+        return array
     }
 }
 

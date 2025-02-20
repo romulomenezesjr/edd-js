@@ -1,0 +1,17 @@
+{
+  "name": "lab7---priority-queue",
+  "version": "1.0.0",
+  "main": "priority-queue.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "lab7---priority-queue": "file:"
+  }
+}
