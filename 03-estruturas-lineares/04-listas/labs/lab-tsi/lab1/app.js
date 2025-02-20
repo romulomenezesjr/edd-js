@@ -1,18 +1,16 @@
-import {Node, LinkedList} from "./linked-list.js"
+import {LinkedList} from "./linked-list.js"
 
 
 const list = new LinkedList()
-list.append(new Node("André"))
-list.append(new Node("Bruno"))
-list.append(new Node("Carla"))
-list.append(new Node("Fiona"))
-
-list.print()
+list.append("André")
+list.append("Bruno")
+list.append("Carla")
+list.append("Fiona")
 console.log(list.size())
 
-list.insert(3, new Node("Diego"))
+list.insert(3, "Diego")
 
-list.print()
+console.log(list.toString())
 console.log(list.size())
 
 console.log("A posição do valor 'Diego' é: ")

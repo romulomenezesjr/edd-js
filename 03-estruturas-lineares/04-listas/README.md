@@ -289,17 +289,6 @@ class Node {
 }
 /**
  * 
- * 
-- insert(position, element) - Inserir elementos em uma posição específica.
-- remove(element) - Remover um elemento da lista.
-- removeAt(position) - Remover elementos em uma posição específica.
-- indexOf(element) - Retorna a posição de um dado elemento
-- isEmpty() - Retorna se a lista está vazia
-- size() - Retorna o tamanho da lista
-- toString() - Retorna a lista como texto
-- print() - Imprime os elementos da lista
-- clear() - Limpar a lista removendo todos os elementos atuais para torná-la vazia.
- * 
  */
 class LinkedList {
 

@@ -5,7 +5,9 @@ export class Node {
     }
 
     toString(){
-        return this.element
+        return this.next!==null
+        ?  this.element + " -> " + this.next.toString()
+        : this.element
     }
 }
 
@@ -63,7 +65,9 @@ export class LinkedList {
      */
     remove(element){
         const pos = this.indexOf(element)
-        this.removeAt(pos)
+        if (pos < 0) {
+            this.removeAt(pos)
+        }
     }
 
     /**
@@ -111,17 +115,11 @@ export class LinkedList {
     /**
      * Imprimir todos os nós até chegar no final da lista
      */
-    print(){
+    toString(){
         if (this.size () === 0) {
-            console.log("A lista está vazia")
-            return 
+            return "Lista vazia"
         }
-        let current = this.head
-        while (current.next !== null) {
-            console.log(`${current.element} -> `)
-            current = current.next
-        }
-        console.log(`${current.element}`)
+        return this.head.toString()
 
     }
 
