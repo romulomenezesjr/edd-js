@@ -1,0 +1,17 @@
+{
+  "name": "lab02-binary-tree-array-travessal",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lab01-binary-tree-array": "file:",
+    "lab02-binary-tree-array-travessal": "file:"
+  }
+}
