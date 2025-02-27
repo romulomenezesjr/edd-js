@@ -10,7 +10,7 @@ function travessalBFS(tree) {
 
 function travessalPreOrder(tree, n = 0) {
     if (n >= 0 && n < tree.length) {
-        console.log(tree[n])
+        if (tree[n]) console.log(tree[n])
         travessalPreOrder(tree, 2*n+1)
         travessalPreOrder(tree, 2*n+2)
     }
@@ -19,7 +19,7 @@ function travessalPreOrder(tree, n = 0) {
 function travessalInOrder(tree, n = 0) {
     if (n >= 0 && n < tree.length) {
         travessalInOrder(tree, 2*n+1)
-        console.log(tree[n])
+        if (tree[n]) console.log(tree[n])
         travessalInOrder(tree, 2*n+2)
     }
 }
@@ -28,7 +28,7 @@ function travessalPosOrder(tree, n = 0) {
     if (n >= 0 && n < tree.length) {
         travessalPosOrder(tree, 2*n+1)
         travessalPosOrder(tree, 2*n+2)
-        console.log(tree[n])
+        if (tree[n]) console.log(tree[n])
 
     }
 }

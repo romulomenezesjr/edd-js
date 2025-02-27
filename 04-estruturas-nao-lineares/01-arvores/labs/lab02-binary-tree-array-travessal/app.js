@@ -1,19 +1,22 @@
-import {create, root, insertLeft, insertRight, printTree} from "./binary-tree-array.js"
+import {create, root, insertLeft, insertRight, printTree} from "./bt-array.js"
 import { height, invertBinaryTree}  from "./utils.js"
+import {travessalInOrder} from "./bt-array-traversal.js"
 
 
-let t = create(7)
-root("A",t);
+let t = create(15)
+root("F",t);
 insertLeft("B", 0, t);
-insertRight("C", 0, t);
-insertLeft("D", 1, t);
-insertRight("E", 1, t);
-// insertRight("D", 2, t);
-//insertRight("F", 2, t);
+insertRight("G", 0, t);
+insertLeft("A", 1, t);
+insertRight("D", 1, t);
+insertRight("I", 2, t);
+insertLeft("C", 4, t);
+insertRight("E", 4, t);
+insertLeft("H", 6, t);
 
 //console.log(height(t))
 //travessalBFS(t)
 printTree(t)
-invertBinaryTree(t)
+//travessalInOrder(t)
+//invertBinaryTree(t)
 printTree(t)
-// travessalInOrder(t)

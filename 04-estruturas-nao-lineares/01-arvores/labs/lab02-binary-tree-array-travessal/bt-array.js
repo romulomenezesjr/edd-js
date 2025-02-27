@@ -54,7 +54,7 @@ function printTree(array) {
 
         for (let i = start; i < end; i++) {
             if (i !== start) levelStr += spacing;
-            levelStr += array[i] !== null ? array[i] : 'null';
+            levelStr += array[i] !== null ? array[i] : '-';
         }
 
         // Centralizar a linha atual

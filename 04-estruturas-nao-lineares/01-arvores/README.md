@@ -80,7 +80,7 @@ O organograma de uma empresa, onde cada caixa representa um nó e as linhas cone
 Existem diversos tipos de estruturas de dados que usam o conceito de árvore, cada uma delas possui um objetivo e operações que as mantém úteis para uma finalidade específica.
 
 - Árvores binárias: Cada nó tem no máximo dois filhos. São usadas para armazenar dados e algoritmos de pesquisa;
-- Árvore binária de busca: Uma árvore binária onde o filho esquerdo de um nó contém valores menores e o filho direito contém valores maiores;
+- Árvore binária de busca - BTS: Uma árvore binária onde o filho esquerdo de um nó contém valores menores e o filho direito contém valores maiores;
 - Árvore AVL: Uma árvore binária de busca auto-balanceada. A diferença de altura entre os filhos de qualquer nó é no máximo 1;
 - Árvore Vermelho-Preta: Uma árvore binária de busca auto-balanceada onde cada nó é colorido de vermelho ou preto. Utilizada para implementação de dicionários e conjuntos ordenados;
 - Árvore B: Uma árvore auto-balanceada onde cada nó pode ter mais de dois filhos. É usada para armazenar grandes quantidades de dados e em indexação em bancos de dados.
@@ -88,7 +88,7 @@ Existem diversos tipos de estruturas de dados que usam o conceito de árvore, ca
 ## Operações
 
 - create: Inicializa uma nova árvore vazia ou com um nó raiz.
-- insert: Adiciona um novo nó com dados específicos à árvore, mantendo a propriedade da árvore (por exemplo, a ordem em uma árvore binária de busca).
+- insert: Adiciona um novo nó com dados específicos à árvore, a partir de algum nó especificado ou mantendo a propriedade da árvore (por exemplo, a ordem em uma árvore binária de busca).
 - search: Navega pela árvore para encontrar um nó que contenha os dados desejados. Em uma árvore binária de busca, isso é feito de forma eficiente comparando valores nos nós.
 - traversal: Percorre todos os nós da árvore em uma ordem específica.
 
@@ -127,7 +127,7 @@ Cheia e completa:
         / \ / \
        4  5 6  7
 
-Cheia e não completa:
+Cheia e completa:
 
           1
          / \
@@ -135,7 +135,15 @@ Cheia e não completa:
        / \ 
       4   5
 
-Completas e não cheia:
+Cheia e não completa:
+
+           1
+          / \
+         2   3
+            / \
+            6  7
+
+Não cheia e completa:
 
            1
           / \
@@ -143,7 +151,7 @@ Completas e não cheia:
         / \ / 
        4  5 6 
 
-Incompletas e não cheias
+Não cheias e não completa:
 
            1
           / \
@@ -151,7 +159,7 @@ Incompletas e não cheias
           \ / 
           5 6  
 
-## Implementações
+## Implementações de Árvores Binárias
 
 ### Implementação com Arrays
 
@@ -182,7 +190,7 @@ Podemos representar esta árvore da seguinte forma com array em javascript:
 const tree = ["A", "B", "C", "D", "E", "-", "F"]
 
 ```
-#### Implementação com array (Lab01)
+#### Implementação (Lab01)
 
 ```js
 const tree = []
@@ -235,12 +243,20 @@ insertRight("F", 2);
 printTree();
 
 ```
-#### Travessia em Ordem de Nível (Breadth First Search or BFS) 
+#### Travessia (Lab02)
 
+Técnicas de travessia/percurso de árvores tratam das várias maneiras de visitar todos os nós da árvore. Diferentemente das estruturas de dados lineares (Array, Lista, Filas, Pilhas, etc.), que possuem apenas uma maneira lógica de percorrê-las, as árvores podem ser percorridas de diferentes formas.
+
+<div align="center">
+<img width="480" src="./img/tree-traversal.png">
+</div>
+
+##### Travessia em Ordem de Nível (Breadth First Search or BFS) 
 
 A travessia em ordem de nível é um método para percorrer uma árvore onde todos os nós presentes no mesmo nível são percorridos completamente antes de se mover para o próximo nível. 
-
-![](https://miro.medium.com/v2/resize:fit:720/format:webp/0*HN6Tr71sgf1qR70n.gif)
+<div align="center">
+<img width="480px" src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*HN6Tr71sgf1qR70n.gif" >
+</div>
 
 Para realizar esta operação chamada **nodes_on_level** vamos percorrer todos os elementos em cada nível. Para isso, precisamos de uma função auxiliar que calcule a altura da árvore e para cada nível, encontre o primeiro índice e o último índice em determinado, retornando os elementos entre estes.
 
@@ -298,30 +314,86 @@ Resultado:
     A
     B,C
     D,E,F
+##### Travessia em Pré-Ordem
 
-#### Travessia em Pré-Ordem
+A travessia em pré-ordem visita os nós na ordem raiz, esquerda, direita. 
 
-
-
-### Implementação com Nós Ligados
-
-#### Manipulação dos Nós
-
-#### Implementação com Nós (Lab02)
-
+<div align="center">
+<img width="480px" src="./img/Preorder-traversal.gif" >
+</div>
 
 
 ```js
+function travessalPreOrder(tree, n = 0) {
+    if (n >= 0 && n < tree.length) {
+        if (tree[n]) console.log(tree[n])
+        travessalPreOrder(tree, 2*n+1)
+        travessalPreOrder(tree, 2*n+2)
+    }
+}
+```
+##### Travessia em Ordem
 
+A travessia em ordem visita os nós na ordem esquerda, raiz, direita. 
+
+Quando utilizada em árvores BST, essa travessia visita os nós em uma ordem que os nós são apresentados em ordem crescente. Isso é extremamente útil quando você precisa recuperar os elementos de uma BST em ordem classificada.
+
+<div align="center">
+<img width="480px" src="./img/Inorder-traversal.gif" >
+</div>
+
+```js
+function travessalInOrder(tree, n = 0) {
+    if (n >= 0 && n < tree.length) {
+        travessalInOrder(tree, 2*n+1)
+        if (tree[n]) console.log(tree[n])
+        travessalInOrder(tree, 2*n+2)
+    }
+}
+```
+##### Travessia em Pós Ordem
+
+<div align="center">
+<img width="480px" src="./img/Postorder-traversal.gif" >
+</div>
+
+
+```js
+function travessalPosOrder(tree, n = 0) {
+    if (n >= 0 && n < tree.length) {
+        travessalPosOrder(tree, 2*n+1)
+        travessalPosOrder(tree, 2*n+2)
+        if (tree[n]) console.log(tree[n])
+
+    }
+}
 ```
 
+### Implementação com Nós Ligados
 
-## Árvores Binárias AVL
+Realizando a implementação de árvore com nós, temos:
+- Armazenamento dos dados
+- Ponteiro para o nó da esquerda
+- Ponteiro para o nó da direita
 
-Uma árvore binária de busca é uma árvore binária em que os dados com valores menores são armazenados nos nós à esquerda e os dados com valores maiores são armazenados nos nós à direita. Essa propriedade permite buscas muito eficientes e se aplica tanto a dados numéricos quanto a dados não numéricos, como palavras e strings.
+![](./img/bt-nodes.png)
 
 
-## Arvores Rubronegras
+#### Manipulação dos Nós
+#### Implementação (Lab03)
 
+```js
+class Node {
+    constructor(value, left = null, right = null){
+        this.value = value
+        this.left = left
+        this.right = right
+    }
+    toString(){
+        return this.value
+    }
+}
 
+```
+#### Travessia (Lab04)
 
