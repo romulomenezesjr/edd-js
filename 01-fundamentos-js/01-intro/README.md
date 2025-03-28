@@ -8,7 +8,7 @@ Além de ser usado no navegador, também é utilizado em outros ambientes não r
 
 JavaScript foi inicialmente criado por Brendan Eich da NetScape e foi anunciado pela primeira vez em um comunicado de imprensa pela Netscape em 1995. Ele tem uma história bizarra de nomes; inicialmente, foi chamado de Mocha pelo criador, que mais tarde foi renomeado para LiveScript. Em 1996, cerca de um ano após o lançamento, a NetScape decidiu renomeá-lo para JavaScript com a esperança de capitalizar a comunidade Java (embora JavaScript não tivesse nenhum relacionamento com Java) e lançou o Netscape 2.0 com suporte oficial ao JavaScript.
 
-![historia](https://res.cloudinary.com/practicaldev/image/fetch/s--YztX6smy--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/k9it4nub7qe99wvfa8r6.jpg)
+![historia](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.versionmuseum.com%2Fhistory-of%2Fnetscape-browser&psig=AOvVaw0jbwFoB1LgcXrKvn1izZ3y&ust=1743271209938000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKiO3MKsrYwDFQAAAAAdAAAAABAJ)
 
 ## Versões
 
@@ -59,5 +59,5 @@ console.log("Hello World.")
 
 Veja um diagrama da arquitetura do Node para fazer com que o código JS seja executado no sistema operacional.
 
-![Node](https://res.cloudinary.com/practicaldev/image/fetch/s--cNfT4syU--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/l65m5h5x039we52cqhb4.png)
+![Node](https://www.google.com/url?sa=i&url=https%3A%2F%2Fblog.stackademic.com%2Fdecoding-the-node-js-v8-relationship-performance-unleashed-6d631ebb54d9&psig=AOvVaw0ji7EenVkUotcN7OcXVsmi&ust=1743271256502000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJiKq9isrYwDFQAAAAAdAAAAABAE)
 
