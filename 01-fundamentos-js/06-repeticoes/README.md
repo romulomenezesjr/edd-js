@@ -51,15 +51,21 @@ O interpretador JavaScript não detecta quando o código possui tal instrução.
 Imagine que você está em uma fila no supermercado. Enquanto houver pessoas na fila (condição verdadeira), você continua esperando na fila e avança um passo de cada vez (executa o código dentro do while). Assim que a fila estiver vazia (condição falsa), você para de esperar.
 
 ```javascript
-let fila = 10;
-
-while (fila > 0) {
-    console.log(`Continua esperando... [posição: ${fila}]`);
-    // Simulação de espera de 2 segundos
-    setTimeout(() => {}, 2000);
-    fila--;
+function timeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
-console.log('Sua vez chegou! Atendido!');
+
+async function exec(){
+    let fila = 10
+    while (fila > 0) {
+        await timeout(3000);
+        console.log(`Sua posição na fila é: ${fila}`)
+        fila--
+    }
+    console.log('Sua vez chegou! Atendido!');
+}
+
+exec()
 ```
 
 #### Exemplo 2 - Contagem Regressiva de um Foguete:
