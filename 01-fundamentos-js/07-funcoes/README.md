@@ -538,7 +538,7 @@ As Promises, por outro lado, são uma evolução dos Callbacks. Elas foram intro
 
 Junto com as Promises, usamos o Async/Await, que proporcionam uma maneira mais legível e concisa de lidar com operações assíncronas. Ao utilizar palavras-chave como "async" e "await", o código se torna mais linear e fácil de seguir, eliminando a necessidade de callbacks e reduzindo a complexidade.
 
-![Callback, Async](./async.png)
+![Callback, Async](./img/async.png)
 
 ### Async, Await
 
