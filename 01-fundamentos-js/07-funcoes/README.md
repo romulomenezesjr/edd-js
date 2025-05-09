@@ -164,7 +164,7 @@ y = meucarro.make; // y recebe o valor "Toyota"
 
 ```
 
-![Escopo](./escopo.png)
+![Escopo](./img/escopo.png)
 
 ### Argumentos Rest
 
