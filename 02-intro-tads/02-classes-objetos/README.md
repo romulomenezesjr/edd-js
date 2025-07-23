@@ -361,5 +361,67 @@ Propriedades privadas podem ser definidas de duas maneiras:
 
 
 ### Get Set
+Os métodos get e set são usados para criar acessores de propriedades. Eles permitem controlar como valores são lidos (get) e atribuídos (set) dentro de um objeto ou instância de classe.
 
+```js
+class Pessoa {
+  constructor(nome) {
+    this._nome = nome; // usamos "_" por convenção para indicar propriedade "privada"
+  }
+
+  // getter
+  get nome() {
+    return this._nome;
+  }
+
+  // setter
+  set nome(novoNome) {
+    if (novoNome.length > 1) {
+      this._nome = novoNome;
+    } else {
+      console.log("Nome inválido");
+    }
+  }
+}
+
+const pessoa = new Pessoa("Ana");
+
+console.log(pessoa.nome);  // usa o getter -> "Ana"
+
+pessoa.nome = "Lu";        // usa o setter
+console.log(pessoa.nome);  // "Lu"
+
+pessoa.nome = "A";         // nome inválido
+
+```
 ### Herança
+
+A herança permite que uma classe (subclasse) herde propriedades e métodos de outra (superclasse). Utilizando este recurso tempos o reaproveitamento de código e a garantia que as classes especializadas possuam métodos e atributos idênticos à superclasse e também seus próprios.
+
+
+```js
+class Pessoa {
+  constructor(nome, idade) {
+    this.nome = nome;
+    this.idade = idade;
+  }
+
+  apresentar() {
+    console.log(`Olá, sou ${this.nome} e tenho ${this.idade} anos.`);
+  }
+}
+
+class Aluno extends Pessoa {
+  constructor(nome, idade, curso) {
+    super(nome, idade); // chama o construtor da classe Pai
+    this.curso = curso;
+  }
+
+  apresentar() {
+    // sobrescrevendo método da classe pai
+    console.log(`Sou o aluno ${this.nome}, curso ${this.curso}.`);
+  }
+}
+
+```
+
