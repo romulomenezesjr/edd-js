@@ -15,7 +15,7 @@ const aluno = {
 };
 ```
 
-Crie um objeto professor com as propriedades nome, disciplina, tempoDeExperiencia.
+**Crie um objeto professor com as propriedades nome, disciplina, tempoDeExperiencia.**
 
 2. Acesso às propriedades
 
@@ -26,7 +26,7 @@ console.log(aluno.nome);        // Ponto
 console.log(aluno["nome"]);     // Colchetes
 ```
 
-No seu objeto professor, acesse o valor da disciplina do objeto professor usando os dois métodos e altere os valores de nome e tempo de experiência.
+**No seu objeto professor, acesse o valor da disciplina do objeto professor usando os dois métodos e altere os valores de nome e tempo de experiência.**
 
 3. Propriedades dinâmicas nos objetos
 
@@ -39,7 +39,7 @@ delete aluno.idade
 
 ```
 
-Adicione ao objeto professor a propriedade emSala com valor false e remova a propriedade tempoDeExperiencia. Para visualizá-las com o console.log utilize uma condicional em conjunto com o método hasOwnProperty()
+**Adicione ao objeto professor a propriedade emSala com valor false e remova a propriedade tempoDeExperiencia. Para visualizá-las com o console.log utilize uma condicional em conjunto com o método hasOwnProperty()**
 
 4. Definindo objetos
 
@@ -55,7 +55,7 @@ const livro = {
   }
 };
 ```
-Crie um objeto artigo com titulo, autor, ano e método exibirDados()
+**Crie um objeto artigo com titulo, autor, ano e método exibirDados()**
 
 5. Arrays de objetos
 
@@ -69,7 +69,7 @@ const biblioteca = [
 ];
 
 ```
-Crie um array contendo pelo menos 3 artigos diferentes.
+**Crie um array contendo pelo menos 3 artigos diferentes.**
 
 6. Percorrendo os arrays
 
@@ -84,7 +84,7 @@ for (let livro of biblioteca){
   console.log(`${livro.titulo} - ${livro.autor} (${livro.ano})`);
 }
 ```
-Percorra o array de artigos para imprimir todas as informações
+**Percorra o array de artigos para imprimir todas as informações**
 
 7. Função construtora
 
@@ -103,7 +103,7 @@ const joao = new Pessoa("João", 35);
 joao.falar();
 
 ```
-Seguindo este processo, crie funções construtoras para Aluno, Professor, Livro e Artigo.
+**Seguindo este processo, crie funções construtoras para Aluno, Professor, Livro e Artigo.**
 
 8. Classes
 
@@ -127,7 +127,7 @@ class Aluno {
   }
 ```
 
-Crie as classes para Professor, Livro e Artigo.
+**Crie as classes para Professor, Livro e Artigo.**
 
 9. Manipular Formulário
 
@@ -168,7 +168,7 @@ Utilizando dados de um formulário HTML podemos criar objetos a partir da intera
   </script>
 ```
 
-Crie múltiplos formulários para cadastrar professor, aluno, livro e artigo.
+**Crie múltiplos formulários para cadastrar professor, aluno, livro e artigo.**
 
 
 10. Herança
@@ -199,5 +199,7 @@ class Aluno extends Pessoa {
   }
 }
 ```
-Utilize esta estrutura para as classes professor. Também utilize esta estrutura para Livros, Artigo e uma superclasse chamada MaterialDidatico.
+**Utilize esta estrutura para as classes professor. Também utilize esta estrutura para Livros, Artigo e uma superclasse chamada MaterialDidatico.**
+
+
 
