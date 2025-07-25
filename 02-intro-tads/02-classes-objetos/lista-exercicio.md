@@ -1,4 +1,88 @@
-# Tutorial
+# Lista de Exercícios
+
+## Questões
+
+1. O que acontece se você tentar instanciar uma classe sem utilizar a palavra-chave new?
+```js
+class Produto {
+  constructor(nome) {
+    this.nome = nome;
+  }
+}
+
+const p = Produto("Camiseta");
+```
+A) A variável p conterá o nome Camiseta.
+B) Um erro de tipo será lançado, pois Produto deve ser chamada com new.
+C) O objeto será criado normalmente, mas sem herança.
+D) Produto se comporta como função e apenas retorna undefined.
+
+2. Sobre herança em JavaScript, considere o seguinte código:
+
+```js
+class Veiculo {
+  ligar() {
+    return "Veículo ligado";
+  }
+}
+
+class Carro extends Veiculo {
+  ligar() {
+    return super.ligar() + " - Carro pronto para andar";
+  }
+}
+
+```
+O que será impresso por console.log(new Carro().ligar())?
+
+A) "Carro pronto para andar"
+B) "Veículo ligado"
+C) "Veículo ligado - Carro pronto para andar"
+D) Erro, pois super não é válido em métodos que sobrescrevem outros
+
+3. Sobre métodos estáticos em classes JavaScript, assinale a alternativa correta:
+
+```js
+class Matematica {
+  static somar(a, b) {
+    return a + b;
+  }
+}
+
+```
+A) Matematica.somar(2, 3) lançará um erro, pois métodos estáticos precisam de instância.
+B) Métodos estáticos são herdados por instâncias da classe.
+C) Métodos estáticos não têm acesso ao this da instância.
+D) O método somar precisa ser chamado com new Matematica().somar().
+
+4. Analise o uso de propriedades privadas com o símbolo # no exemplo abaixo
+```js
+class Pessoa {
+  #cpf;
+
+  constructor(cpf) {
+    this.#cpf = cpf;
+  }
+
+  getCpf() {
+    return this.#cpf;
+  }
+}
+
+const p = new Pessoa("123.456.789-00");
+console.log(p.cpf);
+
+```
+
+Qual será o resultado da execução?
+
+A) "123.456.789-00"
+B) undefined, pois cpf é privado e não pode ser acessado diretamente
+C) Um erro de sintaxe, pois # não é um símbolo válido
+D) null, pois cpf ainda não foi inicializado
+
+
+## Tutorial
 
 Neste tutorial você irá realizar a leitura dos parágrafos a seguir e aplicá-los no arquivo 'tutorial.html' para ao final visualizar o resultado  diretamente no navegador. 
 
