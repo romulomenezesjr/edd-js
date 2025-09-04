@@ -1,6 +1,6 @@
 # Ambientes Javascript
 
-Existe uma diferença fundamental entre JavaScript que executamos em ambientes web (Navegador) e no Node.js: **Ambientes de Execução**
+Existe uma diferença fundamental entre JavaScript que executamos em ambientes web (Navegador) e no Node.js: Os **Ambientes de Execução**
 
 Quando executamos o JavaScript em diferentes ambientes podemos ter acesso à recursos e APIs que não existem no outro ambiente. 
 
@@ -9,25 +9,22 @@ Quando executamos o JavaScript em diferentes ambientes podemos ter acesso à rec
 
 O JavaScript na web é voltado para interações no navegador e manipulação de elementos de páginas HTML, arquivos CSS e eventos do usuário. 
 
-  - No contexto da web, JavaScript é executado nos navegadores.
-  - Ele interage com o DOM (Document Object Model) para manipular elementos HTML, CSS e responder a eventos do usuário.
-  - JavaScript na web tem acesso a APIs específicas do navegador, como a API de manipulação de DOM (`document`), API de manipulação de eventos (`addEventListener`, APIs de armazenamento local (`localStorage` e `sessionStorage`), entre outras.
-  - É comumente usado para criar aplicações web interativas, como páginas dinâmicas, jogos, aplicativos de single-page, entre outros.
+  - No contexto da web, JavaScript é executado nos navegadores, desta forma é possível ter acesso à várias API's dos navegadores: Manipulação de DOM (`document`), API de manipulação de eventos `addEventListener`, APIs de armazenamento local (`localStorage` e `sessionStorage`), API de geolocalização, entre outras.
+  - O uso principal do JavaScript no navegador é para interagir com o DOM (Document Object Model) para manipular elementos HTML, CSS e responder a eventos do usuário, comumente usado para criar aplicações web interativas, como páginas dinâmicas, jogos, aplicativos de single-page, entre outros.
 
 
-### Output
+### Exemplos 1: Acessando o DOM e interagindo com o navegador
 
-Em um navegador executando um documento HTML com Javascript embutido (uma página web) é possível escrever no documento acessando os métodos objeto **document**, mostrar informações em uma janela pop-up (geradando um alerta no navegador) ou escrevendo no console do navegador:
+Em um navegador executando um documento HTML com Javascript embutido (uma página web) é possível manipular a janela, o conteúdo do documento e usar o console acessando os métodos dos objetos **window**, **document** e **console**. 
 
 ```js
 document.write("<p>" + t + "</p>");
-alert("Hello, World!");
+window.alert("Hello, World!");
 console.log("Hello, World!");
 ```
+### Exemplo 2: Recuperando Dados
 
-### Input
-
-A entrada de dados no Javascript pode ser feita por meio de funções, como o **prompt**, que gera um alerta na página web e retorna o valor digitado pelo usuário ou recuperando os dados digitados em elementos HTML, como inputs, selects, textarea ou qualquer outro elemento HTML. Ainda existem outras formas de capturar dados no javascript: eventos e webstorage. 
+Além de exibir informações é possível recuperar dados do usuário no Javascript por meio de diversos métodos destes objetos (**window.prompt**: gera um alerta na página web e retorna o valor digitado pelo usuário, **document.getElementById('')**: recupera os dados em elementos HTML, como inputs, selects, textarea ou qualquer outro elemento HTML). Ainda existem outras formas usando outras API's (eventos, storage, etc.). 
 
 ```html
 <html>
@@ -41,7 +38,7 @@ var nome = prompt("Qual o seu nome?")
 var sobrenome = document.getElementById("sobrenome").value
 ```
 
-### Exemplo 
+### Exemplo 3: Forma comum de acessar dados (document)
 
 Normalmente não utilizandos a função **prompt()** do Javascript para leitura de dados. Fazemos isso acessando elementos input de um formulário HTML. O exemplo a seguir mostra como acessar os valores de entrada de um formulário HTML usando JavaScript.
 
@@ -94,9 +91,9 @@ Normalmente não utilizandos a função **prompt()** do Javascript para leitura 
       });
     ```
 
-Neste exemplo, o evento de envio do formulário (`submit`) é interceptado pelo JavaScript. Dentro do callback desse evento, os valores dos inputs são lidos usando `document.getElementById().value`. Esses valores são então exibidos no console, mas você pode fazer qualquer outra coisa com eles, como enviá-los para um servidor ou usá-los para atualizar a página. O `event.preventDefault()` é usado para impedir o envio padrão do formulário, que recarregaria a página.
+Explicação: No exemplo o evento de envio do formulário (`submit`) é interceptado pelo JavaScript. Dentro do **callback** desse evento, os valores dos inputs são lidos usando `document.getElementById().value`. Esses valores são então exibidos no console, mas você pode fazer qualquer outra coisa com eles, como enviá-los para um servidor ou usá-los para atualizar a página. O `event.preventDefault()` é usado para impedir o envio padrão do formulário, que recarregaria a página.
 
-### Acessando Elementos HTML
+### Outros métodos para acessando elementos HTML
 
 É possível acessar elementos HTML a partir do Javascript utilizando os métodos disponíveis no **document**. Veja os exemplos a seguir:
 
@@ -121,9 +118,16 @@ Neste exemplo, o evento de envio do formulário (`submit`) é interceptado pelo 
 
    ```javascript
    const elementos = document.getElementsByTagName("tag_html");
+   
+   ```
+4. **querySelector(seletor):**
+   Retorna o primeiro elemento HTML que corresponde ao seletor passado. O seletor possui as regras usadas ao definir estílos.
+   ```js
+   const el = document.querySelector(".myclass");
+
    ```
 
-Depois de acessar os elementos HTML usando uma dessas técnicas, você pode interagir com eles, como ler ou definir atributos, modificar o conteúdo, estílo, adicionar ou remover classes, ou lidar com eventos.
+O retorno destes métodos permite obter os elementos HTML em formato de objetos para interagir com eles (ler, definir atributos, modificar o conteúdo, estílo, adicionar ou remover classes, ou lidar com eventos).
 
 
 ## Ambiente JavaScript no Node
@@ -137,9 +141,16 @@ O JavaScript no Node.js orientado para operações de I/O, manipulação de arqu
   - Pode ser usado para construir aplicações CLI (Command Line Interface), serviços de backend, ferramentas de linha de comando, entre outros.
 
 
-### Input 
+### Exemplo 4: Criando um pequeno servidor.
 
-O ambiente node não foi criado para aplicações CLI que interagem com o usuário. Normalmente ele é utilizado para processamento de requisições web. 
+O ambiente node não foi criado para aplicações CLI que interagem com o usuário. Normalmente ele é utilizado para processamento de requisições web. Para o exemplo a seguir é necessário instalar pacotes express e body-parser.
+
+```sh
+npm init
+npm i express body-parser
+```
+
+Após a configuração de um projeto node e instalação das dependências temos como resultado um arquivo package.json que configura um projeto node. O código a seguir deve ser salvo em um arquivo na mesma pasta para ser executado pelo node.
 
 ```js
 const express = require('express');
@@ -162,6 +173,8 @@ app.listen(port, () => {
 });
 
 ```
+
+### Exemplo 5: Interação no Terminal com Node
 
 Caso queira utilizar um programa em Javascript para leitura do terminal devemos importar módulos do Nodejs criados para isso.  Utilize o seguinte exemplo:
 
