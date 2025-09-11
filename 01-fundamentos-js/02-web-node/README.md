@@ -202,10 +202,10 @@ rl.question('Digite um número ', (n) => {
       - Permita que o usuário escolha a operação a ser realizada (adição, subtração, multiplicação, divisão).
       - Exiba o resultado da operação em um alert.
 
-  2. Calculadora utilizando Node.js e o módulo readline:
-      - Crie uma calculadora que utilize o módulo readline do Node.js para ler entrada do usuário a partir do terminal.
-      - Permita que o usuário insira dois números e escolha a operação a ser realizada (adição, subtração, multiplicação, divisão).
-      - Exiba o resultado da operação no terminal.
+  2. Calculadora utilizando Node.js e o módulo express e body-parser:
+      - Crie uma calculadora que utilize o módulo express do Node.js para recebber uma entrada via requisição POST de um formulário
+      - No formulário receba dois números e uma operação a ser realizada (adição, subtração, multiplicação, divisão).
+      - Retorne o resultado da operação para o cliente .
 
   3. Calculadora utilizando manipulação de formulário HTML:
       - Crie um formulário HTML com campos para o usuário inserir dois números e selecionar a operação desejada.
