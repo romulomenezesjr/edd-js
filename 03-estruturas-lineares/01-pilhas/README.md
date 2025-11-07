@@ -1,6 +1,6 @@
 
 
-# Pilhas
+# Pilhas - Stack
 
 Até agora estudamos a manipulação dos arrays, um tipo de estrutura de utilização genérica comum na computação. Como você aprendeu, podemos adicionar e remover elementos de um array em qualquer índice desejado. No entanto, às vezes precisamos de uma forma de estrutura de dados onde tenhamos mais controle sobre a adição e remoção de itens. 
 
