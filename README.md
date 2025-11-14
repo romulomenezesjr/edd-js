@@ -1,29 +1,45 @@
-# Curso de Programação e Estrutura de Dados em JavaScript
+# Curso de Estrutura de Dados em JavaScript
 
-Bem-vindo ao repositório do Curso de Programação e Estrutura de Dados em JavaScript! Este curso é projetado para estudantes de todos os níveis e interessados em aprofundar seus conhecimentos em Estrutura de Dados utilizando a linguagem JavaScript. Descrevemos neste material os conceitos de Estruturas de Dados Essenciais e os principais Algoritmos de Ordenação.
+Este repositório possui material didático e exemplos para a disciplina de Estrutura de Dados utilizando a linguagem JavaScript. O material foi projetado para estudantes do nível superior e interessados em aprofundar seus conhecimentos em Estrutura de Dados utilizando a linguagem JavaScript. 
 
-## O que você vai aprender
+## Tópicos
+Neste material disponibilizamos os conceitos básicos da linguagem Javascript para que possam ser utilizados em projetos que utilizem as estruturas de dados clássicas e os principais algoritmos de ordenação.
 
-- **[Fundamentos de JavaScript](01-fundamentos-js)**: [Introdução sobre a linguagem](01-fundamentos-js/01-intro); [Diferenças entre execução na Web e no Node](01-fundamentos-js/02-web-node); [Variáveis e operadores](01-fundamentos-js/03-variaveis-operadores/); [Tipos de dados](01-fundamentos-js/04-tipos/), [Estruturas condicionais](01-fundamentos-js/05-condicionais/), [Estruturas de repetição](01-fundamentos-js/06-repeticoes), [Funções](01-fundamentos-js/07-funcoes)
 
-- **Estruturas de Dados Lineares e suas Aplicações em JavaScript**:  [Arrays](02-estruturas-lineares/01-arrays/), [Busca linear e busca binária](/02-estruturas-lineares/02-buscas/README.md), [Matrizes](02-estruturas-lineares/03-matrizes/), [Pilhas](02-estruturas-lineares/04-pilhas/), [Filas](02-estruturas-lineares/05-filas/), [Deques](02-estruturas-lineares/06-deques/) e [Listas](02-estruturas-lineares/07-listas/).
+### [Fundamentos de JavaScript](01-fundamentos-js)
 
-- **Estruturas de Dados Não Lineares**:
- [Árvores](03-estruturas-nao-lineares/01-arvores/), [Grafos](03-estruturas-nao-lineares/02-grafos/), [Tabelas](03-estruturas-nao-lineares/03-tabelas/) 
+[Introdução sobre a linguagem](01-fundamentos-js/01-intro); [Diferenças entre execução na Web e no Node](01-fundamentos-js/02-web-node); [Variáveis e operadores](01-fundamentos-js/03-variaveis-operadores/); [Tipos de dados](01-fundamentos-js/04-tipos/), [Estruturas condicionais](01-fundamentos-js/05-condicionais/), [Estruturas de repetição](01-fundamentos-js/06-repeticoes), [Funções](01-fundamentos-js/07-funcoes)
 
-- **Algoritmos com JavaScript**: Algoritmos de ordenação (como Bubble Sort, Merge Sort, Quick Sort), algoritmos de busca (busca linear e busca binária), e técnicas de programação como recursão.
+### [Tipos Abstratos de Dados](02-intro-tads)
 
-- **Extra: Boas Práticas de Programação**: Legibilidade do código, refatoração, padrões de projeto e testes unitários com Jest.
+[Introdução aos Tipos Abstratos de Dados](02-intro-tads/01-tads/); [Conceitos de Classes e Objetos](02-intro-tads/02-classes-objetos/); [Vetores](02-intro-tads/03-vetores/); [Matrizes](02-intro-tads/04-matrizes/);
 
-- **Projetos Práticos**: Ao final de cada módulo, você aplicará o que aprendeu desenvolvendo projetos práticos, como: um carrinho de compras, uma agenda de contatos, sistema de controle de fila de banco, tabela de medalhas olimpicas, análise de expressões em código, jogos simples e um algoritmo de recomendação.
+### [Estruturas de Dados Lineares](03-estruturas-lineares/)
 
-## Pré-requisitos
+[Pilhas](03-estruturas-lineares/01-pilhas/), [Filas](03-estruturas-lineares/02-filas/), [Deques](03-estruturas-lineares/03-deques/) e [Listas](03-estruturas-lineares/04-listas/).
 
-Para aproveitar ao máximo este curso, você deve ter uma compreensão básica de programação e um conhecimento básico em HTML e CSS é útil, mas não obrigatório. Recomendamos o uso de um editor de código como Visual Studio Code ou utilizando um repositório no Github e utilizando o Codespace.
+### [Estruturas de Dados Não Lineares](04-estruturas-nao-lineares/)
 
-## Como Usar Este Repositório
+ [Árvores](04-estruturas-nao-lineares/01-arvores/), [Árvores Binárias de Pesquisa](04-estruturas-nao-lineares/02-arvores-bst-avl/); [Grafos](04-estruturas-nao-lineares/04grafos/), [Tabelas](04-estruturas-nao-lineares/05-tabelas/) 
 
-Este repositório está organizado por módulos, cada um dedicado a um tópico específico de JavaScript ou uma estrutura de dados. Dentro de cada módulo, você encontrará:
+### Principais Algoritmos em Estruturas de Dados
+
+[Complexidade](05-algorimos/01-complexidade/); [Busca Sequencial e Binária](05-algorimos/02-buscas/); [Algoritmos de Ordenação](05-algorimos/03-ordenacao/); 
+
+
+## Instruções para Execução
+
+### Pré-requisitos
+
+Para aproveitar ao máximo este curso, você deve ter uma compreensão básica de programação e um conhecimento em HTML e CSS. 
+
+### Ferramentas
+
+Recomendamos o uso de um editor de código como Visual Studio Code ou utilizando um repositório no Github e utilizando o Codespace.
+
+### Como Usar Este Repositório
+
+Este repositório está organizado por módulos, dentro de cada um você encontrará:
 
 - **Notas de Aula**: Explicações detalhadas dos conceitos, com exemplos de código.
 - **Exercícios**: Atividades práticas para reforçar o aprendizado. Incluem exercícios de fixação e desafios para resolver.
