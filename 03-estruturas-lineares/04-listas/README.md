@@ -277,77 +277,287 @@ Outro exemplo — que pode ser o mais popular para ilustrar listas ligadas — �
 ## Implementação Listas Ligadas
 
 
-Agora que você entendeu a estrutura de uma lista ligada, vamos implementá-la no javascript a partir da classe a seguir. Observe que além da classe LinkedList vamos criar uma classe Node que representa um elemento da lista (conteúdo do item e próximo).
+Agora apresentamos a estrutura de uma lista ligada, vamos implementá-la no javascript a partir da classe a seguir. Observe que além da classe LinkedList vamos criar uma classe Node que representa um elemento da lista (conteúdo do item e próximo).
+
+Considerando as operações para uma lista ligada, a base de código a seguir e as ilustrações faça as sequência passos com descrições visuais, pseudocódigo e a implementação. Lembre de fazer a verificação se a lista estiver vazia ou se as posições indicadas estão adequadas levando em consideração o estado atual da lista. 
 
 
 ```js
 class Node {
-    constructor(data) {
-        this.data = data;   
-        this.next = null;   
+    constructor(element, next = null) {
+        this.element = element
+        this.next = next
     }
 }
-/**
- * 
- */
 class LinkedList {
-
     constructor(){
-
+        this.head = null
+        this._size = 0
     }
+    append(element){}
+    insert(position, element) {}
+    remove(element){}
+    removeAt(position){}
+    indexOf(element){}
+    toString(){}
+    size(){}
+    isEmpty(){}
+    clear(){}
+}
+```
 
-    /** 
-     * Adicionar elementos no final da lista
-     */
-    append(element) {
+Operações:
 
-    }
+- append (inserir no fim)
+- insert e remove no início da lista
+- insert e remove no meio da lista necessita reposicionar os apontadores
 
-    insert(position, element) {
+### Append (inserir no fim)
+A operação de append necessita percorrer todos os elementos da lista e adicionar o novo nó ao chegar no último elemento (aquele que não está ligado a mais nenhum).
 
-    }
+![Append](./imgs/append.webp)
 
-    remove(element) {
+### Insert no Início
 
-    }
+A partir da lista da imagem a seguir devemos inserir o valor "1" na posição "0". As imagens a seguir refletem o estado da lista antes e depois:
 
-    removeAt(position){
+Antes
 
-    }
+![Insert no Início 01](./imgs/insert-head-01.webp)
 
-    indexOf(element) {
+Depois
 
-    }
+![Insert no Início 02](./imgs/insert-head-02.webp)
 
-    isEmpty(){
-      
-    }
 
-    size() {
+### Remover no Início
 
-    } 
+A remoção no início da lista deve ser efetivada ao alterar apenas a indicação do HEAD para o próximo.
 
-    print() {
+![Remove Head](./imgs/remove-head.png)
 
-    }
 
-    clear(){
+### Insert em posição específica
 
-    }
+Para inserir em uma posição central, não sendo na posição 0 e não sendo na última (append), devemos localizar o nó naquela posição e refazer a ligação para o novo nó com o valor a ser inserido e refazer a ligação.
+Observe a imagem para inserir o valor "E" na posição "2":
 
-    search(value){
+![Insert Center](./imgs/insert-center-01.webp)
 
+
+- Dado uma lista ligada, desenhe as etapas, descreva o algoritmo e escreva o código para fazer o insert do valor "Z" na posição "04" para a lista contendo A->B->E->C->D.
+
+### Remove em posição específica
+
+A remoção em uma posição específica em uma lista encadeada envolve a remoção de um nó de um índice/posição específico, que pode ser o primeiro, o nó do meio ou o último nó.
+
+Início com lista contendo valores 01->02->03->04 e removendo valor 03 (pos 02)
+
+![Remoção em Posição Específica 01](./imgs/remove-middle-01.png)
+
+Travessia até a posição anterior (pos 02)
+
+![Remoção em Posição Específica 02](./imgs/remove-middle-02.png)
+
+Religação dos aponteadores
+
+![Remoção em Posição Específica 03](./imgs/remove-middle-03.png)
+
+Estado final da lista
+
+![Remoção em Posição Específica 04](./imgs/remove-middle-04.png)
+
+
+
+### Código Final
+
+```js
+export class Node {
+    constructor(element, next = null) {
+        this.element = element
+        this.next = next
     }
 
     toString(){
+        return this.next!==null
+        ?  this.element + " -> " + this.next.toString()
+        : this.element
+    }
+}
+
+export class LinkedList {
+    constructor(){
+        this.head = null
+        this._size = 0
+    }
+
+    /**
+     * Inserir um novo elemento no final da lista
+     */
+    append(element){
+        const node = new Node(element)
+        if (this.isEmpty()) {
+            this.head = node
+        } else {
+            let current = this.head
+            while (current.next !== null) {
+                current = current.next
+            }
+            current.next = node
+        }
+        this._size++
+    }
+
+    /**
+     * Insere um elemento em uma dada posição
+     */
+    insert(position, element) {
+        const node = new Node(element)
+        if (position === 0) {
+            node.next = this.head
+            this.head = node
+            this._size++
+        } else if (position > 0 && position <= this.size()) {
+            let pos = 0
+            let current = this.head
+            let previous = null
+            while (pos < position) {
+                previous = current
+                current = current.next
+                pos++
+            }
+
+            previous.next = node
+            node.next = current
+            this._size++
+        }
 
     }
 
-    toArray(){
+    /**
+     * Remover um dado elemento
+     */
+    remove(element){
+        const pos = this.indexOf(element)
+        if (pos < 0) {
+            this.removeAt(pos)
+        }
+    }
+
+    /**
+     * Remover um elemento dada uma posição
+     */
+    removeAt(position){
+        if (position >= this.size()) {
+            console.log(`Posição inválida. Escolha o intervalo de 0 até ${this.size() - 1}`)
+            return
+        }
+
+        if (position == 0) {
+            this.head = this.head.next
+            this._size--
+        } else if (position > 0  && position < this.size()) {
+            let pos = 0
+            let current = this.head
+            while(pos < position - 1){
+                current = current.next
+                pos++
+            } 
+            current.next = current.next.next
+            this._size--
+        }
+    }
+
+    /**
+     * Informa a posição de um dado elemento na lista
+     */
+    indexOf(element){
+        if (this.size() > 0) {
+            let pos = 0
+            let current = this.head
+            while (current.next !== null) {
+                if (current.element == element) {
+                    return pos
+                }
+                pos++
+                current = current.next
+            }
+        }
+        return -1
+    }
+
+    /**
+     * Imprimir todos os nós até chegar no final da lista
+     */
+    toString(){
+        if (this.size () === 0) {
+            return "Lista vazia"
+        }
+        return this.head.toString()
 
     }
+
+    /**
+     * Retornar a quantidade de elementos na lista
+     */
+    size(){
+        return this._size
+    }
+
+    /**
+     * Informa se a lista está vazia
+     */
+    isEmpty(){
+        return this.size() === 0
+    }
+
+    /**
+     * Reinicia a lista removendo os seus elementos
+     */
+    clear(){
+        this.head = null
+        this._size = 0
+    }
+
+
 
 }
 
+
+
 ```
 
+# Exercícios
+
+1. Dadas duas listas encadeadas simples, o objetivo é determinar se elas são idênticas ou não. Duas listas encadeadas são consideradas idênticas se contiverem os mesmos dados na mesma ordem. Se as listas encadeadas forem idênticas, retorne verdadeiro; caso contrário, retorne falso.
+
+    - Input: LinkedList1: 1->2->3->4->5->6, LinkedList2: 99->59->42->20
+      
+      Output: false
+    - Input: LinkedList1: 1->2->3->4->5, LinkedList2: 1->2->3->4->5
+      
+      Output: true
+
+2. Dado o primeiro nó de uma lista simplesmente encadeada, encontre o nó do meio da lista.
+
+    - Se o número de nós for ímpar, retorne o nó do meio.
+
+    - Se o número de nós for par, existem dois nós do meio, então retorne o segundo nó do meio.
+
+3. Dada uma lista simplesmente encadeada, a partir do segundo nó, remova todos os nós alternados. Por exemplo, se a lista encadeada for 1->2->3->4->5, sua função deve convertê-la para 1->3->5, e se a lista encadeada for 1->2->3->4, converta-a para 1->3.
+
+4. Dada uma lista ligada ordenada em ordem não decrescente, retorne a lista removendo os nós duplicados. A lista retornada também deve estar em ordem não decrescente.
+
+    - Input : Linked List = 11->11->11->21->43->43->60
+      
+      Output : 11->21->43->60
+
+    - Input : Linked List = 5->10->10->20
+      
+      Output : 5->10->20 
+
+5. Detectando Loops: Dado o primeiro nó de uma lista simplesmente encadeada, determine se a lista contém um ciclo. Um ciclo existe se, ao percorrer a lista usando os ponteiros `next`, você encontrar um nó que já foi visitado em vez de eventualmente chegar a `null`.
+
+# Referencias
+
+https://www.geeksforgeeks.org/dsa/introduction-to-singly-linked-list/
