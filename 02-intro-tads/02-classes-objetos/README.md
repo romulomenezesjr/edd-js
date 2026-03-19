@@ -394,34 +394,5 @@ console.log(pessoa.nome);  // "Lu"
 pessoa.nome = "A";         // nome inválido
 
 ```
-### Herança
 
-A herança permite que uma classe (subclasse) herde propriedades e métodos de outra (superclasse). Utilizando este recurso tempos o reaproveitamento de código e a garantia que as classes especializadas possuam métodos e atributos idênticos à superclasse e também seus próprios.
-
-
-```js
-class Pessoa {
-  constructor(nome, idade) {
-    this.nome = nome;
-    this.idade = idade;
-  }
-
-  apresentar() {
-    console.log(`Olá, sou ${this.nome} e tenho ${this.idade} anos.`);
-  }
-}
-
-class Aluno extends Pessoa {
-  constructor(nome, idade, curso) {
-    super(nome, idade); // chama o construtor da classe Pai
-    this.curso = curso;
-  }
-
-  apresentar() {
-    // sobrescrevendo método da classe pai
-    console.log(`Sou o aluno ${this.nome}, curso ${this.curso}.`);
-  }
-}
-
-```
 
