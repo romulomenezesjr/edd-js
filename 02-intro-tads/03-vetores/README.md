@@ -97,7 +97,7 @@ let arrayFixo = new Array(5);
 console.log(arrayFixo[2]); // undefined
 ```
 
-Em outras linguagens isso poderia ocasionar um erro/excessão que causaria o encerramento do programa caso não for tratado. Ainda assim, no Javascript é possível testar se determinado valor está presente em um array, veja o exemplo a seguir:
+Em outras linguagens isso poderia ocasionar um erro/excessão que causaria o encerramento do programa caso não for tratado. Ainda assim, no Javascript é possível testar se determinado índice ou atributo está presente em um array, veja o exemplo a seguir:
 
 ```js
 let array = [1, 2, 3];
