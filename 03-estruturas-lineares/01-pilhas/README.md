@@ -360,7 +360,23 @@ Podemos facilmente modificar o algoritmo anterior para que funcione como um conv
   return baseString;
  }
  ```
+## Exercícios
 
- ### Balanceamento de Parenteses
+### Balanceamento de Parenteses
 
- ### Torre de Hanoi
+Implemente uma página web simples utilizando HTML, CSS e JavaScript que permita ao usuário digitar uma expressão em um formulário e verificar se os parênteses estão balanceados. Utilize a estrutura de dados pilha (stack) para realizar a verificação e exiba uma mensagem informando se a expressão é válida ou inválida.
+
+### Histórico de Edição
+
+Implemente uma página web simples utilizando HTML, CSS e JavaScript que permita ao usuário digitar um texto em um textarea de um formulário e que contenha um botão para voltar ao texto digitado anteriormente (CTR-Z). Utilize a estrutura de dados pilha (stack) para armazenar todos os dados digitados pelo usuário.
+
+### Torre de Hanoi
+
+Implemente um algoritmo em JavaScript para resolver o problema da Torre de Hanói, permitindo informar a quantidade de discos e exibindo a sequência de movimentos necessários para transferir todos os discos da torre de origem para a torre de destino, utilizando uma torre auxiliar.
+Dicas:
+- Mova apenas um disco por vez.
+- Nunca coloque um disco maior sobre um disco menor.
+- Utilize recursividade para resolver o problema.
+- Para mover \(n\) discos, primeiro transfira \(n-1\) discos para a torre auxiliar, mova o maior disco para o destino e, em seguida, transfira os \(n-1\) discos para o destino.
+- A quantidade mínima de movimentos é \(2^n - 1\), em que \(n\) é o número de discos.
+Desafio extra: implemente uma página web que permita informar o número de discos e apresente os movimentos passo a passo.
